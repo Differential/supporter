@@ -1,0 +1,1 @@
+@Needs = new Meteor.Collection("needs")
