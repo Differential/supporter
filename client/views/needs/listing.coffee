@@ -22,5 +22,3 @@ Template.needListing.rendered = ->
   else if container.hasClass("isotope")
     container.isotope "addItems", $(@find("li:not(.isotope-item)")), ->
       container.isotope sortBy: "number"
-
-
