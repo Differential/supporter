@@ -10,3 +10,5 @@ accounts-password
 bootstrap
 coffeescript
 less
+accounts-ui
+isotope

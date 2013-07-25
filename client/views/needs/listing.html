@@ -1,4 +1,13 @@
 <template name="needListing">
-	<li>{{content}}<br />
-  by {{username}} <a href=''>respond</a></li>
+	<li class='span4'>
+    <div>
+      {{#if owner}}
+        <a class='delete' href=''><i class='icon-remove'></i></a>
+      {{else}}
+        <a class='btn' href=''><i class='icon-ok-circle'></i> respond</a>
+      {{/if}}
+      {{content}}
+      <a>[{{username}}]</a>
+    </div>
+  </li>
 </template>

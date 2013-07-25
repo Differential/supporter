@@ -1,5 +1,22 @@
-ul {
+ul.needs-list {
+  margin: 0;
+  padding: 0;
   li {
     list-style: none;
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+    div {
+      padding: 10px;
+      a.btn, a.delete {
+        float: right;
+      }
+      textarea {
+        width: 95%;
+      }
+    }
   }
+}
+
+.newNeed {
+  background: #eee;
 }

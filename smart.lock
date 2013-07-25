@@ -2,13 +2,19 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "accounts-ui-bootstrap-dropdown": {}
+      "font-awesome": {},
+      "isotope": {}
     },
     "packages": {
-      "accounts-ui-bootstrap-dropdown": {
-        "git": "https://github.com/erobit/meteor-accounts-ui-bootstrap-dropdown.git",
-        "tag": "v0.1.5",
-        "commit": "e12b128f140caa2797720cbd5fae084de7810c6a"
+      "font-awesome": {
+        "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
+        "tag": "v3.2.0",
+        "commit": "2cba6f907a2579cae2d399b522f9544c13d5e091"
+      },
+      "isotope": {
+        "git": "https://github.com/digioak/meteor-isotope.git",
+        "tag": "v0.0.3",
+        "commit": "6fa8d0cd5ad50ea2292f2ce03ea619adc6c13c58"
       }
     }
   }

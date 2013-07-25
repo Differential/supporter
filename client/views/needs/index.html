@@ -1,12 +1,14 @@
 <template name="needs">
   <div class="needs">
-  {{> newNeed}}
-    <div class="needListing">
-      <ul>
-        {{#each needs}}
-          {{> needListing}}
-        {{/each}}
-      </ul>
+    <div class='row'>
+      <div class="needListing">
+        <ul class='needs-list'>
+          {{> newNeed}}
+          {{#each needs}}
+            {{> needListing}}
+          {{/each}}
+        </ul>
+      </div>
     </div>
   </div>
 </template>
