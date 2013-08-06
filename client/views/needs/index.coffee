@@ -2,16 +2,16 @@ Template.needs.helpers
 	needs: ->
     Needs.find()
 
-Template.needs.preserve('li')
+Template.needs.preserve('.need')
 
 Meteor.startup ->
   $(window).resize (evt) ->
-    container = $('ul.needs-list')
-    items = container.find('li')
+    container = $('.needs-list')
+    items = container.find('.need')
 
     if (not container.hasClass("isotope")) and (items.length-1 == Needs.find().count())
       container.isotope
-        itemSelector: "li"
+        itemSelector: ".need"
         layoutMode: "masonry"
         getSortData:
           number: ($elem) ->
@@ -19,5 +19,5 @@ Meteor.startup ->
 
       container.isotope sortBy: "number"
     else if container.hasClass("isotope")
-      container.isotope "addItems", $(@find("li:not(.isotope-item)")), ->
+      container.isotope "addItems", $(@find(".neet:not(.isotope-item)")), ->
         container.isotope sortBy: "number"
