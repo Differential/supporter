@@ -1,13 +1,16 @@
 <template name="needListing">
 	<li class='span4'>
     <div>
-      {{#if owner}}
-        <a class='delete' href=''><i class='icon-remove'></i></a>
-      {{else}}
-        <a class='btn' href=''><i class='icon-ok-circle'></i> respond</a>
-      {{/if}}
       {{content}}
       <a>[{{username}}]</a>
+      <div class='action-buttons'>
+        {{#if owner}}
+          <a class='btn delete'><i class='icon-remove'></i> delete</a>
+          <a class='btn delete'><i class='icon-ok'></i> complete</a>
+        {{else}}
+          <a class='btn'><i class='icon-ok-circle'></i> respond</a>
+        {{/if}}
+      </div>
     </div>
   </li>
 </template>
