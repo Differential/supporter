@@ -9,7 +9,7 @@ addNeed = ->
         createdAt: new Date()
         userId: user._Id
         username: user.username
-        completed: null
+        offerCount: 0
     else
       alert 'Be more descriptive'
 
