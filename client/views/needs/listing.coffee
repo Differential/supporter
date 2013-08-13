@@ -10,7 +10,6 @@ Template.needListing.events
   'click .delete': ->
     Needs.remove(@_id)
 
-
 Template.needListing.events
   "click .btn": ->
     Session.set('editing_itemname', @_id)

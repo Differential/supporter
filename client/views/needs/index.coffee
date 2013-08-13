@@ -1,6 +1,6 @@
 Template.needs.helpers
 	needs: ->
-    Needs.find()
+    Needs.find({completedAt: {$exists: true}})
 
 Template.needs.preserve('.need')
 
