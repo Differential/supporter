@@ -10,9 +10,12 @@ addOffer = ->
         userId: user._Id
         username: user.username
         needId: Session.get('editing_itemname')
+      Needs.update(Session.get('editing_itemname'), {$inc: {offerCount: 1}})
     else
       alert 'Be more descriptive'
+      
 
+      
 Template.newOffer.events
   "click input#newOfferButton": ->
     addOffer()
