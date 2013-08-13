@@ -1,6 +1,7 @@
 {
   "packages": {
     "font-awesome": {},
-    "isotope": {}
+    "isotope": {},
+    "iron-router": {}
   }
 }

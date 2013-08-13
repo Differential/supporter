@@ -3,7 +3,7 @@
     <div class='content'>
       {{content}}
       <br />
-      <a>{{username}}</a> / <a class="offerList">{{pluralize offerCount}}</a>
+      <a>{{username}}</a> / <a class="offerList" href="/need/{{_id}}">{{pluralize offerCount}}</a>
       {{#if editing}}
         {{> newOffer}}
       {{else}}
