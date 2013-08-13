@@ -2,15 +2,10 @@
 	<div class='need span4'>
     <div class='content'>
       {{content}}
-      <hr/>
-      <div class="offers">
-      {{#each offers}}
-        {{> offerListing}}
-      {{/each}}
-      </div>
-      <a>[{{username}}]</a>      
+      <br />
+      <a>{{username}}</a> / <a>4 responses</a>
       {{#if editing}}
-        {{> newOffer}} 
+        {{> newOffer}}
       {{else}}
        <div class='action-buttons'>
         {{#if owner}}
