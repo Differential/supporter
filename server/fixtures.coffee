@@ -17,4 +17,14 @@ Meteor.defer ->
       createdAt: now
       userId: userId
       username: 'foo'
+      offerCount: 0
     )
+    
+    offer = Offers.insert(
+      content: 'reply'
+      createdAt: now
+      userId: userId
+      username: 'foo'
+      needId: need
+    )
+    
