@@ -9,6 +9,7 @@ addOffer = ->
         createdAt: new Date()
         userId: user._Id
         username: user.username
+        email: user.emails[0].address
         needId: Session.get('editing_itemname')
       Needs.update(Session.get('editing_itemname'), {$inc: {offerCount: 1}})
     else
