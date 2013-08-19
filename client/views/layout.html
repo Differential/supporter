@@ -1,8 +1,4 @@
-<head>
-  <title>supporter</title>
-</head>
-
-<body>
+<template name='layout'>
   <div class='navbar navbar-fixed-top'>
     <div class="navbar-inner">
       <div class='container'>
@@ -18,7 +14,7 @@
 
   <div class='container'>
     <div class='row'>
-      {{> needs}}
+      {{yield}}
     </div>
   </div>
-</body>
+</template>

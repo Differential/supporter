@@ -1,4 +1,14 @@
-Router.map -> 
+Router.configure
+  layout: "layout"
+  notFoundTemplate: "notFound"
+  loadingTemplate: "loading"
+  renderTemplates:
+    footer:
+      to: "footer"
+    header:
+      to: "header"
+
+Router.map ->
   @route 'needs',
     path: '/'
   @route 'need',
