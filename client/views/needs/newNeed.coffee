@@ -23,7 +23,6 @@ Template.newNeed.events
   "click input#newNeedButton": ->
     addNeed()
 
-  "keypress textarea#newNeed": (evt) ->
-    console.log 'hi'
+  "keyup textarea#newNeed": (evt) ->
     Session.set('chars', $('textarea#newNeed').val().length)
 
