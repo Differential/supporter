@@ -1,5 +1,13 @@
 Template.needs.helpers
 	needs: ->
-    Needs.find({completedAt: {$exists: false}})
+    if Session.get('myNeeds', true)
+      Needs.find({userId: Meteor.userId()})
+    else
+      Needs.find({completedAt: {$exists: false}})
 
-Template.needs.preserve('.need')
+      
+Template.needs.events
+  "click input#showMyNeeds": ->
+    Session.set('myNeeds', true)
+  "click input#showAllNeeds": ->
+    Session.set('myNeeds', false)

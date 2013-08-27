@@ -7,6 +7,8 @@ Template.needListing.helpers
 Template.needListing.helpers
   editing: ->
     Session.equals('editing_itemname', @_id)
+  loggedIn: ->
+    Meteor.user()
 
 Template.needListing.events
   'click .delete': ->

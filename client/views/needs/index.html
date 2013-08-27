@@ -1,16 +1,23 @@
 <template name="needs">
   <div class="needs">
+    <input id="showMyNeeds" type="button" class="btn mine" value="Show my needs" />
+    <input id="showAllNeeds" type="button" class="btn all" value="Show all needs" />
+    <br />
     <div class='row'>
       <div class="needListing">
         <div class='needs-list'>
-          {{#if currentUser}}
           {{> newNeed}}
-          {{/if}}
           {{#each needs}}
             {{> needListing}}
           {{/each}}
-        </div>
+        </div>   
       </div>
-    </div>
+    </div>    
+  </div>
+  
+  <div class="myNeeds">
+    {{#each myNeeds}}
+      {{> myNeedListing}}
+    {{/each}}
   </div>
 </template>

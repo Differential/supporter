@@ -17,7 +17,7 @@
           <a class='btn delete'><i class='icon-remove'></i> delete</a>
           <a class='btn complete'><i class='icon-ok'></i> complete</a>
         {{else}}
-          <a class='btn respond'><i class='icon-ok-circle'></i> respond</a>
+         {{#if currentUser}}<a class='btn respond'><i class='icon-ok-circle'></i> respond</a>{{/if}}
         {{/if}}
       </div>
       {{/if}}
