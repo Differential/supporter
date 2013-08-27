@@ -10,6 +10,9 @@ Template.newNeed.helpers
       'red'
     else
       ''
+  charDisableSubmit: ->
+    Session.get('chars') < 30 || Session.get('chars') > 200
+  
   charLengthMessage: ->
     message = ''
     if Session.get('chars') < 30
