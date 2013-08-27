@@ -1,5 +1,8 @@
 Template.needs.helpers
 	needs: ->
-    Needs.find({completedAt: {$exists: false}})
+    if Session.get('mineOnly', true)
+      Needs.find({completedAt: {$exists: false}})
+    else
+      Needs.find({completedAt: {$exists: false}})
 
 Template.needs.preserve('.need')

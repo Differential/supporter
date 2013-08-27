@@ -2,10 +2,12 @@ div.needs-list {
   margin: 0;
   padding: 0;
   div.need {
+    position: relative;
     list-style: none;
     border: 1px solid #ddd;
     margin-bottom: 10px;
     div.content {
+      height: 160px;
       padding: 10px;
       background: #fff;
       textarea {
@@ -13,6 +15,11 @@ div.needs-list {
       }
     }
     div.action-buttons {
+      position: absolute;
+      width: 100%;
+      text-align: right;
+      right: 10px;
+      bottom: 10px;
       padding: 0;
     }
     form.respond {
@@ -23,6 +30,9 @@ div.needs-list {
 
 .newNeed {
   background: #eee;
+  textarea {
+    height: 80px;
+  }
 }
 
 .action-buttons {
@@ -30,3 +40,5 @@ div.needs-list {
     margin: 10px 10px 5px 0;
   }
 }
+
+

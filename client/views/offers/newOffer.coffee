@@ -14,9 +14,9 @@ addOffer = ->
       Needs.update(Session.get('editing_itemname'), {$inc: {offerCount: 1}})
     else
       alert 'Be more descriptive'
-      
 
-      
+
+
 Template.newOffer.events
   "click input#newOfferButton": ->
     addOffer()
@@ -24,3 +24,6 @@ Template.newOffer.events
 
   "keypress input#newOffer": (evt) ->
     addOffer() if evt.which is 13
+
+  "click .cancel": ->
+    Session.set('editing_itemname', null)

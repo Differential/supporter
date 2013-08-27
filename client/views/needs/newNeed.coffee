@@ -1,4 +1,5 @@
 addNeed = ->
+  console.log 'hi'
   user = Meteor.user()
   if user and user.username
     newNeed = $('#newNeed').val()
