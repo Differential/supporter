@@ -2,20 +2,29 @@ Template.newNeed.helpers
   chars: ->
     Session.get('chars')
 
+  charLengthClass: ->
+    if Session.get('chars') < 30 || Session.get('chars') > 200
+      'red'
+    else
+      ''
+
 addNeed = ->
   console.log 'hi'
   user = Meteor.user()
   if user and user.username
     newNeed = $('#newNeed').val()
     if newNeed.length > 30
-      Session.set('chars', 0)
-      $('#newNeed').val ''
-      Needs.insert
-        content: newNeed
-        createdAt: new Date()
-        userId: Meteor.userId()
-        username: user.username
-        offerCount: 0
+      if newNeed.length < 200
+        Session.set('chars', 0)
+        $('#newNeed').val ''
+        Needs.insert
+          content: newNeed
+          createdAt: new Date()
+          userId: Meteor.userId()
+          username: user.username
+          offerCount: 0
+      else
+        alert 'Be less descriptive'
     else
       alert 'Be more descriptive'
 
