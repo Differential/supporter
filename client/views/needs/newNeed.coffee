@@ -2,11 +2,22 @@ Template.newNeed.helpers
   chars: ->
     Session.get('chars')
 
+  showCharLengthMessage: ->
+    Session.get('chars') > 0
+
   charLengthClass: ->
     if Session.get('chars') < 30 || Session.get('chars') > 200
       'red'
     else
       ''
+  charLengthMessage: ->
+    message = ''
+    if Session.get('chars') < 30
+      message = '(be more descriptive)'
+    if Session.get('chars') > 200
+      message = '(be less descriptive)'
+
+    message
 
 addNeed = ->
   console.log 'hi'
