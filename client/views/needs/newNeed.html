@@ -2,7 +2,9 @@
   <div class="need span4 newNeed">
     <div class='content'>
       <textarea id="newNeed" type="text" placeholder="what do you need?" /></textarea>
-      <p class='{{charLengthClass}}'>{{chars}} chars {{charLengthMessage}}</p>
+      {{#if showCharLengthMessage}}
+        <p class='{{charLengthClass}}'>{{chars}} chars {{charLengthMessage}}</p>
+      {{/if}}
       <div class='action-buttons'>
         <input id="newNeedButton" type="button" class="add btn" value="Add need" />
       </div>
