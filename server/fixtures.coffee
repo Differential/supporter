@@ -5,7 +5,14 @@ Meteor.publish "needs", ->
 
 Meteor.publish "offers", ->
   Offers.find {userId: @id}
+  
+Needs.allow
+  insert: (userId, doc) ->
+    userId
 
+  update: (userId, doc) ->
+    userId
+  
 Meteor.defer ->
   if count is 0
     now = new Date()

@@ -18,7 +18,7 @@ addOffer = ->
 
 
 Template.newOffer.events
-  "click input#newOfferButton": ->
+  "click .newOfferButton": ->
     addOffer()
     Session.set('editing_itemname',null)
 

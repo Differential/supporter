@@ -17,7 +17,10 @@
           <a class='btn delete'><i class='icon-remove'></i> delete</a>
           <a class='btn complete'><i class='icon-ok'></i> complete</a>
         {{else}}
-         {{#if currentUser}}<a class='btn respond'><i class='icon-ok-circle'></i> respond</a>{{/if}}
+         {{#if currentUser}}
+           <a class='btn respond'><i class='icon-ok-circle'></i> respond</a>
+           <a class='btn send'><i class='icon-mail-forward'></i> send to someone</a>
+         {{/if}}
         {{/if}}
       </div>
       {{/if}}
