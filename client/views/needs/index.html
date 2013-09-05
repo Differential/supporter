@@ -5,6 +5,8 @@
         <div class='needs-list'>
           {{#if currentUser}}
             {{> newNeed}}
+          {{else}}
+            {{> welcomeCard}}
           {{/if}}
           {{#each needs}}
             {{> needListing}}
