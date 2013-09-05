@@ -19,3 +19,8 @@ Template.needListing.events
 
   "click .respond": ->
     Session.set('editing_itemname', @_id)
+    Session.set('charsOffer', null)
+    
+  "click .send": ->
+    Session.set('sending_itemname', @_id)
+    

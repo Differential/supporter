@@ -13,6 +13,19 @@ Needs.allow
   update: (userId, doc) ->
     userId
   
+  remove: (userId, doc) ->
+    userId
+    
+Offers.allow
+  insert: (userId, doc) ->
+    userId
+
+  update: (userId, doc) ->
+    userId
+    
+  remove: (userId, doc) ->
+    userId
+
 Meteor.defer ->
   if count is 0
     now = new Date()

@@ -1,7 +1,17 @@
 <template name="newOffer">
-  <div class='newOffer'>
-    <textarea id="newOffer" type="text" placeholder="How can you help?" />
-    <a class="btn newOfferButton"><i class="icon-comment"> Respond</i></a>
-    <a class='btn cancel'><i class='icon-ban-circle'></i>Cancel</a>
+  <div class="offer span3 newOffer">
+    <div class="content">
+      <textarea id="newOffer" type="text" placeholder="How can you help?" />
+      {{#if showCharLengthMessage}}
+        <p class='{{charLengthClass}}'>{{chars}} chars {{charLengthMessage}}</p>
+      {{/if}}
+      <a class="btn newOfferButton {{#if charDisableSubmit}}hidden{{/if}}" ><i class="icon-comment"> Respond</i></a>
+      <a class='btn cancel'><i class='icon-ban-circle'></i>Cancel</a>
+    </div>
   </div>
+  
+  
+
+
+
 </template>
