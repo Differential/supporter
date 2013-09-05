@@ -3,4 +3,4 @@ Template.needs.helpers
     if Session.get('myNeeds', true)
       Needs.find({userId: Meteor.userId()}, sort: {createdAt: -1})
     else
-      Needs.find({completedAt: {$exists: false}}, sort: {createdAt: -1})
+      Needs.find()

@@ -1,5 +1,11 @@
 count = Needs.find().count()
 
+Meteor.publish "needs", ->
+  Needs.find {completedAt: {$exists: false}}, sort: {createdAt: -1}
+
+Meteor.publish "offers", ->
+  Offers.find {userId: @id}
+
 Meteor.defer ->
   if count is 0
     now = new Date()
