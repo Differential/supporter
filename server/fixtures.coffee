@@ -1,31 +1,5 @@
 count = Needs.find().count()
 
-Meteor.publish "needs", ->
-  Needs.find {completedAt: {$exists: false}}, sort: {createdAt: -1}
-
-Meteor.publish "offers", ->
-  Offers.find {userId: @id}
-  
-Needs.allow
-  insert: (userId, doc) ->
-    userId
-
-  update: (userId, doc) ->
-    userId
-  
-  remove: (userId, doc) ->
-    userId
-    
-Offers.allow
-  insert: (userId, doc) ->
-    userId
-
-  update: (userId, doc) ->
-    userId
-    
-  remove: (userId, doc) ->
-    userId
-
 Meteor.defer ->
   if count is 0
     now = new Date()
@@ -45,7 +19,7 @@ Meteor.defer ->
       username: 'foo'
       offerCount: 0
     )
-    
+
     offer = Offers.insert(
       content: 'reply'
       createdAt: now
@@ -53,4 +27,3 @@ Meteor.defer ->
       username: 'foo'
       needId: need
     )
-    
