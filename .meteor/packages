@@ -13,3 +13,5 @@ isotope
 standard-app-packages
 font-awesome
 iron-router
+phantomjs
+spiderable

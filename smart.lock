@@ -3,18 +3,24 @@
   "dependencies": {
     "basePackages": {
       "font-awesome": {},
-      "iron-router": {}
+      "iron-router": {},
+      "phantomjs": {}
     },
     "packages": {
       "font-awesome": {
         "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
-        "tag": "v3.2.0",
-        "commit": "2cba6f907a2579cae2d399b522f9544c13d5e091"
+        "tag": "v3.2.1",
+        "commit": "38bdfff72dfb8857b272f9a9b056045d6a015489"
       },
       "iron-router": {
-        "git": "https://github.com/EventedMind/meteor-iron-router.git",
-        "tag": "v0.5.3",
-        "commit": "f737b04106a226c0f8772b9112673a9be49406d7"
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "tag": "v0.5.4",
+        "commit": "3e0e22ff85630b7503d0daa1538c6d90abb84020"
+      },
+      "phantomjs": {
+        "git": "https://github.com/gadicohen/meteor-phantomjs.git",
+        "tag": "v0.0.2",
+        "commit": "a72eb79af068dd5d5d617ac71a42bd74e0cb52a4"
       }
     }
   }
