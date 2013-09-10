@@ -2,9 +2,7 @@
   <div>
     <ul>
       <hr>
-      <a>{{username}}</a> says "{{content}}"
-      <br/>
-      contact at {{email}}
+      {{username}} <a>{{#if involved}}({{email}}){{/if}}</a> says "{{content}}"
     </ul>
   </div>
 </template>
