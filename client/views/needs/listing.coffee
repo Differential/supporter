@@ -6,7 +6,7 @@ Template.needListing.helpers
 
 Template.needListing.helpers
   editing: ->
-    Session.equals('editing_itemname', @_id)
+    Session.equals('respondingTo', @_id)
   loggedIn: ->
     Meteor.user()
 
@@ -18,9 +18,8 @@ Template.needListing.events
     Needs.update(@_id, $set: {completedAt: new Date()})
 
   "click .respond": ->
-    Session.set('editing_itemname', @_id)
+    Session.set('respondingTo', @_id)
     Session.set('charsOffer', null)
-    
+
   "click .send": ->
-    Session.set('sending_itemname', @_id)
-    
+    Session.set('respondingTo', @_id)

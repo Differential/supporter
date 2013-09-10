@@ -44,14 +44,14 @@ addOffer = ->
 Template.newOffer.events
   "click .newOfferButton": ->
     addOffer()
-    Session.set('editing_itemname',null)
+    Session.set('respondingTo',null)
     Session.set('charsOffer', null)
 
   "keypress input#newOffer": (evt) ->
     addOffer() if evt.which is 13
 
   "click .cancel": ->
-    Session.set('editing_itemname', null)
+    Session.set('respondingTo', null)
     Session.set('charsOffer', null)
 
   "keyup textarea#newOffer": (evt) ->
