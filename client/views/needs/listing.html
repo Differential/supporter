@@ -3,11 +3,11 @@
     <div class='content'>
       {{content}}
       <br />
-      <a>{{username}}</a> / 
+      <a>{{username}}</a> {{date createdAt}} /
       {{#if involved}}
         <a class="offerList" href="/need/{{_id}}">{{pluralize offerCount}}</a>
       {{else}} 
-        {{pluralize offerCount}} 
+        {{pluralize offerCount}}
       {{/if}}
       {{#if editing}}
         {{> newOffer}}
