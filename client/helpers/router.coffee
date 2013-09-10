@@ -11,6 +11,7 @@ Router.configure
 Router.map ->
   @route 'needs',
     path: '/'
+
   @route 'need',
     path: '/need/:_id'
     data: ->

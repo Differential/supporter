@@ -1,13 +1,25 @@
 
-.newOffer {
-  height: 140px;
-  padding: 10px;
+.newOfferBackground {
   position: absolute;
-  background: #eee;
-  border: 1px solid #ddd;
+  background: rgba(255,255,255,0.8) !important;
+  z-index: 999;
+  height: 180px;
+  width: 88%;
+  filter:blur(4px);
+  -o-filter:blur(4px);
+  -ms-filter:blur(4px);
+  -moz-filter:blur(4px);
+  -webkit-filter:blur(4px);
+}
+
+.newOffer {
+  position: absolute;
   z-index: 9999;
   width: 88%;
   textarea {
     height: 80px;
+  }
+  .content {
+    background: rgba(0,0,0,0.1) !important;
   }
 }
