@@ -12,7 +12,7 @@ Template.newOffer.helpers
       ''
   charDisableSubmit: ->
     Session.get('charsOffer') < 30 || Session.get('charsOffer') > 200
-  
+
   charLengthMessage: ->
     message = ''
     if Session.get('charsOffer') < 30
@@ -21,7 +21,6 @@ Template.newOffer.helpers
       message = '(be less descriptive)'
 
     message
-
 
 addOffer = ->
   user = Meteor.user()
@@ -32,7 +31,7 @@ addOffer = ->
       Offers.insert
         content: newOffer
         createdAt: new Date()
-        userId: user._Id
+        userId: user._id
         username: user.username
         email: user.emails[0].address
         needId: Session.get('editing_itemname')
@@ -54,6 +53,6 @@ Template.newOffer.events
   "click .cancel": ->
     Session.set('editing_itemname', null)
     Session.set('charsOffer', null)
-    
+
   "keyup textarea#newOffer": (evt) ->
     Session.set('charsOffer', $('textarea#newOffer').val().length)
