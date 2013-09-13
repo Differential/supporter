@@ -6,9 +6,14 @@
       <a>{{username}}</a> {{date createdAt}} /
       {{#if involved}}
         <a class="offerList" href="/need/{{_id}}">{{pluralize offerCount}}</a>
-      {{else}} 
+      {{else}}
         {{pluralize offerCount}}
       {{/if}}
+
+      {{#if sending}}
+        {{> sendNeed}}
+      {{/if}}
+
       {{#if editing}}
         {{> newOffer}}
       {{else}}

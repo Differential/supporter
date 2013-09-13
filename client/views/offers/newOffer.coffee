@@ -39,8 +39,6 @@ addOffer = ->
     else
       alert 'Be more descriptive'
 
-
-
 Template.newOffer.events
   "click .newOfferButton": ->
     addOffer()

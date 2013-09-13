@@ -5,8 +5,12 @@ Template.needListing.helpers
     Meteor.user() && Meteor.user().username == @username || Meteor.user() && Offers.findOne({username:Meteor.user().username, needId: @_id})
 
 Template.needListing.helpers
+  sending: ->
+    Session.equals('sendingTo', @_id)
+
   editing: ->
     Session.equals('respondingTo', @_id)
+
   loggedIn: ->
     Meteor.user()
 
@@ -22,4 +26,4 @@ Template.needListing.events
     Session.set('charsOffer', null)
 
   "click .send": ->
-    Session.set('respondingTo', @_id)
+    Session.set('sendingTo', @_id)
