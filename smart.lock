@@ -4,7 +4,12 @@
     "basePackages": {
       "font-awesome": {},
       "iron-router": {},
-      "phantomjs": {}
+      "phantomjs": {},
+      "bootstrap-3": {},
+      "accounts-entry": {
+        "git": "git@github.com:BeDifferential/accounts-entry.git",
+        "branch": "master"
+      }
     },
     "packages": {
       "font-awesome": {
@@ -21,6 +26,16 @@
         "git": "https://github.com/gadicohen/meteor-phantomjs.git",
         "tag": "v0.0.2",
         "commit": "a72eb79af068dd5d5d617ac71a42bd74e0cb52a4"
+      },
+      "bootstrap-3": {
+        "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
+        "tag": "v0.3.4",
+        "commit": "680c056e849d079a1b669247f347da2b443aad91"
+      },
+      "accounts-entry": {
+        "git": "git@github.com:BeDifferential/accounts-entry.git",
+        "branch": "master",
+        "commit": "efa3b011c936ced3de004cab3d0420e4a6aead7c"
       }
     }
   }

@@ -2,6 +2,11 @@
   "packages": {
     "font-awesome": {},
     "iron-router": {},
-    "phantomjs": {}
+    "phantomjs": {},
+    "bootstrap-3": {},
+    "accounts-entry": {
+      "git": "git@github.com:BeDifferential/accounts-entry.git",
+      "commit": "efa3b011c936ced3de004cab3d0420e4a6aead7c"
+    }
   }
 }
