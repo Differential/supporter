@@ -1,23 +1,19 @@
 <template name='layout'>
-  <div class='navbar navbar-fixed-top'>
-    <div class="navbar-inner">
-      <div class='container'>
-        <div class='row'>
-          <a class='brand' href='/'>Supporter</a>
+  <div class='container'>
+    <div class='row'>
+      <div class='navbar navbar-default'>
+        <div class="navbar-header">
+          <a class='navbar-brand' href='/'>Supporter</a>
           {{#if currentUser}}
-            <ul class='nav'>
-              <li>
-                <div class='btn-group'>
-                  <input id="showAllNeeds" type="button" class="btn all" value="All needs" />
-                  <input id="showMyNeeds" type="button" class="btn mine" value="My needs" />
-                </div>
-              </li>
+            <ul class='nav navbar-nav'>
+              <li class="{{#unless mine}}active{{/unless}}"><a id="showAllNeeds">All needs</a></li>
+              <li class="{{#if mine}}active{{/if}}"><a id="showMyNeeds">My needs</a></li>
             </ul>
           {{/if}}
-          <div id='nav' class='pull-right'>
-           {{accountButtons}}
-          </div>
         </div>
+        <p class="navbar-text pull-right">
+          {{accountButtons}}
+        </p>
       </div>
     </div>
   </div>

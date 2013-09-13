@@ -1,7 +1,7 @@
 <template name="newNeed">
-  <div class="need span4 newNeed">
+  <div class="need col-md-4 newNeed">
     <div class='content'>
-      <textarea id="newNeed" type="text" placeholder="what do you need?" /></textarea>
+      <textarea class='form-control' id="newNeed" type="text" placeholder="what do you need?" /></textarea>
     {{#if showCharLengthMessage}}
       <p class='{{charLengthClass}}'>{{chars}} chars {{charLengthMessage}}</p>
     {{/if}}

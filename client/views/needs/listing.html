@@ -1,5 +1,5 @@
 <template name="needListing">
-	<div class='need span4'>
+	<div class='need col-md-4'>
     <div class='content'>
       {{content}}
       <br />
@@ -19,12 +19,12 @@
       {{else}}
        <div class='action-buttons'>
         {{#if owner}}
-          <a class='btn delete'><i class='icon-remove'></i> delete</a>
-          <a class='btn complete'><i class='icon-ok'></i> complete</a>
+          <a class='btn btn-primary delete'><i class='icon-remove'></i> delete</a>
+          <a class='btn btn-primary complete'><i class='icon-ok'></i> complete</a>
         {{else}}
          {{#if currentUser}}
-           <a class='btn respond'><i class='icon-ok-circle'></i> respond</a>
-           <a class='btn send'><i class='icon-mail-forward'></i> send to someone</a>
+           <a class='btn btn-primary respond'><i class='icon-ok-circle'></i> respond</a>
+           <a class='btn btn-primary send'><i class='icon-mail-forward'></i> send to someone</a>
          {{/if}}
         {{/if}}
       </div>

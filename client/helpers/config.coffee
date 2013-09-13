@@ -2,4 +2,6 @@ Accounts.ui.config(
   passwordSignupFields: 'USERNAME_AND_EMAIL'
 )
 
-AccountsEntry.config = {}
+AccountsEntry.config =
+  homeRoute: 'needs'
+  dashboardRoute: 'needs'

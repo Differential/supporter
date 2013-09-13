@@ -1,5 +1,11 @@
+Template.layout.helpers
+  mine: -> Session.get('myNeeds')
+
 Template.layout.events
-  "click input#showMyNeeds": ->
+  "click #showMyNeeds": (event) ->
+    event.preventDefault()
     Session.set('myNeeds', true)
-  "click input#showAllNeeds": ->
+
+  "click #showAllNeeds": (event) ->
+    event.preventDefault()
     Session.set('myNeeds', false)
