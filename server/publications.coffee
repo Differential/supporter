@@ -3,7 +3,12 @@ Meteor.publish "needs", ->
 
 Meteor.publish "offers", ->
   if @userId
-    return Offers.find {$or:[{userId: @userId}, {needOwnerId: @userId}]}
+    return Offers.find {userId: @userId}
   else
     return @.stop()
 
+Meteor.publish "offersToMyNeeds", ->
+  if @userId
+    return Offers.find {needOwnerId: @userId}
+  else
+    return @.stop()
