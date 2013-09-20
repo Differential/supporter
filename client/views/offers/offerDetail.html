@@ -2,7 +2,7 @@
   <div>
     <ul>
       <hr>
-      {{username}} <a>{{#if allowedToView}}({{email}}){{/if}}</a> says "{{content}}"
+      {{username}} {{#if allowedToView}}<a href="mailto:{{email}}">({{email}})</a>{{/if}} says "{{content}}"
     </ul>
   </div>
 </template>

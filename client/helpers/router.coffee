@@ -11,8 +11,26 @@ Router.configure
 Router.map ->
   @route 'needs',
     path: '/'
-
+    before: ->
+      if (Meteor.loggingIn())
+        @render 'loading'
+        return @stop()
+      if (Meteor.user() && !Meteor.user().profile)
+        return @redirect('profile')
+      else
+        @render 'needs'
+    
   @route 'need',
     path: '/need/:_id'
     data: ->
       Needs.findOne @params._id
+
+  @route 'userProfile',
+    path: '/u/:_id'
+    data: ->
+      Needs.findOne @params._id
+      
+  @route 'profile',
+    path: '/profile'
+    
+      
