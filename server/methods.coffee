@@ -17,5 +17,6 @@ Meteor.startup ->
 
       Email.send
         to: email
+        from: "Supporter.io <no-reply@supporter.io>"
         text: text
         subject: 'Response to your need'
