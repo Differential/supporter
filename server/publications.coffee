@@ -6,3 +6,9 @@ Meteor.publish "offers", ->
     return Offers.find {userId: @userId}
   else
     return @.stop()
+
+Meteor.publish "offersToMyNeed", ->
+  if @userId
+    return Offers.find {userId: @userId, needOwnerId: @userId}
+  else
+    return @.stop()
