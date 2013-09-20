@@ -24,6 +24,8 @@ Router.map ->
     path: '/need/:_id'
     data: ->
       Needs.findOne @params._id
+    waitOn: ->
+      Meteor.subscribe('needs')
 
   @route 'userProfile',
     path: '/u/:_id'
@@ -32,5 +34,3 @@ Router.map ->
       
   @route 'profile',
     path: '/profile'
-    
-      

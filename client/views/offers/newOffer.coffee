@@ -42,7 +42,6 @@ addOffer = ->
       Needs.update(Session.get('respondingTo'), {$inc: {offerCount: 1}})
 
       Meteor.call('notifyOffer', offerId)
-
     else
       alert 'Be more descriptive'
 
