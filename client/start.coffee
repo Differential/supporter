@@ -11,4 +11,3 @@ Meteor.startup ->
 
   Meteor.subscribe('needs')
   Meteor.subscribe('offers')
-  Meteor.subscribe('offersToMyNeed')
