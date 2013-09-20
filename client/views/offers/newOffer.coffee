@@ -12,7 +12,7 @@ Template.newOffer.helpers
       ''
   charDisableSubmit: ->
     Session.get('charsOffer') < 30 || Session.get('charsOffer') > 200
-  
+
   charLengthMessage: ->
     message = ''
     if Session.get('charsOffer') < 30
@@ -30,7 +30,7 @@ addOffer = ->
     if newOffer.length > 30
       $('#newOffer').val ''
       needOwnerId = Needs.findOne({_id: Session.get('respondingTo')}).userId
-      Offers.insert
+      offerId = Offers.insert
         content: newOffer
         createdAt: new Date()
         userId: user._id
@@ -38,7 +38,11 @@ addOffer = ->
         email: user.emails[0].address
         needId: Session.get('respondingTo')
         needOwnerId: needOwnerId
+
       Needs.update(Session.get('respondingTo'), {$inc: {offerCount: 1}})
+
+      Meteor.call('notifyOffer', offerId)
+
     else
       alert 'Be more descriptive'
 
@@ -54,6 +58,6 @@ Template.newOffer.events
   "click .cancel": ->
     Session.set('respondingTo', null)
     Session.set('charsOffer', null)
-    
+
   "keyup textarea#newOffer": (evt) ->
     Session.set('charsOffer', $('textarea#newOffer').val().length)
