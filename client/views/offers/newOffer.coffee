@@ -29,16 +29,16 @@ addOffer = ->
     newOffer = $('#newOffer').val()
     if newOffer.length > 30
       $('#newOffer').val ''
-      needOwnerId = Needs.findOne({_id: Session.get('editing_itemname')}).userId
+      needOwnerId = Needs.findOne({_id: Session.get('respondingTo')}).userId
       Offers.insert
         content: newOffer
         createdAt: new Date()
         userId: user._id
         username: user.username
         email: user.emails[0].address
-        needId: Session.get('editing_itemname')
+        needId: Session.get('respondingTo')
         needOwnerId: needOwnerId
-      Needs.update(Session.get('editing_itemname'), {$inc: {offerCount: 1}})
+      Needs.update(Session.get('respondingTo'), {$inc: {offerCount: 1}})
     else
       alert 'Be more descriptive'
 
