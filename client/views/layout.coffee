@@ -1,13 +1,18 @@
-Template.layout.helpers
-  mine: -> Session.get('myNeeds')
+Template.layout.rendered = ->
+
+  if Router.current().path is '/profile'
+    Session.set('currentSection', 'profile')
+
+  $('.navbar-default a').parent().removeClass('active')
+  $('.'+ Session.get('currentSection') + 'Link').parent().addClass('active')
 
 Template.layout.events
-  "click #showMyNeeds": (event) ->
+  "click .myNeedsLink": (event) ->
     event.preventDefault()
-    Router.go('needs')
-    Session.set('myNeeds', true)
+    Router.go('/mine')
+    Session.set('currentSection', 'myNeeds')
 
-  "click #showAllNeeds": (event) ->
+  "click .allNeedsLink": (event) ->
     event.preventDefault()
-    Router.go('needs')
-    Session.set('myNeeds', false)
+    Router.go('/')
+    Session.set('currentSection', 'allNeeds')

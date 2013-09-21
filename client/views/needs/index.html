@@ -8,16 +8,11 @@
           {{else}}
             {{> welcomeCard}}
           {{/if}}
-          {{#each needs}}
+          {{#each this}}
             {{> needListing}}
           {{/each}}
         </div>
       </div>
     </div>
-  </div>
-  <div class="myNeeds">
-    {{#each myNeeds}}
-      {{> myNeedListing}}
-    {{/each}}
   </div>
 </template>

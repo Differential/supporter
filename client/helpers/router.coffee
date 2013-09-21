@@ -19,6 +19,22 @@ Router.map ->
         return @redirect('profile')
       else
         @render 'needs'
+    data: ->
+      Needs.find()
+
+  @route 'myNeeds',
+    path: '/mine'
+    template: 'needs'
+    before: ->
+      if (Meteor.loggingIn())
+        @render 'loading'
+        return @stop()
+      if (Meteor.user() && !Meteor.user().profile.name)
+        return @redirect('profile')
+      else
+        @render 'needs'
+    data: ->
+      Needs.find({userId: Meteor.userId()}, sort: {createdAt: -1})
 
   @route 'need',
     path: '/need/:_id'

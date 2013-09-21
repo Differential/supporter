@@ -6,8 +6,8 @@
           <a class='navbar-brand' href='/'>Supporter</a>
           {{#if currentUser}}
             <ul class='nav navbar-nav'>
-              <li class="{{#unless mine}}active{{/unless}}"><a id="showAllNeeds">All needs</a></li>
-              <li class="{{#if mine}}active{{/if}}"><a id="showMyNeeds">My needs</a></li>
+              <li><a class="allNeedsLink">All needs</a></li>
+              <li><a class="myNeedsLink">My needs</a></li>
             </ul>
           {{/if}}
         </div>
