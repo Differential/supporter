@@ -1,3 +1,5 @@
-Template.need.helpers 
+Template.need.helpers
   offers: ->
-    Offers.find(needId: @_id)
+    Offers.find( {needId: @_id},
+      {sort: { createdAt: -1 }}
+    )

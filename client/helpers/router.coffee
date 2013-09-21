@@ -20,7 +20,8 @@ Router.map ->
       else
         @render 'needs'
     data: ->
-      Needs.find()
+      Needs.find({}, {sort: {createdAt: -1}})
+
 
   @route 'myNeeds',
     path: '/mine'
