@@ -6,6 +6,8 @@ Meteor.startup ->
   AccountsEntry.config =
     homeRoute: 'needs'
     dashboardRoute: 'needs'
+    profileRoute: 'profile'
+    wrapLinks: true
 
   Session.set('chars', 0)
 

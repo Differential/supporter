@@ -6,7 +6,7 @@
     "bootstrap-3": {},
     "accounts-entry": {
       "git": "git@github.com:BeDifferential/accounts-entry.git",
-      "commit": "87998045e4e4465e3a7094fa7e0030aba19b5945"
+      "commit": "dd0f50f83b2b53cbe03274668fc433fc0c0a9c03"
     }
   }
 }

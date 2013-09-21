@@ -15,11 +15,11 @@ Router.map ->
       if (Meteor.loggingIn())
         @render 'loading'
         return @stop()
-      if (Meteor.user() && !Meteor.user().profile)
+      if (Meteor.user() && !Meteor.user().profile.name)
         return @redirect('profile')
       else
         @render 'needs'
-    
+
   @route 'need',
     path: '/need/:_id'
     data: ->
@@ -27,10 +27,10 @@ Router.map ->
     waitOn: ->
       Meteor.subscribe('needs')
 
-  @route 'userProfile',
+  @route 'user',
     path: '/u/:_id'
     data: ->
       Needs.findOne @params._id
-      
+
   @route 'profile',
     path: '/profile'

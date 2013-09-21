@@ -1,0 +1,27 @@
+<template name='profile'>
+  <div class="col col-lg-6">
+    <h2>Edit Profile</h2>
+    <div class="form-group">
+      <input class="form-control" type="text" id="name" placeholder="Name" value="{{name}}"></input>
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="text" id="organization" placeholder="Organization (optional)" value="{{organization}}"></input>
+    </div>
+    <div class="form-group">
+      <textarea class="form-control" type="text" id="bio" placeholder="Bio (optional)">{{bio}}</textarea>
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="text" id="url" placeholder="URL (optional)" value="{{url}}"></input>
+    </div>
+  </div>
+
+  <div class="col col-lg-6">
+    <h2>Preview Profile</h2>
+    <div class='well'>
+      <h3>{{name}}</h3>
+      <h4>{{organization}}</h4>
+      <p>{{bio}}</p>
+      <p><a href='{{url}}'>{{url}}</a></p>
+    </div>
+  </div>
+</template>
