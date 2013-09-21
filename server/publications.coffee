@@ -12,3 +12,6 @@ Meteor.publish "offersToMyNeeds", ->
     return Offers.find {needOwnerId: @userId}
   else
     return @.stop()
+
+Meteor.publish "user", (username) ->
+  Meteor.users.find(username: username)

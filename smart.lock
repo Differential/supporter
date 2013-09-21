@@ -35,7 +35,7 @@
       "accounts-entry": {
         "git": "git@github.com:BeDifferential/accounts-entry.git",
         "branch": "master",
-        "commit": "dd0f50f83b2b53cbe03274668fc433fc0c0a9c03"
+        "commit": "b08e5aab537b414b9031bc80f51ea2853458f1b4"
       }
     }
   }

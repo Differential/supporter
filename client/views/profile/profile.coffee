@@ -5,7 +5,6 @@ Template.profile.rendered = ->
   )
 
 Template.profile.helpers
-
   name: ->
     Meteor.user().profile.name
 

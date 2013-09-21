@@ -3,7 +3,7 @@
     <div class='content'>
       {{content}}
       <br />
-      <a href="profile/{{_id}}">{{username}}</a> {{date createdAt}} /
+      <a href="/u/{{username}}">{{username}}</a> {{date createdAt}} /
       {{#if involved}}
         <a class="offerList" href="/need/{{_id}}">{{pluralize offerCount}}</a>
       {{else}}

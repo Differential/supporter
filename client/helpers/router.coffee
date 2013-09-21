@@ -28,9 +28,13 @@ Router.map ->
       Meteor.subscribe('needs')
 
   @route 'user',
-    path: '/u/:_id'
+    path: '/u/:username'
     data: ->
-      Needs.findOne @params._id
+      Meteor.users.findOne(username: @params.username)
+    waitOn: ->
+      Meteor.subscribe('user', @params.username)
 
   @route 'profile',
     path: '/profile'
+    data: ->
+      Meteor.user()
