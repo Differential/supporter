@@ -7,6 +7,11 @@ Template.layout.rendered = ->
   $('.'+ Session.get('currentSection') + 'Link').parent().addClass('active')
 
 Template.layout.events
+  "click .navbar-brand": (event) ->
+    event.preventDefault()
+    Router.go('/')
+    Session.set('currentSection', 'allNeeds')
+
   "click .myNeedsLink": (event) ->
     event.preventDefault()
     Router.go('/mine')
