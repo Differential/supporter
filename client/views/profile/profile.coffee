@@ -11,6 +11,9 @@ Template.profile.helpers
   organization: ->
     Meteor.user().profile.organization
 
+  location: ->
+    Meteor.user().profile.location
+
   bio: ->
     Meteor.user().profile.bio
 
@@ -29,6 +32,13 @@ Template.profile.events
     Meteor.users.update(Meteor.userId(), {
       $set: {
         'profile.organization': $(event.target).val()
+      }
+    })
+
+  'change #location': (event) ->
+    Meteor.users.update(Meteor.userId(), {
+      $set: {
+        'profile.location': $(event.target).val()
       }
     })
 
