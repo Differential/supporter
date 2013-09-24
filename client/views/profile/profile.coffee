@@ -55,7 +55,9 @@ Template.profile.events
         'profile.url': $(event.target).val()
       }
     })
-    
-  'click .done': ->
-    Router.go('/')
 
+  'click .done': ->
+    if Meteor.user().profile.name
+      Router.go('/')
+    else
+      $('.errors').text('Name is required.')
