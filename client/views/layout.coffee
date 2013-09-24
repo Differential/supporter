@@ -21,3 +21,8 @@ Template.layout.events
     event.preventDefault()
     Router.go('/')
     Session.set('currentSection', 'allNeeds')
+  
+  'keyup #query': (event) ->
+    event.preventDefault()
+    query = $(event.target).val()
+    Session.set('query', query)
