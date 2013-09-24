@@ -6,10 +6,7 @@
       "iron-router": {},
       "phantomjs": {},
       "bootstrap-3": {},
-      "accounts-entry": {
-        "git": "git@github.com:BeDifferential/accounts-entry.git",
-        "branch": "master"
-      }
+      "accounts-entry": {}
     },
     "packages": {
       "font-awesome": {
@@ -33,9 +30,9 @@
         "commit": "680c056e849d079a1b669247f347da2b443aad91"
       },
       "accounts-entry": {
-        "git": "git@github.com:BeDifferential/accounts-entry.git",
-        "branch": "master",
-        "commit": "daebd31adaf30a119840ab1758f2132ee7626439"
+        "git": "https://github.com/BeDifferential/accounts-entry.git",
+        "tag": "v0.2.2",
+        "commit": "5fe06fccacb6906adf5217d176488104638b229c"
       }
     }
   }

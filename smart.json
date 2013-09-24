@@ -4,9 +4,6 @@
     "iron-router": {},
     "phantomjs": {},
     "bootstrap-3": {},
-    "accounts-entry": {
-      "git": "git@github.com:BeDifferential/accounts-entry.git",
-      "commit": "daebd31adaf30a119840ab1758f2132ee7626439"
-    }
+    "accounts-entry": {}
   }
 }
