@@ -1,12 +1,15 @@
 <template name="need"> 
+  <div class='container'>
   {{content}}
+  <div class="offer offers-list">
   {{#each offers}}
     {{> offerDetail}}
   {{/each}}
+  </div>
   <br/>
-       {{#if editing}}
-        {{> newOffer}}
-      {{else}}
+  {{#if editing}}
+    {{> newOffer}}
+  {{else}}
      <div class='action-buttons'>
         {{#if owner}}
           <a class='btn btn-primary delete'><i class='icon-remove'></i> delete</a>
@@ -18,5 +21,6 @@
          {{/if}}
         {{/if}}
       </div>
-    {{/if}}
+  {{/if}}
+  </div>
 </template>
