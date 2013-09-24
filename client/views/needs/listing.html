@@ -4,11 +4,8 @@
       {{content}}
       <br />
       <a href="/u/{{username}}">{{username}}</a> {{date createdAt}} /
-      {{#if involved}}
-        <a class="offerList" href="/need/{{_id}}">{{pluralize offerCount}}</a>
-      {{else}}
-        {{pluralize offerCount}}
-      {{/if}}
+      <a class="offerList" href="/need/{{_id}}">{{pluralize offerCount}}</a>
+      
 
       {{#if sending}}
         {{> sendNeed}}
