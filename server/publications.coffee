@@ -3,15 +3,10 @@ Meteor.publish "needs", ->
 
 Meteor.publish "offers", ->
   if @userId
-    return Offers.find {userId: @userId}
+    return Offers.find {}
   else
     return @.stop()
 
-Meteor.publish "offersToMyNeeds", ->
-  if @userId
-    return Offers.find {needOwnerId: @userId}
-  else
-    return @.stop()
 
 Meteor.publish "user", (username) ->
   Meteor.users.find(username: username)
