@@ -55,3 +55,7 @@ Template.profile.events
         'profile.url': $(event.target).val()
       }
     })
+    
+  'click .done': ->
+    Router.go('/')
+
