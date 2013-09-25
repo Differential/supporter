@@ -7,6 +7,9 @@
   {{/each}}
   </div>
   <br/>
+  {{#if sending}}
+    {{> sendNeed}}
+  {{/if}}
   {{#if editing}}
     {{> newOffer}}
   {{else}}
