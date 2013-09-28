@@ -46,6 +46,7 @@ Router.map ->
       Needs.findOne @params._id
     waitOn: ->
       Meteor.subscribe('needs')
+      Meteor.subscribe('offers')
 
   @route 'user',
     path: '/u/:username'
