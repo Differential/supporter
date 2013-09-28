@@ -1,8 +1,12 @@
 <template name="offerDetail">
- <div class='offer row'>
-    <ul>
-      <hr>
-      {{username}} {{#if allowedToView}}<a href="mailto:{{email}}">({{email}})</a>{{/if}} says "{{content}}"
-    </ul>
+ <div class='panel'>
+   <div class='panel-body'>
+     {{content}}
    </div>
+   <div class='panel-footer'>
+     <a title='posted by' href="/u/{{username}}">{{username}}</a>
+     {{#if allowedToView}}<a href="mailto:{{email}}">({{email}})</a>{{/if}}
+     {{date createdAt}}
+   </div>
+ </div>
 </template>

@@ -1,6 +1,7 @@
 Template.needListing.rendered = ->
   $('a').tooltip
     placement: 'bottom'
+    container: 'body'
 
 Template.needListing.helpers
   owner: ->

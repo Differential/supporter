@@ -5,26 +5,8 @@ div.needs-list {
     margin-bottom: 25px;
     border-radius: 4px;
 
-    div.content {
-      background-color: #fff;
-      border-radius: 4px;
-      box-shadow: 4px 4px 20px #DDD;
-      border: 1px solid #e7e7e7;
-      padding: 10px 15px;
-      height: 160px;
-      textarea {
-        width: 95%;
-      }
-    }
     div.welcomeCard {
       text-align: center;
-    }
-    div.btn-group {
-      position: absolute;
-      text-align: right;
-      right: 15px;
-      bottom: 0;
-      padding: 0;
     }
     form.respond {
       display: none;
@@ -32,6 +14,27 @@ div.needs-list {
   }
 }
 
+div.panel {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 4px 4px 20px #DDD;
+  textarea {
+    width: 95%;
+  }
+  .panel-footer {
+    background-color: #fff;
+    a {
+      cursor: pointer;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+  }
+  i {
+    font-size: 130%;
+    padding-right: 5px;
+  }
+}
 .newNeed {
   p.red {
     color: red;
@@ -40,3 +43,10 @@ div.needs-list {
     height: 80px;
   }
 }
+
+a.need-content {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+

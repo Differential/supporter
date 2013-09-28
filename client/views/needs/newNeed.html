@@ -1,13 +1,15 @@
 <template name="newNeed">
   <div class="need col-md-4 newNeed">
-    <div class='content'>
-      <textarea class='form-control' id="newNeed" type="text" placeholder="what do you need?" /></textarea>
-    {{#if showCharLengthMessage}}
-      <p class='{{charLengthClass}}'>{{chars}} chars {{charLengthMessage}}</p>
-    {{/if}}
-      <div class='action-buttons'>
-        <input id="newNeedButton" type="button" class="add btn btn-default {{#if charDisableSubmit}}hidden{{/if}}" value="Add need" />
+    <div class='panel'>
+      <div class='panel-body'>
+        <textarea class='form-control' id="newNeed" type="text" placeholder="what do you need help with?" /></textarea>
       </div>
+      {{#if showCharLengthMessage}}
+        <div class='panel-footer'>
+          <span class='{{charLengthClass}}'>{{chars}} chars {{charLengthMessage}}</span>
+          <input id="newNeedButton" type="button" class="add btn btn-default {{#if charDisableSubmit}}hidden{{/if}}" value="Add need" />
+        </div>
+      {{/if}}
     </div>
   </div>
 </template>

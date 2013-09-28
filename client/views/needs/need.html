@@ -1,29 +1,46 @@
 <template name="need"> 
   <div class='container'>
-  {{content}}
-  <div class="offer offers-list">
-  {{#each offers}}
-    {{> offerDetail}}
-  {{/each}}
-  </div>
-  <br/>
-  {{#if sending}}
-    {{> sendNeed}}
-  {{/if}}
-  {{#if editing}}
-    {{> newOffer}}
-  {{else}}
-     <div class='btn-group'>
-        {{#if owner}}
-          <a class='btn delete'><i class='icon-remove'></i> delete</a>
-          <a class='btn complete'><i class='icon-ok'></i> complete</a>
-        {{else}}
-         {{#if currentUser}}
-             <a class='btn btn-default respond'><i class='icon-ok-circle'></i> respond</a>
-             <a class='btn btn-default send'><i class='icon-mail-forward'></i> send to someone</a>
-         {{/if}}
-        {{/if}}
+
+      <div class='panel panel-primary'>
+        <div class='panel-heading'>
+          {{content}}
+        </div>
+        <div class='panel-footer'>
+          <a title='posted by' href="/u/{{username}}">{{username}}</a> {{date createdAt}}
+          <a class="offerList" href="/need/{{_id}}"><span class="badge">{{pluralize offerCount}}</span></a>
+          <div class='pull-right'>
+            {{#if editing}}
+              {{> newOffer}}
+            {{else}}
+              {{#if owner}}
+                <a class='delete'><i class='icon-remove'></i> remove</a>
+                <a class='complete'><i class='icon-ok'></i> complete</a>
+              {{else}}
+                {{#if currentUser}}
+                  <a title='reply' class='respond'><i class='icon-mail-reply'></i></a>
+                  <a title='forward' class='send'><i class='icon-mail-forward'></i></a>
+                {{/if}}
+              {{/if}}
+            {{/if}}
+          </div>
+        </div>
       </div>
-  {{/if}}
+
+    {{#if owner}}
+      <div class='well'>
+        Respond to people via email, and close this need when you're all good.
+      </div>
+    {{/if}}
+
+    <div class="offer offers-list">
+      {{#each offers}}
+        {{> offerDetail}}
+      {{/each}}
+    </div>
+
+    {{#if sending}}
+      {{> sendNeed}}
+    {{/if}}
+
   </div>
 </template>

@@ -29,6 +29,8 @@ Router.map ->
   @route 'myNeeds',
     path: '/mine'
     template: 'needs'
+    waitOn: ->
+      Meteor.subscribe 'needs', Session.get('query')
     before: ->
       if (Meteor.loggingIn())
         @render 'loading'

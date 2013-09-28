@@ -1,10 +1,23 @@
 <template name="needListing">
 	<div class='need col-md-4'>
-    <div class='content'>
-      {{content}}
-      <br />
-      <a href="/u/{{username}}">{{username}}</a> {{date createdAt}} /
-      <a class="offerList" href="/need/{{_id}}">{{pluralize offerCount}}</a>
+    <div class='panel'>
+      <div class='panel-body'>
+        <a class="need-content" href="/need/{{_id}}">{{content}}</a>
+      </div>
+      <div class='panel-footer'>
+        <a title='posted by' href="/u/{{username}}">{{username}}</a> {{date createdAt}}
+        <a title='responses' class="offerList" href="/need/{{_id}}"><span class="badge">{{offerCount}}</span></a>
+        <div class='pull-right'>
+          {{#if owner}}
+            <a title='remove' class='delete'><i class='icon-remove'></i></a>
+            <a title='complete' class='complete'><i class='icon-ok'></i></a>
+          {{else}}
+           {{#if currentUser}}
+             <a title='reply' class='respond'><i class='icon-reply'></i></a>
+             <a title='forward' class='send'><i class='icon-mail-forward'></i></a>
+           {{/if}}
+          {{/if}}
+        </div>
 
       {{#if sending}}
         {{> sendNeed}}
@@ -13,16 +26,6 @@
       {{#if editing}}
         {{> newOffer}}
       {{else}}
-       <div class='btn-group'>
-        {{#if owner}}
-          <a title='remove' class='btn btn-default delete'><i class='icon-remove'></i></a>
-          <a title='complete' class='btn btn-default complete'><i class='icon-ok'></i></a>
-        {{else}}
-         {{#if currentUser}}
-           <a title='respond' class='btn btn-default respond'><i class='icon-ok-circle'></i></a>
-           <a title='send to someone' class='btn btn-default send'><i class='icon-mail-forward'></i></a>
-         {{/if}}
-        {{/if}}
       </div>
       {{/if}}
     </div>

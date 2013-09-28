@@ -2,14 +2,16 @@
   <div class="offer span3 newOfferBackground">
   </div>
   <div class="offer span3 newOffer">
-    <div class="content">
-      <textarea id="newOffer" type="text" placeholder="How can you help?" />
-      {{#if showCharLengthMessage}}
-        <p class='{{charLengthClass}}'>{{chars}} chars {{charLengthMessage}}</p>
-      {{/if}}
-      <div class='action-buttons'>
-        <a class="btn btn-primary newOfferButton {{#if charDisableSubmit}}hidden{{/if}}" ><i class="icon-comment"> Respond</i></a>
-        <a class='btn btn-primary cancel'><i class='icon-remove'></i> Cancel</a>
+    <div class="panel">
+      <div class='panel-body'>
+        <textarea id="newOffer" type="text" placeholder="How can you help?" />
+      </div>
+      <div class='panel-footer clearfix'>
+        {{#if showCharLengthMessage}}
+          <span class='{{charLengthClass}}'>{{chars}} chars {{charLengthMessage}}</span>
+        {{/if}}
+        <a class="btn btn-default newOfferButton {{#if charDisableSubmit}}hidden{{/if}}" >Respond</a>
+        <a title='cancel' class='cancel'><i class='icon-remove'></i></a>
       </div>
     </div>
   </div>

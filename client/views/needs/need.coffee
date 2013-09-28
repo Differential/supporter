@@ -1,3 +1,8 @@
+Template.need.rendered = ->
+  $('a').tooltip
+    placement: 'bottom'
+    container: 'body'
+
 Template.need.helpers
   offers: ->
     Offers.find( {needId: @_id},

@@ -4,13 +4,12 @@ Meteor.publish "needs", (query) ->
     #Needs.find {completedAt: {$exists: false}}, sort: {createdAt: -1}
   else
     Needs.find {completedAt: {$exists: false}}, sort: {createdAt: -1}
-    
+
 Meteor.publish "offers", ->
   if @userId
     return Offers.find {}
   else
     return @.stop()
-
 
 Meteor.publish "user", (username) ->
   Meteor.users.find(username: username)
