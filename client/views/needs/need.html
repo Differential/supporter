@@ -13,8 +13,8 @@
               {{> newOffer}}
             {{else}}
               {{#if owner}}
-                <a class='delete'><i class='icon-remove'></i> remove</a>
-                <a class='complete'><i class='icon-ok'></i> complete</a>
+                <a title='remove' class='delete'><i class='icon-remove'></i></a>
+                <a title='complete' class='complete'><i class='icon-ok'></i></a>
               {{else}}
                 {{#if currentUser}}
                   <a title='reply' class='respond'><i class='icon-mail-reply'></i></a>

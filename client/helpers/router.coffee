@@ -44,6 +44,9 @@ Router.map ->
 
   @route 'need',
     path: '/need/:_id'
+    before: ->
+      Session.set('sendingTo', null)
+      Session.set('respondingTo', null)
     data: ->
       Needs.findOne @params._id
     waitOn: ->

@@ -1,21 +1,25 @@
 Template.need.rendered = ->
   $('a').tooltip
     placement: 'bottom'
-    container: 'body'
+  $('a').on('click', ->
+    $(@).tooltip('destroy')
+  )
 
 Template.need.helpers
   offers: ->
-    Offers.find( {needId: @_id},
+    Offers.find(
+      {needId: @_id},
       {sort: { createdAt: -1 }}
     )
+
   owner: ->
     Meteor.user() && Meteor.user().username == @username
+
   sending: ->
     Session.equals('sendingTo', @_id)
+
   editing: ->
     Session.equals('respondingTo', @_id)
-  loggedIn: ->
-    Meteor.user()
 
 Template.need.events
   'click .delete': ->

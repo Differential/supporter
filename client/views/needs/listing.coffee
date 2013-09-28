@@ -1,7 +1,9 @@
 Template.needListing.rendered = ->
   $('a').tooltip
     placement: 'bottom'
-    container: 'body'
+  $('a').on('click', ->
+    $(@).tooltip('destroy')
+  )
 
 Template.needListing.helpers
   owner: ->
