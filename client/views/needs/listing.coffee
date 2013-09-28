@@ -1,3 +1,7 @@
+Template.needListing.rendered = ->
+  $('a').tooltip
+    placement: 'bottom'
+
 Template.needListing.helpers
   owner: ->
     Meteor.user() && Meteor.user().username == @username
