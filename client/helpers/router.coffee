@@ -14,7 +14,6 @@ Router.map ->
     waitOn: ->
       Meteor.subscribe 'needs', Session.get('query')
     before: ->
-      Session.set('query', '')
       if (Meteor.loggingIn())
         @render 'loading'
         return @stop()
