@@ -4,6 +4,7 @@
     "iron-router": {},
     "phantomjs": {},
     "bootstrap-3": {},
-    "accounts-entry": {}
+    "accounts-entry": {},
+    "HTML5-History-API": {}
   }
 }
