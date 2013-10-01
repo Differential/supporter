@@ -1,7 +1,6 @@
 Router.configure
   layout: "layout"
   notFoundTemplate: "notFound"
-  loadingTemplate: "loading"
   renderTemplates:
     footer:
       to: "footer"
@@ -11,6 +10,8 @@ Router.configure
 Router.map ->
   @route 'needs',
     path: '/'
+    data: ->
+      Needs.find({}, {sort: {createdAt: -1}})
     waitOn: ->
       Meteor.subscribe 'needs', Session.get('query')
     before: ->
@@ -21,13 +22,13 @@ Router.map ->
         return @redirect('profile')
       else
         @render 'needs'
-    data: ->
-      Needs.find({}, {sort: {createdAt: -1}})
 
 
   @route 'myNeeds',
     path: '/mine'
     template: 'needs'
+    data: ->
+      Needs.find({userId: Meteor.userId()}, sort: {createdAt: -1})
     waitOn: ->
       Meteor.subscribe 'needs', Session.get('query')
     before: ->
@@ -38,19 +39,17 @@ Router.map ->
         return @redirect('profile')
       else
         @render 'needs'
-    data: ->
-      Needs.find({userId: Meteor.userId()}, sort: {createdAt: -1})
 
   @route 'need',
     path: '/need/:_id'
-    before: ->
-      Session.set('sendingTo', null)
-      Session.set('respondingTo', null)
     data: ->
       Needs.findOne @params._id
     waitOn: ->
       Meteor.subscribe('needs')
       Meteor.subscribe('offers')
+    before: ->
+      Session.set('sendingTo', null)
+      Session.set('respondingTo', null)
 
   @route 'user',
     path: '/u/:username'
