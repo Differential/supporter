@@ -15,22 +15,21 @@ Template.need.helpers
   owner: ->
     Meteor.user() && Meteor.user().username == @username
 
-  sending: ->
-    Session.equals('sendingTo', @_id)
-
-  editing: ->
-    Session.equals('respondingTo', @_id)
-
 Template.need.events
-  'click .delete': ->
+  'click .delete': (event)->
     Needs.remove(@_id)
+    Router.go('/')
 
-  'click .complete': ->
+  'click .complete': (event)->
     Needs.update(@_id, $set: {completedAt: new Date()})
+    Router.go('/')
 
-  "click .respond": ->
+  "click .respond": (event, template)->
     Session.set('respondingTo', @_id)
     Session.set('charsOffer', null)
+    $(template.find('.newOffer')).modal()
 
-  "click .send": ->
+  "click .send": (event, template)->
     Session.set('sendingTo', @_id)
+    $(template.find('.sendNeed')).modal()
+

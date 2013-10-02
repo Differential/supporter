@@ -1,30 +1,30 @@
 <template name="need"> 
   <div class='container'>
-
-      <div class='panel panel-primary'>
-        <div class='panel-heading'>
-          {{content}}
-        </div>
-        <div class='panel-footer'>
-          <a title='posted by' href="/u/{{username}}">{{username}}</a> {{date createdAt}}
-          <a class="offerList" href="/need/{{_id}}"><span class="badge">{{pluralize offerCount}}</span></a>
-          <div class='pull-right'>
-            {{#if editing}}
-              {{> newOffer}}
+    <div class='panel panel-primary'>
+      <div class='panel-heading'>
+        {{content}}
+      </div>
+      <div class='panel-footer clearfix'>
+        <a title='posted by' href="/u/{{username}}">{{username}}</a> {{date createdAt}}
+        <a class="offerList" href="/need/{{_id}}"><span class="badge">{{pluralize offerCount}}</span></a>
+        <div class='pull-right'>
+          {{#if editing}}
+            {{> newOffer}}
+          {{else}}
+            {{#if owner}}
+              <a title='remove' class='delete'><i class='icon-remove'></i></a>
+              <a title='complete' class='complete'><i class='icon-ok'></i></a>
             {{else}}
-              {{#if owner}}
-                <a title='remove' class='delete'><i class='icon-remove'></i></a>
-                <a title='complete' class='complete'><i class='icon-ok'></i></a>
-              {{else}}
-                {{#if currentUser}}
-                  <a title='reply' class='respond'><i class='icon-mail-reply'></i></a>
-                  <a title='forward' class='send'><i class='icon-mail-forward'></i></a>
-                {{/if}}
+              {{#if currentUser}}
+                <a class='btn btn-default respond'><i class='icon-mail-reply'></i> Make Offer</a>
+                <a class='btn btn-default send'><i class='icon-mail-forward'></i> Share</a>
               {{/if}}
             {{/if}}
-          </div>
+          {{/if}}
         </div>
       </div>
+    </div>
+
 
     {{#if owner}}
       <div class='well'>
@@ -38,9 +38,7 @@
       {{/each}}
     </div>
 
-    {{#if sending}}
-      {{> sendNeed}}
-    {{/if}}
-
+    {{> newOffer}}
+    {{> sendNeed}}
   </div>
 </template>

@@ -6,29 +6,27 @@ Template.newOffer.helpers
     Session.get('charsOffer') > 0
 
   charLengthClass: ->
-    if Session.get('charsOffer') < 30 || Session.get('charsOffer') > 200
-      'red'
+    if Session.get('charsOffer') < 10 || Session.get('charsOffer') > 200
+      'has-error'
     else
       ''
   charDisableSubmit: ->
-    Session.get('charsOffer') < 30 || Session.get('charsOffer') > 200
+    Session.get('charsOffer') < 10 || Session.get('charsOffer') > 200
 
   charLengthMessage: ->
     message = ''
-    if Session.get('charsOffer') < 30
+    if Session.get('charsOffer') < 10
       message = '(be more descriptive)'
     if Session.get('charsOffer') > 200
       message = '(be less descriptive)'
-
     message
 
-
-addOffer = ->
+addOffer = (el)->
   user = Meteor.user()
   if user and user.username
-    newOffer = $('#newOffer').val()
-    if newOffer.length > 30
-      $('#newOffer').val ''
+    newOffer = el.val()
+    if newOffer.length >= 10
+      el.val ''
       needOwnerId = Needs.findOne({_id: Session.get('respondingTo')}).userId
       offerId = Offers.insert
         content: newOffer
@@ -42,21 +40,22 @@ addOffer = ->
       Needs.update(Session.get('respondingTo'), {$inc: {offerCount: 1}})
 
       Meteor.call('notifyOffer', offerId)
+
+      $('.modal').modal('hide')
+      $('body').removeClass('modal-open')
+
+      Meteor.defer ->
+        Router.go('need', {_id: Session.get('respondingTo')})
     else
       alert 'Be more descriptive'
 
 Template.newOffer.events
-  "click .newOfferButton": ->
-    addOffer()
-    Session.set('respondingTo',null)
+  "click .newOfferButton": (event, template)->
+    addOffer $(template.find('textarea#newOffer'))
     Session.set('charsOffer', null)
 
-  "keypress input#newOffer": (evt) ->
-    addOffer() if evt.which is 13
-
-  "click .cancel": ->
-    Session.set('respondingTo', null)
+  "click .cancel": (event)->
     Session.set('charsOffer', null)
 
-  "keyup textarea#newOffer": (evt) ->
-    Session.set('charsOffer', $('textarea#newOffer').val().length)
+  "keyup textarea#newOffer": (event, template)->
+    Session.set('charsOffer', $(template.find('textarea#newOffer')).val().length)

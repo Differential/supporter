@@ -1,18 +1,26 @@
 <template name="newOffer">
-  <div class="offer span3 newOfferBackground">
-  </div>
-  <div class="offer span3 newOffer">
-    <div class="panel">
-      <div class='panel-body'>
-        <textarea id="newOffer" type="text" placeholder="How can you help?" />
-      </div>
-      <div class='panel-footer clearfix'>
-        {{#if showCharLengthMessage}}
-          <span class='{{charLengthClass}}'>{{chars}} chars {{charLengthMessage}}</span>
-        {{/if}}
-        <a class="btn btn-default newOfferButton {{#if charDisableSubmit}}hidden{{/if}}" >Respond</a>
-        <a title='cancel' class='cancel'><i class='icon-remove'></i></a>
-      </div>
-    </div>
-  </div>
+  <div class="modal fade newOffer" tabindex="-1" role="dialog" aria-labelledby="action" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">How can you help?</h4>
+        </div>
+        <div class="modal-body">
+          <textarea class="form-control" id="newOffer" type="text" />
+          {{#isolate}}
+            {{#if showCharLengthMessage}}
+              <span class='help-block {{charLengthClass}}'>{{chars}} chars {{charLengthMessage}}</span>
+            {{/if}}
+          {{/isolate}}
+        </div>
+        {{#isolate}}
+        <div class="modal-footer">
+          <a data-dismiss="modal" class='btn btn-default cancel'>Cancel</a>
+          <a class="btn btn-primary newOfferButton {{#if charDisableSubmit}}hidden{{/if}}" >Respond</a>
+        </div>
+        {{/isolate}}
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 </template>

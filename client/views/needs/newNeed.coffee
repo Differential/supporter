@@ -27,8 +27,8 @@ addNeed = ->
   user = Meteor.user()
   if user and user.username
     newNeed = $('#newNeed').val()
-    if newNeed.length > 30
-      if newNeed.length < 200
+    if newNeed.length >= 30
+      if newNeed.length <= 200
         Session.set('chars', 0)
         $('#newNeed').val ''
         Needs.insert
