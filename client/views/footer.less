@@ -1,0 +1,42 @@
+footer {
+  .navbar {
+    padding: 10px 0;
+    background-color: rgba(0,0,0,0.1);
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    float: right;
+
+    li {
+      list-style: none;
+      display: inline;
+      padding-left: 20px;
+      font-size: 16px;
+
+      a {
+        color: #333;
+        font-weight: 200;
+        border-bottom: none;
+        text-decoration: none;
+        @media (max-width: 480px) {
+          font-size: 0.8em;
+        }
+
+        &:hover {
+          text-decoration: none;
+          opacity: 0.7;
+          color: rgba(0,0,0,1);
+        }
+      }
+
+      img {
+        width: 18px;
+        margin-top: -5px;
+        margin-left: 3px;
+      }
+    }
+  }
+}
+
