@@ -8,17 +8,13 @@
         <a title='posted by' href="/u/{{username}}">{{username}}</a> {{date createdAt}}
         <a class="offerList" href="/need/{{_id}}"><span class="badge">{{pluralize offerCount}}</span></a>
         <div class='pull-right'>
-          {{#if editing}}
-            {{> newOffer}}
+          {{#if owner}}
+            <a title='remove' class='delete'><i class='icon-remove'></i></a>
+            <a title='complete' class='complete'><i class='icon-ok'></i></a>
           {{else}}
-            {{#if owner}}
-              <a title='remove' class='delete'><i class='icon-remove'></i></a>
-              <a title='complete' class='complete'><i class='icon-ok'></i></a>
-            {{else}}
-              {{#if currentUser}}
-                <a class='btn btn-default respond'><i class='icon-mail-reply'></i> Make Offer</a>
-                <a class='btn btn-default send'><i class='icon-mail-forward'></i> Share</a>
-              {{/if}}
+            {{#if currentUser}}
+              <a class='btn btn-default respond'><i class='icon-mail-reply'></i> Make Offer</a>
+              <a class='btn btn-default send'><i class='icon-mail-forward'></i> Share</a>
             {{/if}}
           {{/if}}
         </div>
@@ -31,6 +27,12 @@
         Respond to people via email, and close this need when you're all good.
       </div>
     {{/if}}
+
+    {{#unless currentUser}}
+      <div class='well'>
+        <a href='/sign-in'>Sign in</a> or <a href='/sign-up'>sign up</a> to post or respond to needs.
+      </div>
+    {{/unless}}
 
     <div class="offer offers-list">
       {{#each offers}}
