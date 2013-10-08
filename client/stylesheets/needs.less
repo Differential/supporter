@@ -49,11 +49,22 @@ a.need-content {
 }
 
 .needListing .panel {
-  height: 160px;
+  height: 150px;
   position: relative;
   .panel-footer {
     position: absolute;
     bottom: 0px;
     width: 100%;
   }
+  @media (max-width: 1197px) {
+    height: 170px;
+  }
+  @media (max-width: 992px) {
+    height: 120px;
+  }
+  @media (max-width: 600px) {
+    height: 150px;
+  }
 }
+
+
