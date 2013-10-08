@@ -50,9 +50,12 @@ Template.profile.events
     })
 
   'change #url': (event) ->
+    url = $(event.target).val()
+    if not attr.url.match(/^http/) and not attr.url.match(/^https/) and attr.url isnt ''
+      url = 'http://' + url
     Meteor.users.update(Meteor.userId(), {
       $set: {
-        'profile.url': $(event.target).val()
+        'profile.url': url
       }
     })
 
