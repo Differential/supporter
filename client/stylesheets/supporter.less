@@ -12,7 +12,11 @@ body {
   margin-top: 20px;
   margin-bottom: 40px;
   background: #FFF;
-  box-shadow: 4px 4px 20px #DDD;
+  box-shadow: 4px 4px 20px #dfe5ea;
+  ul.nav li.active > a {
+    background-color: transparent !important;
+    background-image: url('/bg.png') !important;
+  }
 }
 
 #forgot-password-link {
@@ -20,9 +24,24 @@ body {
 }
 
 .entry {
-  box-shadow: 4px 4px 20px #DDD;
+  box-shadow: 4px 4px 20px #dfe5ea;
+}
+
+.entry-logo {
+  width: 100px;
+  margin-top: 0px;
+  img {
+    width: 100%;
+  }
 }
 
 .errors {
   color: red;
+}
+
+.navbar-brand {
+  padding: 0 20px 0 0;
+  img {
+    height: 50px;
+  }
 }

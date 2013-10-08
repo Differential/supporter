@@ -4,6 +4,7 @@ Meteor.startup ->
   )
 
   AccountsEntry.config =
+    logo: 'unpolished.png'
     homeRoute: 'needs'
     dashboardRoute: 'needs'
     profileRoute: 'profile'
