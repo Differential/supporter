@@ -1,12 +1,2 @@
 #!/bin/bash
-
-# let's start fresh
-rm -rf .demeteorized
-
-# run + cd
-demeteorizer
-cd .demeteorized
-
-# deploy + go back to project dir
 modulus deploy -p supporter
-cd ..
