@@ -1,6 +1,7 @@
 Router.configure
   layout: "layout"
   notFoundTemplate: "notFound"
+  loadingTemplate: "loading"
   renderTemplates:
     footer:
       to: "footer"
