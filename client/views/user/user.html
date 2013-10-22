@@ -1,6 +1,10 @@
 <template name="user">
-  {{#if owner}}
+  {{#if user.owner}}
     edit
    {{/if}}
-   {{> _userCard }}
+   {{> _userCard user}}
+
+   {{#each needs}}
+     {{> needListing this}}
+   {{/each}}
 </template>

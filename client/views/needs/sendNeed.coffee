@@ -1,6 +1,3 @@
-Template.sendNeed.rendered = ->
-  addthis.toolbox ".addthis_toolbox"
-
 Template.sendNeed.helpers
   url: Meteor.absoluteUrl('')
 
