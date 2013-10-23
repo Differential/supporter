@@ -3,10 +3,13 @@
    <div class='panel-body'>
      {{content}}
    </div>
-   <div class='panel-footer'>
+   <div class='panel-footer'>     
+     {{#if offerOwner}}<a title='edit' class="editOfferButton"><i class='icon-edit'></i></a>{{/if}}
      <a title='reply by' href="/u/{{username}}">{{username}}</a>
      {{#if allowedToView}}<a href="mailto:{{email}}">({{email}})</a>{{/if}}
      {{date createdAt}}
    </div>
  </div>
+  
+  {{>editOffer}}
 </template>

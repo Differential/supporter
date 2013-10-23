@@ -11,5 +11,6 @@ Meteor.startup ->
     wrapLinks: true
 
   Session.set('chars', 0)
+  Session.set('editingOffer', null)
 
   Meteor.subscribe('offers')

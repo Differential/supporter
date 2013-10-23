@@ -25,3 +25,8 @@ Template.needListing.events
   "click .send": (event, template)->
     Session.set('sendingTo', @_id)
     $(template.find('.sendNeed')).modal()
+    
+  "click .editNeedBtn": (event, template)->
+    Session.set('respondingTo', @_id)
+    Session.set('charsOffer', null)
+    $(template.find('.editNeed')).modal()
