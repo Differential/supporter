@@ -1,12 +1,12 @@
 Meteor.startup ->
   Meteor.methods
-    notifyOffer: (offerId) ->
+    notifyOffer: (offerId, isEdit) ->
       offer = Offers.findOne(offerId)
       owner = Meteor.users.findOne(offer.needOwnerId)
       email = owner.emails[0].address
       url = 'http://supporter.io/need/' + offer.needId
       text = "Hello,\n\n" +
-        offer.email + ' has responded to your need.\n\n' +
+        offer.email + ' has ' + if isEdit then 'edited their response to your need.\n\n' else 'responded to your need.\n\n' +
         '---------------\n' +
         offer.content + "\n" +
         '---------------\n\n' +

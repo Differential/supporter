@@ -29,7 +29,7 @@ editOffer = (el)->
       el.val ''
       Offers.update(Session.get('respondingTo'), {$set: {content:newOffer}})
       needId = Offers.findOne({_id: Session.get('respondingTo')}).needId
-      Meteor.call 'notifyOffer', Session.get('respondingTo')
+      Meteor.call 'notifyOffer', Session.get('respondingTo'), true
       Meteor.defer ->
         Router.go('need', {_id: needId})
         $('.modal').modal('hide')
