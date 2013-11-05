@@ -6,7 +6,10 @@
       "iron-router": {},
       "phantomjs": {},
       "bootstrap-3": {},
-      "accounts-entry": {},
+      "accounts-entry": {
+        "git": "https://github.com/BeDifferential/accounts-entry.git",
+        "branch": "master"
+      },
       "HTML5-History-API": {}
     },
     "packages": {
@@ -17,8 +20,8 @@
       },
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.5.4",
-        "commit": "3e0e22ff85630b7503d0daa1538c6d90abb84020"
+        "tag": "v0.6.1",
+        "commit": "4e1ee0581d68bff422a915dacb0bd30eae10fe08"
       },
       "phantomjs": {
         "git": "https://github.com/gadicohen/meteor-phantomjs.git",
@@ -32,8 +35,8 @@
       },
       "accounts-entry": {
         "git": "https://github.com/BeDifferential/accounts-entry.git",
-        "tag": "v0.2.9",
-        "commit": "98c4bc7221b4ab5f5c1dfd1ee53448aa241bc8fe"
+        "branch": "master",
+        "commit": "d846e901d7478240050471bcd5afff7de12b3683"
       },
       "HTML5-History-API": {
         "git": "https://github.com/tmeasday/meteor-HTML5-History-API.git",
