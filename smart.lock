@@ -36,7 +36,7 @@
       "accounts-entry": {
         "git": "https://github.com/BeDifferential/accounts-entry.git",
         "branch": "master",
-        "commit": "d846e901d7478240050471bcd5afff7de12b3683"
+        "commit": "a2d7d4f21da6e837ddbfeec404085946bb4951c2"
       },
       "HTML5-History-API": {
         "git": "https://github.com/tmeasday/meteor-HTML5-History-API.git",

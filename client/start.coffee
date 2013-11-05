@@ -1,13 +1,12 @@
 Meteor.startup ->
-  Accounts.ui.config(
-    passwordSignupFields: 'USERNAME_AND_EMAIL'
-  )
 
-  AccountsEntry.config =
-    logo: 'unpolished.png'
-    homeRoute: 'needs'
-    dashboardRoute: 'needs'
-    profileRoute: 'profile'
+  Accounts.ui.config
+    passwordSignupFields: 'USERNAME_AND_EMAIL'
+
+  AccountsEntry.config
+    homeRoute: '/'
+    dashboardRoute: '/'
+    profileRoute: '/profile'
     wrapLinks: true
 
   Session.set('chars', 0)
