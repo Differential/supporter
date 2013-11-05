@@ -10,8 +10,12 @@ Template.newOffer.helpers
       'has-error'
     else
       ''
-  charDisableSubmit: ->
-    Session.get('charsOffer') < 10 || Session.get('charsOffer') > 200
+
+  saveButtonClass: ->
+    if Session.get('charsOffer') < 10 || Session.get('charsOffer') > 200
+      'hidden'
+    else
+      ''
 
   charLengthMessage: ->
     message = ''
