@@ -1,6 +1,19 @@
 <template name="needListing">
 	<div class='need col-md-4'>
     <div class='panel'>
+      <div class='panel-header'>
+       <div class='pull-right'>
+          {{#if owner}}
+                        
+          {{else}}
+            {{#if starred}}
+              <a title='star' class='star'><i class='icon-star'></i></a>
+            {{else}}
+              <a title='star' class='star'><i class='icon-star-empty'></i></a>
+            {{/if}}
+          {{/if}}
+        </div>
+      </div>
       <div class='panel-body'>
         <a class="need-content" href="/need/{{_id}}">{{content}}</a>
       </div>

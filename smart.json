@@ -4,7 +4,9 @@
     "iron-router": {},
     "phantomjs": {},
     "bootstrap-3": {},
-    "accounts-entry": {},
+    "accounts-entry": {
+      "git": "https://github.com/BeDifferential/accounts-entry.git"
+    },
     "HTML5-History-API": {}
   }
 }

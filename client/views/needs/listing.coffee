@@ -9,6 +9,8 @@ Template.needListing.rendered = ->
 Template.needListing.helpers
   owner: ->
     Meteor.user() && Meteor.user().username == @username
+  starred: ->
+    Needs.findOne({_id: @_id}).starUsers and Needs.findOne({_id: @_id}).starUsers.length > 0 and Meteor.user()._id in Needs.findOne({_id: @_id}).starUsers
 
 Template.needListing.events
   'click .delete': (event)->
@@ -30,3 +32,18 @@ Template.needListing.events
     Session.set('respondingTo', @_id)
     Session.set('charsOffer', null)
     $(template.find('.editNeed')).modal()
+  
+  "click .star": (event, template)->
+    stars = Needs.find ({_id:@_id,  starUsers: { $in: [Meteor.user()._id] }}  )
+    alreadyStar = stars and stars.count() > 0
+    #starCount = Needs.find({_id:@_id}, { array: { $elemMatch: { starUser: Meteor.user()._id }}}).count()
+    #starCount = Needs.find( {_id:@id}, { array: { $elemMatch: { starUser: Meteor.user()._id }}}).Count
+    if alreadyStar
+      #TODO remove this need to user's list
+      Needs.update(@_id, {$pull: {starUsers: Meteor.user()._id}})
+    else 
+      #TODO Add this need to user's list
+      #Needs.update(@_id,  {$inc: {starCount: 1}})
+      Needs.update(@_id, {$push: {starUsers: Meteor.user()._id}})
+    
+    

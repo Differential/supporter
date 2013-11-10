@@ -5,6 +5,10 @@ Template.profile.rendered = ->
   )
 
 Template.profile.helpers
+  email: ->
+    if Meteor.user().emails?
+      Meteor.user().emails[0].address
+
   name: ->
     Meteor.user().profile.name
 
@@ -21,6 +25,9 @@ Template.profile.helpers
     Meteor.user().profile.url
 
 Template.profile.events
+  'change #email': (event) ->
+    Meteor.call('changeEmail', Meteor.userId(), $(event.target).val())
+
   'change #name': (event) ->
     Meteor.users.update(Meteor.userId(), {
       $set: {
