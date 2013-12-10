@@ -22,6 +22,11 @@ Template.layout.events
     Router.go('/')
     Session.set('currentSection', 'allNeeds')
 
+  "click .topNeedsLink": (event) ->
+    event.preventDefault()
+    Router.go('/')
+    Session.set('currentSection', 'topNeeds')
+
   'keyup #query': (event) ->
     event.preventDefault()
     query = $(event.target).val()

@@ -41,9 +41,10 @@ Template.needListing.events
     if alreadyStar
       #TODO remove this need to user's list
       Needs.update(@_id, {$pull: {starUsers: Meteor.user()._id}})
+      Needs.update(@_id,  {$inc: {starCount: -1}})
     else 
       #TODO Add this need to user's list
-      #Needs.update(@_id,  {$inc: {starCount: 1}})
+      Needs.update(@_id,  {$inc: {starCount: 1}})
       Needs.update(@_id, {$push: {starUsers: Meteor.user()._id}})
     
     

@@ -65,3 +65,19 @@ Router.map ->
     path: '/profile'
     data: ->
       Meteor.user()
+      
+  @route 'topNeeds',
+    path: '/top'
+    template: 'needs'
+    data: ->
+       Needs.find({}, {sort: {starCount: -1}})
+    waitOn: ->
+      Meteor.subscribe 'needs', Session.get('query')
+    before: ->
+      if (Meteor.loggingIn())
+        @render 'loading'
+        return @stop()
+      if (Meteor.user() && !Meteor.user().profile.name)
+        return @redirect('profile')
+      else
+        @render 'needs'
