@@ -1,4 +1,5 @@
-updateScore = function (collection, item, forceUpdate) {
+Meteor.methods({ 
+  updateScore: function (collection, item, forceUpdate) {
   var forceUpdate = typeof forceUpdate !== 'undefined' ? forceUpdate : false;
   // For performance reasons, the database is only updated if the difference between the old score and the new score
   // is meaningful enough. To find out, we calculate the "power" of a single vote after n days.
@@ -21,18 +22,13 @@ updateScore = function (collection, item, forceUpdate) {
   // var baseScore = Math.max(item.votes || 0, item.baseScore || 0);
   // Rank them by the number of people that starred it
   // or Rank them by if the current user has starred it
-  var star, _ref,
-  __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+  //var star, _ref;//,
+  //__indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-  var star = Needs.find({
-    _id: item._id
-  }).starUsers && Needs.findOne({
-    _id: item._id
-  }).starUsers.length > 0 && (_ref = Meteor.user()._id, __indexOf.call(Needs.findOne({
-    _id: item._id
-  }).starUsers, _ref) >= 0);
+  var star = item.starCount;
   
-  var baseScore = star != null ? star.Count : 1
+  var baseScore = star != null ? star : 1
+  console.log(star);
   //var baseScore = item.starUsers.Count;
 
   // now multiply by 'age' exponentiated
@@ -46,7 +42,7 @@ updateScore = function (collection, item, forceUpdate) {
   var scoreDiff = Math.abs(item.score - newScore);
 
   // only update database if difference is larger than x to avoid unnecessary updates
-  if (forceUpdate || scoreDiff > x){
+  if (forceUpdate || scoreDiff > x) {
     collection.update(item._id, {$set: {score: newScore, inactive: false}});
     return 1;
   }else if(ageInHours > n*24){
@@ -54,4 +50,5 @@ updateScore = function (collection, item, forceUpdate) {
     collection.update(item._id, {$set: {inactive: true}});
   }
   return 0;
-};
+}
+});

@@ -46,5 +46,5 @@ Template.needListing.events
       #TODO Add this need to user's list
       Needs.update(@_id,  {$inc: {starCount: 1}})
       Needs.update(@_id, {$push: {starUsers: Meteor.user()._id}})
-    
+    Meteor.call("updateScore", Needs, @, false)
     
