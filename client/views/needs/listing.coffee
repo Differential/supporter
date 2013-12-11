@@ -27,12 +27,12 @@ Template.needListing.events
   "click .send": (event, template)->
     Session.set('sendingTo', @_id)
     $(template.find('.sendNeed')).modal()
-    
+
   "click .editNeedBtn": (event, template)->
     Session.set('respondingTo', @_id)
     Session.set('charsOffer', null)
     $(template.find('.editNeed')).modal()
-  
+
   "click .star": (event, template)->
     stars = Needs.find ({_id:@_id,  starUsers: { $in: [Meteor.user()._id] }}  )
     alreadyStar = stars and stars.count() > 0
@@ -42,9 +42,8 @@ Template.needListing.events
       #TODO remove this need to user's list
       Needs.update(@_id, {$pull: {starUsers: Meteor.user()._id}})
       Needs.update(@_id,  {$inc: {starCount: -1}})
-    else 
+    else
       #TODO Add this need to user's list
       Needs.update(@_id,  {$inc: {starCount: 1}})
       Needs.update(@_id, {$push: {starUsers: Meteor.user()._id}})
-    Meteor.call("updateScore", Needs, @, false)
-    
+    Meteor.call("updateScore", @, true)

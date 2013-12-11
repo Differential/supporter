@@ -1,5 +1,5 @@
 Meteor.methods({ 
-  updateScore: function (collection, item, forceUpdate) {
+  updateScore: function (item, forceUpdate) {
   var forceUpdate = typeof forceUpdate !== 'undefined' ? forceUpdate : false;
   // For performance reasons, the database is only updated if the difference between the old score and the new score
   // is meaningful enough. To find out, we calculate the "power" of a single vote after n days.
@@ -26,9 +26,8 @@ Meteor.methods({
   //__indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   var star = item.starCount;
-  
+
   var baseScore = star != null ? star : 1
-  console.log(star);
   //var baseScore = item.starUsers.Count;
 
   // now multiply by 'age' exponentiated
@@ -43,11 +42,11 @@ Meteor.methods({
 
   // only update database if difference is larger than x to avoid unnecessary updates
   if (forceUpdate || scoreDiff > x) {
-    collection.update(item._id, {$set: {score: newScore, inactive: false}});
+    Needs.update(item._id, {$set: {score: newScore, inactive: false}});
     return 1;
   }else if(ageInHours > n*24){
     // only set a post as inactive if it's older than n days
-    collection.update(item._id, {$set: {inactive: true}});
+    Needs.update(item._id, {$set: {inactive: true}});
   }
   return 0;
 }
