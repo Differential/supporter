@@ -12,7 +12,7 @@ Router.map ->
   @route 'needs',
     path: '/'
     data: ->
-      Needs.find({}, {sort: {score: -1}})
+      Needs.find({}, {sort: {score: 1}})
     waitOn: ->
       Meteor.subscribe 'needs', Session.get('query')
     before: ->
@@ -65,12 +65,12 @@ Router.map ->
     path: '/profile'
     data: ->
       Meteor.user()
-      
+
   @route 'topNeeds',
     path: '/top'
     template: 'needs'
     data: ->
-       Needs.find({}, {sort: {score: -1}}) 
+       Needs.find({}, {sort: {score: -1}})
     waitOn: ->
       Meteor.subscribe 'needs', Session.get('query')
     before: ->
