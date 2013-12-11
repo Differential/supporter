@@ -1,4 +1,7 @@
 {
   "name": "supporter",
-  "mod-project-name": "supporter"
+  "mod-project-name": "supporter",
+  "scripts": {
+    "test": "coffee spec/*.spec.coffee"
+  }
 }

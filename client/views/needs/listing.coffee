@@ -10,7 +10,10 @@ Template.needListing.helpers
   owner: ->
     Meteor.user() && Meteor.user().username == @username
   starred: ->
-    Needs.findOne({_id: @_id}).starUsers and Needs.findOne({_id: @_id}).starUsers.length > 0 and Meteor.user()._id in Needs.findOne({_id: @_id}).starUsers
+    if Meteor.user()
+      Needs.findOne({_id: @_id}).starUsers and
+        Needs.findOne({_id: @_id}).starUsers.length > 0 and
+        Meteor.user()._id in Needs.findOne({_id: @_id}).starUsers
 
 Template.needListing.events
   'click .delete': (event)->
