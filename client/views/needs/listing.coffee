@@ -7,7 +7,7 @@ Template.needListing.rendered = ->
   )
 
 Template.needListing.helpers
-  owner: ->
+  showStarred: ->
     Meteor.user() && Meteor.user().username == @username
   starred: ->
     if Meteor.user()

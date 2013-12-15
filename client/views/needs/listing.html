@@ -3,9 +3,7 @@
     <div class='panel'>
       <div class='panel-header'>
        <div class='pull-right'>
-          {{#if owner}}
-                        
-          {{else}}
+          {{#if showStarred}}
             {{#if starred}}
               <a title='star' class='star'><i class='icon-star'></i></a>
             {{else}}
@@ -35,7 +33,7 @@
       </div>
     </div>
     </div>
-  
+
   {{> editNeed}}
   {{> newOffer}}
   {{> sendNeed}}
