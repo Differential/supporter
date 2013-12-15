@@ -40,6 +40,7 @@ addNeed = ->
           userId: Meteor.userId()
           username: user.username
           offerCount: 0
+          score: Supporter.computeScore({stars: 0, createdAt: new Date()})
       else
         alert 'Be less descriptive'
     else

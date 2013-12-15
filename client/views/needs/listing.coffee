@@ -8,7 +8,7 @@ Template.needListing.rendered = ->
 
 Template.needListing.helpers
   showStarred: ->
-    Meteor.user() && Meteor.user().username == @username
+    Meteor.user() && Meteor.user().username != @username
   starred: ->
     if Meteor.user()
       Needs.findOne({_id: @_id}).starUsers and
