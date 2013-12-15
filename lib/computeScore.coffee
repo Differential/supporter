@@ -8,6 +8,3 @@ computeScore = (need)->
   ageInHours = (new Date().getTime() - age) / (60 * 60 * 1000)
 
   baseScore / Math.pow(ageInHours + 2, f)
-
-if module
-  module.exports = computeScore
