@@ -5,9 +5,9 @@
        <div class='pull-right'>
           {{#if showStarred}}
             {{#if starred}}
-              <a title='star' class='star'><i class='icon-star'></i></a>
+               <a title='star' class='star'><i class='fa fa-star'></i></a>
             {{else}}
-              <a title='star' class='star'><i class='icon-star-empty'></i></a>
+              <a title='star' class='star'><i class='fa fa-star-o'></i></a>
             {{/if}}
           {{/if}}
         </div>
@@ -20,13 +20,13 @@
         <a title='responses' class="offerList" href="/need/{{_id}}"><span class="badge">{{offerCount}}</span></a>
         <div class='pull-right'>
           {{#if owner}}
-            <a data-toggle='modal' title='remove' class='delete'><i class='icon-remove'></i></a>
-            <a title='complete' class='complete'><i class='icon-ok'></i></a>
-            <a title='edit' class="editNeedBtn"><i class='icon-edit'></i></a>
+            <a data-toggle='modal' title='remove' class='delete'><i class='fa fa-times'></i></a>
+            <a title='complete' class='complete'><i class='fa fa-check'></i></a>
+            <a title='edit' class="editNeedBtn"><i class='fa fa-edit'></i></a>
           {{else}}
             {{#if currentUser}}
-              <a data-toggle='modal' title='respond' class='respond'><i class='icon-reply'></i></a>
-              <a title='share' class='send'><i class='icon-mail-forward'></i></a>
+              <a data-toggle='modal' title='respond' class='respond'><i class='fa fa-reply'></i></a>
+              <a title='share' class='send'><i class='fa fa-mail-forward'></i></a>
             {{/if}}
           {{/if}}
         </div>

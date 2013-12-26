@@ -23,7 +23,6 @@ Template.editNeed.helpers
       message = '(be more descriptive)'
     if Session.get('chars') > 200
       message = '(be less descriptive)'
-
     message
 
 editNeed = (el) ->
@@ -49,5 +48,5 @@ Template.editNeed.events
     editNeed $(template.find('textarea#editNeedContent'))
     Session.set('charsOffer', null)
 
-  'keyup textarea#editNeedContent': (evt) ->
-    Session.set('chars', $('textarea#editNeedContent').val().length)
+  'keyup textarea#editNeedContent': (evt, template) ->
+    Session.set('chars', $(template.find('textarea#editNeedContent')).val().length)
