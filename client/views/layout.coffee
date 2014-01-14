@@ -26,6 +26,11 @@ Template.layout.events
     event.preventDefault()
     Router.go('/')
     Session.set('currentSection', 'topNeeds')
+    
+  "click .starNeedsLink": (event) ->
+    event.preventDefault()
+    Router.go('/fav')
+    Session.set('currentSection', 'strNeeds')
 
   'keyup #query': (event) ->
     event.preventDefault()

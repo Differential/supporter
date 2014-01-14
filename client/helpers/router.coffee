@@ -24,7 +24,6 @@ Router.map ->
       else
         @render 'needs'
 
-
   @route 'myNeeds',
     path: '/mine'
     template: 'needs'
@@ -66,6 +65,22 @@ Router.map ->
     data: ->
       Meteor.user()
 
+  @route 'strNeeds',
+    path: '/fav'
+    template: 'needs'
+    data: ->
+      Needs.find ({starUsers: { $in: [Meteor.user()._id] }}  )
+    waitOn: ->
+      Meteor.subscribe 'needs', Session.get('strNeeds')
+    before: ->
+      if (Meteor.loggingIn())
+        @render 'loading'
+        return @stop()
+      if (Meteor.user() && !Meteor.user().profile.name)
+        return @redirect('profile')
+      else
+        @render 'needs'
+  
   @route 'topNeeds',
     path: '/top'
     template: 'needs'
