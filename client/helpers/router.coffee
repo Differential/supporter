@@ -5,8 +5,6 @@ Router.configure
   yieldTemplates:
     footer:
       to: "footer"
-    header:
-      to: "header"
 
 Router.map ->
   @route 'needs',

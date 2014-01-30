@@ -46,10 +46,12 @@ addNeed = ->
     else
       alert 'Be more descriptive'
 
+updateChars = ->
+  Session.set('chars', $('textarea#newNeed').val().length)
+
 Template.newNeed.events
-  "click input#newNeedButton": ->
+  "click input#newNeedButton": (e)->
     addNeed()
 
-  "keyup textarea#newNeed": (evt) ->
-    Session.set('chars', $('textarea#newNeed').val().length)
-
+  "keyup textarea#newNeed": (e)->
+    _.debounce(updateChars, 3000)()
