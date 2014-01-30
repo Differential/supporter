@@ -8,6 +8,13 @@ Meteor.startup ->
         }
       })
 
+    changeUsername: (userId, username) ->
+      Meteor.users.update(userId, {
+        $set: {
+          'username': username
+        }
+      })
+
     notifyOffer: (offerId, isEdit) ->
       offer = Offers.findOne(offerId)
       owner = Meteor.users.findOne(offer.needOwnerId)

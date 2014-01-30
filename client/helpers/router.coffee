@@ -19,7 +19,7 @@ Router.map ->
       if (Meteor.loggingIn())
         @render 'loading'
         return @stop()
-      if (Meteor.user() && !Meteor.user().profile.name)
+      if (Meteor.user() && !Meteor.user().username)
         return @redirect('profile')
       else
         @render 'needs'
@@ -35,7 +35,7 @@ Router.map ->
       if (Meteor.loggingIn())
         @render 'loading'
         return @stop()
-      if (Meteor.user() && !Meteor.user().profile.name)
+      if (Meteor.user() && !Meteor.user().username)
         return @redirect('profile')
       else
         @render 'needs'
@@ -76,11 +76,11 @@ Router.map ->
       if (Meteor.loggingIn())
         @render 'loading'
         return @stop()
-      if (Meteor.user() && !Meteor.user().profile.name)
+      if (Meteor.user() && !Meteor.user().username)
         return @redirect('profile')
       else
         @render 'needs'
-  
+
   @route 'topNeeds',
     path: '/top'
     template: 'needs'
@@ -92,7 +92,7 @@ Router.map ->
       if (Meteor.loggingIn())
         @render 'loading'
         return @stop()
-      if (Meteor.user() && !Meteor.user().profile.name)
+      if (Meteor.user() && !Meteor.user().username)
         return @redirect('profile')
       else
         @render 'needs'

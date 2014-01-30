@@ -9,6 +9,9 @@ Template.profile.helpers
     if Meteor.user().emails?
       Meteor.user().emails[0].address
 
+  username: ->
+    Meteor.user().username
+
   name: ->
     Meteor.user().profile.name
 
@@ -27,6 +30,9 @@ Template.profile.helpers
 Template.profile.events
   'change #email': (event) ->
     Meteor.call('changeEmail', Meteor.userId(), $(event.target).val())
+
+  'change #username': (event) ->
+    Meteor.call('changeUsername', Meteor.userId(), $(event.target).val())
 
   'change #name': (event) ->
     Meteor.users.update(Meteor.userId(), {
