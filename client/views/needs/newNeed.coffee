@@ -1,3 +1,6 @@
+Template.newNeed.rendered = ->
+  console.log 'sup'
+
 Template.newNeed.helpers
   chars: ->
     Session.get('chars')
@@ -47,9 +50,9 @@ addNeed = ->
       alert 'Be more descriptive'
 
 Template.newNeed.events
-  "click input#newNeedButton": ->
+  "click input#newNeedButton": (e)->
     addNeed()
 
-  "keyup textarea#newNeed": (evt) ->
+  "keyup textarea#newNeed": (e)->
     Session.set('chars', $('textarea#newNeed').val().length)
 

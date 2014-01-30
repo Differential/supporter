@@ -2,14 +2,29 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
+      "meteor": {
+        "git": "https://github.com/meteor/meteor.git",
+        "branch": "shark"
+      },
       "font-awesome": {},
-      "iron-router": {},
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "branch": "cmather"
+      },
       "phantomjs": {},
       "bootstrap-3": {},
-      "accounts-entry": {},
+      "accounts-entry": {
+        "git": "https://github.com/BeDifferential/accounts-entry.git",
+        "branch": "shark"
+      },
       "HTML5-History-API": {}
     },
     "packages": {
+      "meteor": {
+        "git": "https://github.com/meteor/meteor.git",
+        "branch": "shark",
+        "commit": "f21e63b4954d7b09d0ab24300c25ae136edcf731"
+      },
       "font-awesome": {
         "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
         "tag": "v4.0.3",
@@ -17,8 +32,8 @@
       },
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.6.2",
-        "commit": "ce56e58b45624dce992490f3a1c10f10d3948bae"
+        "branch": "cmather",
+        "commit": "d1590b2b2e6096670c3dda8b4724229d7e58a37b"
       },
       "phantomjs": {
         "git": "https://github.com/gadicohen/meteor-phantomjs.git",
@@ -32,13 +47,18 @@
       },
       "accounts-entry": {
         "git": "https://github.com/BeDifferential/accounts-entry.git",
-        "tag": "v0.4.4",
-        "commit": "56cee1ff5afe2ce5be7b749cd74fc939fc9ce781"
+        "branch": "shark",
+        "commit": "f7164980fd1576e9cb83fd60c9d91deabfb06571"
       },
       "HTML5-History-API": {
         "git": "https://github.com/tmeasday/meteor-HTML5-History-API.git",
         "tag": "v4.0.0",
         "commit": "dc4965f1424cfca625ec3fbea17eace03f8e32c5"
+      },
+      "just-i18n": {
+        "git": "https://github.com/subhog/meteor-just-i18n.git",
+        "tag": "v0.1.1",
+        "commit": "ce88ac66c0dc107dc2da93ce152616115838101f"
       }
     }
   }

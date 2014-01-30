@@ -1,10 +1,16 @@
 {
   "packages": {
     "font-awesome": {},
-    "iron-router": {},
+    "iron-router": {
+      "git": "https://github.com/EventedMind/iron-router.git",
+      "branch": "cmather"
+    },
     "phantomjs": {},
     "bootstrap-3": {},
-    "accounts-entry": {},
+    "accounts-entry": {
+      "git": "https://github.com/BeDifferential/accounts-entry.git",
+      "branch": "shark"
+    },
     "HTML5-History-API": {}
   }
 }
