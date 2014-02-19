@@ -32,6 +32,11 @@ Template.layout.events
     Router.go('/fav')
     Session.set('currentSection', 'strNeeds')
 
+  "click .backgroundsLink": (event) ->
+    event.preventDefault()
+    Router.go('/backgrounds')
+    Session.set('currentSection', 'backgrounds')
+
   'keyup #query': (event) ->
     event.preventDefault()
     query = $(event.target).val()

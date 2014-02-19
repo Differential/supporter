@@ -27,3 +27,4 @@ Meteor.defer ->
       username: 'foo'
       needId: need
     )
+

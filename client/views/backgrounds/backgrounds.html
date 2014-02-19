@@ -1,0 +1,18 @@
+<template name="backgrounds">
+    <div class="backgrounds">
+        <div class='row'>
+            <div class="backgroundListing">
+                <div class='background-list'>
+                    {{#if currentUser}}
+                    {{> newBackground}}
+                    {{else}}
+                    {{> welcomeCard}}
+                    {{/if}}
+                    {{#each this}}
+                    {{> backgroundListing}}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

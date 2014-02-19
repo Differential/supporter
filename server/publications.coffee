@@ -12,3 +12,6 @@ Meteor.publish "offers", ->
 
 Meteor.publish "user", (username) ->
   Meteor.users.find(username: username)
+
+Meteor.publish "backgrounds", ->
+  Backgrounds.find()

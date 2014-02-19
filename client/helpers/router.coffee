@@ -49,6 +49,33 @@ Router.map ->
       Session.set('sendingTo', null)
       Session.set('respondingTo', null)
 
+  @route 'backgrounds',
+    path: '/backgrounds'
+    data: ->
+      Backgrounds.find({}, {sort: {score: -1}})
+    waitOn: ->
+      Meteor.subscribe 'backgrounds', Session.get('query')
+    before: ->
+      if (Meteor.loggingIn())
+        @render 'loading'
+        return @stop()
+      if (Meteor.user() && !Meteor.user().username)
+        return @redirect('profile')
+      else
+        @render 'backgrounds'
+
+  @route 'background',
+    path: '/background/:_id'
+    data: ->
+      Needs.findOne @params._id ##change to Backgrounds or Projects
+    waitOn: ->
+      Meteor.subscribe('needs')
+      Meteor.subscribe('offers')
+      Meteor.subscribe('backgrounds')
+    before: ->
+      Session.set('sendingTo', null)
+      Session.set('respondingTo', null)
+
   @route 'user',
     path: '/u/:username'
     data: ->
