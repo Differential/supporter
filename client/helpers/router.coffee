@@ -39,12 +39,12 @@ Router.map ->
         @render 'needs'
 
   @route 'need',
-    path: '/need/:_id'
+    path: '/need/:id'
     data: ->
-      Needs.findOne @params._id
+      Needs.findOne @params.id
     waitOn: ->
-      Meteor.subscribe('needs')
-      Meteor.subscribe('offers')
+      Meteor.subscribe('need', @params.id)
+      Meteor.subscribe('offersForNeed', @params.id)
     before: ->
       Session.set('sendingTo', null)
       Session.set('respondingTo', null)
