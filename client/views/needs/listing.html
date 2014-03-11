@@ -11,8 +11,12 @@
             {{/if}}
           {{/if}}
         </div>
-        <div class='pull-left'>
-            <a title='responses' class="fa fa-info" href="/background/{{_id}}"></a>
+        <div class="pull-center">
+            {{#if hasBackground}}
+              <a title='responses' href="/background/{{backgroundId}}">{{backgroundTitle}}</a>
+            {{else}}
+              Looks like you have no background
+            {{/if}}
         </div>
       </div>
       <div class='panel-body'>

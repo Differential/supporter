@@ -7,8 +7,18 @@ Meteor.defer ->
     #create Users
     userId = Accounts.createUser(
       username: 'foo'
+      name: 'foo'
       password: 'foo'
       email: 'foo@bar.com'
+    )
+
+    #create background
+    background = Backgrounds.insert(
+      name: "Background title"
+      description: "Background Summary"
+      createdAt: now
+      userId: userId
+      username: 'foo'
     )
 
     #create Needs
@@ -18,6 +28,8 @@ Meteor.defer ->
       userId: userId
       username: 'foo'
       offerCount: 0
+      score: 0
+      background: background
     )
 
     offer = Offers.insert(
@@ -25,6 +37,7 @@ Meteor.defer ->
       createdAt: now
       userId: userId
       username: 'foo'
+      email: 'foo@bar.com'
       needId: need
+      needOwnerId: userId
     )
-
