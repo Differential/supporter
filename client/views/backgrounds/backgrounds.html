@@ -4,12 +4,13 @@
             <div class="backgroundListing">
                 <div class='background-list'>
                     {{#if currentUser}}
-                    {{> newBackground}}
+                      {{> newBackground}}
                     {{else}}
-                    {{> welcomeCard}}
+                      {{> welcomeCard}}
                     {{/if}}
+
                     {{#each this}}
-                    {{> backgroundListing}}
+                      {{> backgroundListing}}
                     {{/each}}
                 </div>
             </div>
