@@ -3,15 +3,20 @@
         <div class='row'>
             <div class="backgroundListing">
                 <div class='background-list'>
-                    {{#if currentUser}}
-                      {{> newBackground}}
-                    {{else}}
-                      {{> welcomeCard}}
-                    {{/if}}
+                    <div class="col-md-8">
+                      <h3>Project Backgrounds</h3>
+                      {{#each this}}
+                        {{> backgroundListing}}
+                      {{/each}}
+                    </div>
 
-                    {{#each this}}
-                      {{> backgroundListing}}
-                    {{/each}}
+                    <div class="col-md-4">
+                      {{#if currentUser}}
+                        {{> newBackground}}
+                      {{else}}
+                        {{> welcomeCard}}
+                      {{/if}}
+                    </div>
                 </div>
             </div>
         </div>

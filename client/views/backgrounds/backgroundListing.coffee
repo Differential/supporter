@@ -1,25 +1,10 @@
-Template.needListing.rendered = ->
-  $('a').tooltip
-    placement: 'bottom'
-
-  $('a').on('click', ->
-    $(@).tooltip('destroy')
-  )
-
-Template.needListing.helpers
+Template.backgroundListing.helpers
   owner: ->
-    Meteor.user() && Meteor.user().username == @username
-  showStarred: ->
-    Meteor.user() && Meteor.user().username != @username
-  starred: ->
-    #if Meteor.user()
-    Meteor.user() && Needs.findOne({_id: @_id}).starUsers and
-    Needs.findOne({_id: @_id}).starUsers.length > 0 and
-    Meteor.user()._id in Needs.findOne({_id: @_id}).starUsers
+    Meteor.userId() is @userId
 
-Template.needListing.events
+Template.backgroundListing.events
   'click .delete': (event)->
-    Needs.remove(@_id)
+    Backgrounds.remove(@_id)
 
   'click .complete': (event)->
     Needs.update(@_id, $set: {completedAt: new Date()})
