@@ -66,9 +66,9 @@ Router.map ->
         @render 'backgrounds'
 
   @route 'background',
-    path: '/background/:_id'
+    path: '/background/:id'
     data: ->
-      Needs.findOne @params._id ##change to Backgrounds or Projects
+      Backgrounds.findOne @params.id
     waitOn: ->
       Meteor.subscribe('needs')
       Meteor.subscribe('offers')

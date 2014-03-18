@@ -11,13 +11,15 @@
             {{/if}}
           {{/if}}
         </div>
-          <div class="pull-center">
-              {{#if hasBackground}}
-              <a title='responses' href="/background/{{backgroundId}}">{{backgroundTitle}}</a>
-              {{else}}
-              Looks like you have no background
-              {{/if}}
-          </div>
+        <div class="pull-center">
+          {{#if hasBackground}}
+            <a title='responses' href="/background/{{backgroundId}}">{{backgroundTitle}}</a>
+          {{else}}
+            {{#if owner}}
+              <a title='responses' href="/backgrounds">Add your need to a Project</a>
+            {{/if}}
+          {{/if}}
+        </div>
       </div>
       <div class='panel-body'>
         <a class="need-content" href="/need/{{_id}}">{{content}}</a>

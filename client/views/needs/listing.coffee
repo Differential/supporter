@@ -17,14 +17,14 @@ Template.needListing.helpers
       Needs.findOne({_id: @_id}).starUsers.length > 0 and
       Meteor.user()._id in Needs.findOne({_id: @_id}).starUsers
   hasBackground: ->
-    Needs.findOne({_id: @_id}).backgroundId != null
+    Needs.findOne({_id: @_id}) && Needs.findOne({_id: @_id}).background
   backgroundTitle: ->
-    if Needs.findOne({_id: @_id}).backgroundId != null
-      need = Needs.findOne({_id: @_id})
-      Backgrounds.findOne({_id: need.backgroundId}).name
+    if Needs.findOne({_id: @_id}).background != null
+      Backgrounds.findOne({id: Needs.findOne({_id: @_id}).background._id}).name
   backgroundId: ->
-    if Needs.findOne({_id: @_id}).backgroundId != null
-      Needs.findOne({_id: @_id}).backgroundId
+    if Needs.findOne({_id: @_id}) != null
+      Needs.findOne({_id: @_id}).background
+
 
 Template.needListing.events
   'click .delete': (event)->
