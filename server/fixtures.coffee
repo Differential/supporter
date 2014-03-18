@@ -29,7 +29,7 @@ Meteor.defer ->
       username: 'foo'
       offerCount: 0
       score: 0
-      background: background
+      backgroundId: background
     )
 
     offer = Offers.insert(

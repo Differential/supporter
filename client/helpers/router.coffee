@@ -10,7 +10,8 @@ Router.map ->
   @route 'needs',
     path: '/'
     data: ->
-      Needs.find({}, {sort: {score: -1}})
+      needs: Needs.find({}, {sort: {score: -1}})
+      backgrounds: Backgrounds.find()
     waitOn: ->
       Meteor.subscribe 'needs', Session.get('query')
     before: ->
