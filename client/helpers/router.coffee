@@ -14,7 +14,7 @@ Router.map ->
       backgrounds: Backgrounds.find()
     waitOn: ->
       Meteor.subscribe 'needs', Session.get('query')
-    before: ->
+    onBeforeAction: ->
       if (Meteor.loggingIn())
         @render 'loading'
         return @stop()
@@ -30,7 +30,7 @@ Router.map ->
       Needs.find({userId: Meteor.userId()}, sort: {score: -1})
     waitOn: ->
       Meteor.subscribe 'needs', Session.get('query')
-    before: ->
+    onBeforeAction: ->
       if (Meteor.loggingIn())
         @render 'loading'
         return @stop()
@@ -46,7 +46,7 @@ Router.map ->
     waitOn: ->
       Meteor.subscribe('need', @params.id)
       Meteor.subscribe('offersForNeed', @params.id)
-    before: ->
+    onBeforeAction: ->
       Session.set('sendingTo', null)
       Session.set('respondingTo', null)
 
@@ -56,7 +56,7 @@ Router.map ->
       Backgrounds.find({}, {sort: {score: -1}})
     waitOn: ->
       Meteor.subscribe 'backgrounds', Session.get('query')
-    before: ->
+    onBeforeAction: ->
       if (Meteor.loggingIn())
         @render 'loading'
         return @stop()
@@ -73,7 +73,7 @@ Router.map ->
       Meteor.subscribe('needs')
       Meteor.subscribe('offers')
       Meteor.subscribe('backgrounds')
-    before: ->
+    onBeforeAction: ->
       Session.set('sendingTo', null)
       Session.set('respondingTo', null)
 
@@ -98,7 +98,7 @@ Router.map ->
       Needs.find ({starUsers: { $in: [Meteor.user()._id] }}  )
     waitOn: ->
       Meteor.subscribe 'needs', Session.get('strNeeds')
-    before: ->
+    onBeforeAction: ->
       if (Meteor.loggingIn())
         @render 'loading'
         return @stop()
@@ -114,7 +114,7 @@ Router.map ->
        Needs.find({}, {sort: {score: -1}})
     waitOn: ->
       Meteor.subscribe 'needs', Session.get('query')
-    before: ->
+    onBeforeAction: ->
       if (Meteor.loggingIn())
         @render 'loading'
         return @stop()
