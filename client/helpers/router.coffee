@@ -6,6 +6,8 @@ Router.configure
     footer:
       to: "footer"
 
+Router.onBeforeAction 'loading'
+
 Router.map ->
   @route 'needs',
     path: '/'
@@ -26,8 +28,7 @@ Router.map ->
     path: '/mine'
     template: 'needs'
     data: ->
-      if Meteor.userId()
-        Needs.find({userId: Meteor.userId()}, sort: {score: -1})
+      needs: Needs.find({userId: Meteor.userId()}, sort: {score: -1})
     waitOn: ->
       Meteor.subscribe 'needs', Session.get('query')
     onBeforeAction: ->
@@ -93,7 +94,7 @@ Router.map ->
     path: '/fav'
     template: 'needs'
     data: ->
-      Needs.find ({starUsers: { $in: [Meteor.user()._id] }}  )
+      needs: Needs.find ({starUsers: { $in: [Meteor.user()._id] }}  )
     waitOn: ->
       Meteor.subscribe 'needs', Session.get('strNeeds')
     onBeforeAction: ->
