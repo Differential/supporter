@@ -53,7 +53,8 @@ Router.map ->
   @route 'backgrounds',
     path: '/backgrounds'
     data: ->
-      Backgrounds.find({}, {sort: {score: -1}})
+      backgrounds: Backgrounds.find({}, {sort: {score: -1}})
+      needs: Needs.find({})
     waitOn: ->
       Meteor.subscribe 'backgrounds', Session.get('query')
     onBeforeAction: ->
@@ -109,7 +110,7 @@ Router.map ->
     path: '/top'
     template: 'needs'
     data: ->
-       Needs.find({}, {sort: {score: -1}})
+       needs: Needs.find({}, {sort: {score: -1}})
     waitOn: ->
       Meteor.subscribe 'needs', Session.get('query')
     onBeforeAction: ->

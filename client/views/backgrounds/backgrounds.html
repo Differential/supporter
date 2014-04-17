@@ -5,8 +5,11 @@
                 <div class='background-list'>
                     <div class="col-md-8">
                       <h3>Project Backgrounds</h3>
-                      {{#each this}}
+                      {{#each backgrounds}}
                         {{> backgroundListing}}
+                      {{/each}}
+                      {{#each needs}}
+                        {{> needStub}}
                       {{/each}}
                     </div>
                     <div class="col-md-4">

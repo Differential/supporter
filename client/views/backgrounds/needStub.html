@@ -1,0 +1,16 @@
+<template name="needStub">
+    <div class='panel panel-default'>
+        <div class='panel-heading'>
+            Need ({{_id}}) project is {{backgroundId}}
+        </div>
+        <div class='panel-body'>
+            <a class="need-content">{{content}}</a>
+        </div>
+        {{#if owner}}
+        <div class='panel-footer'>
+            <a data-toggle='modal' title='remove' class='delete'><i class='fa fa-times'></i></a>
+            <a title='select' class='select'><i class='fa fa-check'></i></a>
+        </div>
+        {{/if}}
+    </div>
+</template>

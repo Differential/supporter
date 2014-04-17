@@ -14,3 +14,4 @@ Meteor.startup ->
 
   Meteor.subscribe('offers')
   Meteor.subscribe('backgrounds')
+  Meteor.subscribe('needs')

@@ -1,7 +1,7 @@
 <template name="backgroundListing">
     <div class='panel panel-default'>
       <div class='panel-heading'>
-        {{name}}
+        {{name}} - {{_id}}
       </div>
       <div class='panel-body'>
         <a class="need-content">{{description}}</a>
@@ -14,4 +14,7 @@
         </div>
       {{/if}}
     </div>
+    {{#each needs}}
+      {{> needStub}}
+    {{/each}}
 </template>
