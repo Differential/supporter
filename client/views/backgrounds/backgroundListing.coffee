@@ -2,6 +2,15 @@ Template.backgroundListing.helpers
   owner: ->
     Meteor.userId() is @userId
 
+Template.backgroundListing.helpers
+  backgrounds: ->
+    Backgrounds.find({})
+
+Template.backgroundListing.helpers
+  needs: ->
+    Needs.find({userId: Meteor.userId()})
+
+
 Template.backgroundListing.events
   'click .delete': (event)->
     Backgrounds.remove(@_id)

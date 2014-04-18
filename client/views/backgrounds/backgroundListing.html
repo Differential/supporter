@@ -5,6 +5,9 @@
       </div>
       <div class='panel-body'>
         <a class="need-content">{{description}}</a>
+          {{#each needs}}
+            {{> needStub}}
+          {{/each}}
       </div>
       {{#if owner}}
         <div class='panel-footer'>
@@ -13,8 +16,8 @@
           <a title='edit' class="editNeedBtn"><i class='fa fa-edit'></i></a>
         </div>
       {{/if}}
+
+
     </div>
-    {{#each needs}}
-      {{> needStub}}
-    {{/each}}
+
 </template>
