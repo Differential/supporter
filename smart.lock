@@ -7,7 +7,9 @@
       "phantomjs": {},
       "bootstrap-3": {},
       "accounts-entry": {},
-      "HTML5-History-API": {}
+      "HTML5-History-API": {},
+      "select2-bootstrap3-css": {},
+      "select2": {}
     },
     "packages": {
       "font-awesome": {
@@ -39,6 +41,16 @@
         "git": "https://github.com/tmeasday/meteor-HTML5-History-API.git",
         "tag": "v4.0.0",
         "commit": "dc4965f1424cfca625ec3fbea17eace03f8e32c5"
+      },
+      "select2-bootstrap3-css": {
+        "git": "https://github.com/esperadomedia/meteor-select2-bootstrap3-css.git",
+        "tag": "v0.0.5",
+        "commit": "ac0c74d4b110c4c5149f17bb33c3e9bb4f77eb88"
+      },
+      "select2": {
+        "git": "https://github.com/nate-strauser/meteor-select2.git",
+        "tag": "v3.4.5",
+        "commit": "4a8d05582b949a14f0ee217c185166abbf112822"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

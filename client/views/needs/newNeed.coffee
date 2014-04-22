@@ -1,3 +1,6 @@
+Template.newNeed.rendered = ->
+  $('#tags').select2({tags:["mentoring", "funding"]})
+
 Template.newNeed.helpers
   chars: ->
     Session.get('chars')
@@ -41,6 +44,7 @@ addNeed = ->
           username: user.username
           offerCount: 0
           score: Supporter.computeScore({stars: 0, createdAt: new Date()})
+          tags: $('#tags').val().split(",")
       else
         alert 'Be less descriptive'
     else
@@ -55,3 +59,4 @@ Template.newNeed.events
 
   "keyup textarea#newNeed": (e)->
     _.debounce(updateChars, 3000)()
+

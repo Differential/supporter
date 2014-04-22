@@ -38,6 +38,9 @@
               <a title='share' class='send'><i class='fa fa-mail-forward'></i></a>
             {{/if}}
           {{/if}}
+            {{#each tags}}
+              <a class="tags" href="/{{this}}">{{this}}</a>
+            {{/each}}
         </div>
       </div>
     </div>

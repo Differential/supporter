@@ -5,6 +5,8 @@
     "phantomjs": {},
     "bootstrap-3": {},
     "accounts-entry": {},
-    "HTML5-History-API": {}
+    "HTML5-History-API": {},
+    "select2-bootstrap3-css": {},
+    "select2": {}
   }
 }
