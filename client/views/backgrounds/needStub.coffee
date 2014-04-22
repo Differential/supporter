@@ -7,5 +7,4 @@ Template.needStub.events
     Needs.update(@_id, $set: {backgroundId: ""})
 
   'click .select': (event)->
-      console.log $(event.currentTarget).attr('div.panel-heading')
-    ##  Needs.update(@_id, $set: {backgroundId: @_id})
+      Needs.update(@_id, $set: {backgroundId: $(event.target).data('id')})

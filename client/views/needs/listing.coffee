@@ -17,13 +17,16 @@ Template.needListing.helpers
       Needs.findOne({_id: @_id}).starUsers.length > 0 and
       Meteor.user()._id in Needs.findOne({_id: @_id}).starUsers
   hasBackground: ->
-    Needs.findOne({_id: @_id}) && Needs.findOne({_id: @_id}).background
+    console.log @_id
+    Needs.findOne({_id: @_id}) && Needs.findOne({_id: @_id}).backgroundId
   backgroundTitle: ->
-    if Needs.findOne({_id: @_id}).background != null
-      Backgrounds.findOne({id: Needs.findOne({_id: @_id}).background._id}).name
+    if Needs.findOne({_id: @_id}).backgroundId != null
+      backgroundId = Needs.findOne({_id: @_id}).backgroundId
+      console.log backgroundId
+      Backgrounds.findOne({_id: backgroundId}).name
   backgroundId: ->
     if Needs.findOne({_id: @_id}) != null
-      Needs.findOne({_id: @_id}).background
+      Needs.findOne({_id: @_id}).backgroundId
 
 
 Template.needListing.events
