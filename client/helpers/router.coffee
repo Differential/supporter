@@ -16,6 +16,8 @@ Router.map ->
       backgrounds: Backgrounds.find()
     waitOn: ->
       Meteor.subscribe 'needs', Session.get('query')
+      Meteor.subscribe('offers')
+      Meteor.subscribe('backgrounds')
     onBeforeAction: ->
       if (Meteor.loggingIn())
         @render 'loading'
@@ -31,6 +33,8 @@ Router.map ->
       needs: Needs.find({userId: Meteor.userId()}, sort: {score: -1})
     waitOn: ->
       Meteor.subscribe 'needs', Session.get('query')
+      Meteor.subscribe('offers')
+      Meteor.subscribe('backgrounds')
     onBeforeAction: ->
       if (Meteor.loggingIn())
         @render 'loading'
@@ -46,6 +50,7 @@ Router.map ->
     waitOn: ->
       Meteor.subscribe('need', @params.id)
       Meteor.subscribe('offersForNeed', @params.id)
+      Meteor.subscribe('backgrounds')
     onBeforeAction: ->
       Session.set('sendingTo', null)
       Session.set('respondingTo', null)
@@ -57,6 +62,8 @@ Router.map ->
       needs: Needs.find({})
     waitOn: ->
       Meteor.subscribe 'backgrounds', Session.get('query')
+      Meteor.subscribe('offers')
+      Meteor.subscribe('needs')
     onBeforeAction: ->
       if (Meteor.loggingIn())
         @render 'loading'
@@ -85,6 +92,9 @@ Router.map ->
     waitOn: ->
       Meteor.subscribe('user', @params.username)
       Meteor.subscribe('userNeeds', @params.username)
+      Meteor.subscribe('offers')
+      Meteor.subscribe('backgrounds')
+      Meteor.subscribe('needs')
 
   @route 'profile',
     path: '/profile'
@@ -98,6 +108,8 @@ Router.map ->
       needs: Needs.find ({starUsers: { $in: [Meteor.user()._id] }}  )
     waitOn: ->
       Meteor.subscribe 'needs', Session.get('strNeeds')
+      Meteor.subscribe('offers')
+      Meteor.subscribe('backgrounds')
     onBeforeAction: ->
       if (Meteor.loggingIn())
         @render 'loading'
@@ -113,6 +125,8 @@ Router.map ->
        needs: Needs.find({}, {sort: {score: -1}})
     waitOn: ->
       Meteor.subscribe 'needs', Session.get('query')
+      Meteor.subscribe('offers')
+      Meteor.subscribe('backgrounds')
     onBeforeAction: ->
       if (Meteor.loggingIn())
         @render 'loading'
