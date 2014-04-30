@@ -16,7 +16,6 @@ Template.needListing.helpers
       Needs.findOne({_id: @_id}).starUsers.length > 0 and
       Meteor.user()._id in Needs.findOne({_id: @_id}).starUsers
   hasBackground: ->
-    console.log @_id
     Needs.findOne({_id: @_id}) && Needs.findOne({_id: @_id}).backgroundId
   backgroundTitle: ->
     if Needs.findOne({_id: @_id}).backgroundId != null
