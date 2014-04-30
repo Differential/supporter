@@ -25,6 +25,23 @@ Router.map ->
         return @redirect('profile')
       else
         @render 'needs'
+  @route 'tag',
+    path: '/:query'
+    template: 'needs'
+    data: ->
+      needs: Needs.find({}, {sort: {score: -1}})
+      backgrounds: Backgrounds.find()
+    waitOn: ->
+      Meteor.subscribe 'needs', @params.query
+      Meteor.subscribe('offers')
+      Meteor.subscribe('backgrounds')
+    onBeforeAction: ->
+      if (Meteor.loggingIn())
+        @render 'loading'
+      if (Meteor.user() && !Meteor.user().username)
+        return @redirect('profile')
+      else
+        @render 'needs'
 
   @route 'myNeeds',
     path: '/mine'
