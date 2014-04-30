@@ -1,6 +1,6 @@
 Meteor.publish "needs", (query) ->
   if query
-    Needs.find {completedAt: {$exists: false},  $or: [ { content: {$regex: query, $options: 'i'} }, { tags: { $in: [query] } } ] }
+    Needs.find {completedAt: {$exists: false},  $or: [ { content: {$regex: query, $options: 'i'} }, { tags: { $in: [query] } } ] }, {sort: {score: -1}}
   else
     Needs.find {completedAt: {$exists: false}}, {sort: {score: -1}}
 
