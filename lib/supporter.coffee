@@ -6,4 +6,6 @@
     baseScore = stars || 1
     ageInHours = (new Date().getTime() - age) / (60 * 60 * 1000)
 
+    console.log [stars, baseScore, ageInHours]
+
     baseScore / Math.pow(ageInHours + 2, f) * 100

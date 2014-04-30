@@ -48,6 +48,7 @@ Template.needListing.events
     $(template.find('.editNeed')).modal()
 
   "click .star": (event, template)->
+    id = @_id
     stars = Needs.find ({_id:@_id,  starUsers: { $in: [Meteor.user()._id] }}  )
     alreadyStar = stars and stars.count() > 0
     if alreadyStar
@@ -58,4 +59,5 @@ Template.needListing.events
       #TODO Add this need to user's list
       Needs.update(@_id,  {$inc: {starCount: 1}})
       Needs.update(@_id, {$push: {starUsers: Meteor.user()._id}})
-    Meteor.call("updateScore", @, true)
+
+    Meteor.call("updateScore", id, true)
