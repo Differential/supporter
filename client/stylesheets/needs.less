@@ -16,11 +16,9 @@ div.needs-list {
 
 div.panel {
   background-color: #fff;
+  width: 364px;
   border-radius: 4px;
   box-shadow: 4px 4px 20px #DDD;
-  textarea {
-    width: 95%;
-  }
   .panel-footer {
     background-color: #fff;
     a:hover {
@@ -30,6 +28,9 @@ div.panel {
   .panel-header {
     a:hover {
       text-decoration: none;
+    }
+    .panel-background {
+      padding: 10px 0 0 15px;
     }
   }
   i {
@@ -50,29 +51,11 @@ a.need-content {
   text-decoration: none;
   color: #333;
   display: block;
-  min-height: 100px;
 }
 
 .needListing .panel {
-  height: 180px;
   position: relative;
   .pull-right {
     padding-top: 5px;
   }
-  .panel-footer {
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-  }
-  @media (max-width: 1197px) {
-    height: 200px;
-  }
-  @media (max-width: 992px) {
-    height: 150px;
-  }
-  @media (max-width: 600px) {
-    height: 200px;
-  }
 }
-
-
