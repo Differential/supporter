@@ -4,8 +4,6 @@ Meteor.publish "needs", (query) ->
   else
     Needs.find {completedAt: {$exists: false}}, {sort: {score: -1}}
 
-
-
 Meteor.publish "userNeeds", (username) ->
   Needs.find {username: username, completedAt: {$exists: false}}, {sort: {score: -1}}
 

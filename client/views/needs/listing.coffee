@@ -12,7 +12,6 @@ Template.needListing.helpers
   showStarred: ->
     Meteor.user() && Meteor.user().username != @username
   starred: ->
-    #if Meteor.user()
     Meteor.user() && Needs.findOne({_id: @_id}).starUsers and
       Needs.findOne({_id: @_id}).starUsers.length > 0 and
       Meteor.user()._id in Needs.findOne({_id: @_id}).starUsers
@@ -22,7 +21,6 @@ Template.needListing.helpers
   backgroundTitle: ->
     if Needs.findOne({_id: @_id}).backgroundId != null
       backgroundId = Needs.findOne({_id: @_id}).backgroundId
-      console.log backgroundId
       Backgrounds.findOne({_id: backgroundId}).name
   backgroundId: ->
     if Needs.findOne({_id: @_id}) != null
@@ -53,8 +51,6 @@ Template.needListing.events
   "click .star": (event, template)->
     stars = Needs.find ({_id:@_id,  starUsers: { $in: [Meteor.user()._id] }}  )
     alreadyStar = stars and stars.count() > 0
-    #starCount = Needs.find({_id:@_id}, { array: { $elemMatch: { starUser: Meteor.user()._id }}}).count()
-    #starCount = Needs.find( {_id:@id}, { array: { $elemMatch: { starUser: Meteor.user()._id }}}).Count
     if alreadyStar
       #TODO remove this need to user's list
       Needs.update(@_id, {$pull: {starUsers: Meteor.user()._id}})
