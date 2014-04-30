@@ -1,5 +1,6 @@
 Meteor.methods({
-  updateScore: function (need, forceUpdate) {
+  updateScore: function (needId, forceUpdate) {
+  var need = Needs.findOne(needId);
   var forceUpdate = typeof forceUpdate != 'undefined' ? forceUpdate : false;
 
   newScore = Supporter.computeScore(need)
