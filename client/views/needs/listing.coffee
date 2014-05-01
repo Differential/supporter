@@ -7,6 +7,8 @@ Template.needListing.rendered = ->
   )
 
 Template.needListing.helpers
+  isEditing: ->
+    Session.get('editId') is @_id
   owner: ->
     Meteor.user() && Meteor.user().username == @username
   showStarred: ->
@@ -45,7 +47,7 @@ Template.needListing.events
   "click .editNeedBtn": (event, template)->
     Session.set('respondingTo', @_id)
     Session.set('charsOffer', null)
-    $(template.find('.editNeed')).modal()
+    Session.set('editId', @_id)
 
   "click .star": (event, template)->
     id = @_id

@@ -11,45 +11,52 @@
         {{/if}}
       </div>
 			<div class='panel-background'>
-	      {{#if hasBackground}}
-	        <a href="/background/{{backgroundId}}">{{backgroundTitle}}</a>
-          <a title='posted by' href="/u/{{username}}">({{username}})</a>
-	      {{else}}
-	        {{#if owner}}
-	          <a href="/backgrounds">associate with a project</a>
-          {{else}}
-            <a title='posted by' href="/u/{{username}}">{{username}}</a>
-	        {{/if}}
-	      {{/if}}
+        {{#unless isEditing}}
+  	      {{#if hasBackground}}
+  	        <a href="/background/{{backgroundId}}">{{backgroundTitle}}</a>
+            <a title='posted by' href="/u/{{username}}">({{username}})</a>
+  	      {{else}}
+  	        {{#if owner}}
+  	          <a href="/backgrounds">associate with a project</a>
+            {{else}}
+              <a title='posted by' href="/u/{{username}}">{{username}}</a>
+  	        {{/if}}
+  	      {{/if}}
+        {{/unless}}
 			</div>
     </div>
     <div class='panel-body'>
-      <p>
-        <a class="need-content" href="/need/{{_id}}">{{content}}</a>
-      </p>
-      {{#each tags}}
-        <a class="badge" href="/{{this}}">{{this}}</a>
-      {{/each}}
+      {{#if isEditing}}
+        {{> editNeed}}
+      {{else}}
+        <p>
+          <a class="need-content" href="/need/{{_id}}">{{content}}</a>
+        </p>
+        {{#each tags}}
+          <a class="badge" href="/{{this}}">{{this}}</a>
+        {{/each}}
+      {{/if}}
     </div>
-    <div class='panel-footer'>
-       {{date createdAt}}
-      <a title='responses' class="offerList" href="/need/{{_id}}"><span class="badge">{{offerCount}}</span></a>
-      <div class='pull-right'>
-        {{#if owner}}
-          <a data-toggle='modal' title='remove' class='delete'><i class='fa fa-times'></i></a>
-          <a title='complete' class='complete'><i class='fa fa-check'></i></a>
-          <a title='edit' class="editNeedBtn"><i class='fa fa-edit'></i></a>
-        {{else}}
-          {{#if currentUser}}
-            <a data-toggle='modal' title='respond' class='respond'><i class='fa fa-reply'></i></a>
-            <a title='share' class='send'><i class='fa fa-mail-forward'></i></a>
+    {{#unless isEditing}}
+      <div class='panel-footer'>
+        {{date createdAt}}
+        <a title='responses' class="offerList" href="/need/{{_id}}"><span class="badge">{{offerCount}}</span></a>
+        <div class='pull-right'>
+          {{#if owner}}
+            <a data-toggle='modal' title='remove' class='delete'><i class='fa fa-times'></i></a>
+            <a title='complete' class='complete'><i class='fa fa-check'></i></a>
+            <a title='edit' class="editNeedBtn"><i class='fa fa-edit'></i></a>
+          {{else}}
+            {{#if currentUser}}
+              <a data-toggle='modal' title='respond' class='respond'><i class='fa fa-reply'></i></a>
+              <a title='share' class='send'><i class='fa fa-mail-forward'></i></a>
+            {{/if}}
           {{/if}}
-        {{/if}}
+        </div>
       </div>
-    </div>
+    {{/unless}}
   </div>
 
-  {{> editNeed}}
   {{> newOffer}}
   {{> sendNeed}}
 </template>
