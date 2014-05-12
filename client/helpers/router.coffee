@@ -25,31 +25,15 @@ Router.map ->
         return @redirect('profile')
       else
         @render 'needs'
-  @route 'tag',
-    path: '/:query'
-    template: 'needs'
-    data: ->
-      needs: Needs.find({}, {sort: {score: -1}})
-      backgrounds: Backgrounds.find()
-    waitOn: ->
-      Meteor.subscribe 'needs', @params.query
-      Meteor.subscribe('offers')
-      Meteor.subscribe('backgrounds')
-    onBeforeAction: ->
-      if (Meteor.loggingIn())
-        @render 'loading'
-      if (Meteor.user() && !Meteor.user().username)
-        return @redirect('profile')
-      else
-        @render 'needs'
 
   @route 'myNeeds',
     path: '/mine'
     template: 'needs'
     data: ->
-      needs: Needs.find({userId: Meteor.userId()}, sort: {score: -1})
+      needs: Needs.find()
+      backgrounds: Backgrounds.find()
     waitOn: ->
-      Meteor.subscribe 'needs', Session.get('query')
+      Meteor.subscribe('userNeeds')
       Meteor.subscribe('offers')
       Meteor.subscribe('backgrounds')
     onBeforeAction: ->
@@ -63,7 +47,7 @@ Router.map ->
   @route 'need',
     path: '/need/:id'
     data: ->
-      Needs.findOne @params.id
+      needs: Needs.findOne @params.id
     waitOn: ->
       Meteor.subscribe('need', @params.id)
       Meteor.subscribe('offersForNeed', @params.id)
@@ -78,9 +62,9 @@ Router.map ->
       backgrounds: Backgrounds.find({}, {sort: {score: -1}})
       needs: Needs.find({})
     waitOn: ->
-      Meteor.subscribe 'backgrounds', Session.get('query')
-      Meteor.subscribe('offers')
       Meteor.subscribe('needs')
+      Meteor.subscribe('backgrounds')
+      Meteor.subscribe('offers')
     onBeforeAction: ->
       if (Meteor.loggingIn())
         @render 'loading'
@@ -142,6 +126,25 @@ Router.map ->
        needs: Needs.find({}, {sort: {score: -1}})
     waitOn: ->
       Meteor.subscribe 'needs', Session.get('query')
+      Meteor.subscribe('offers')
+      Meteor.subscribe('backgrounds')
+    onBeforeAction: ->
+      if (Meteor.loggingIn())
+        @render 'loading'
+      if (Meteor.user() && !Meteor.user().username)
+        return @redirect('profile')
+      else
+        @render 'needs'
+
+  @route 'tag',
+    path: '/:query'
+    template: 'needs'
+    data: ->
+      needs: Needs.find({}, {sort: {score: -1}})
+      backgrounds: Backgrounds.find()
+      offers: Offers.find()
+    waitOn: ->
+      Meteor.subscribe 'needs', @params.query
       Meteor.subscribe('offers')
       Meteor.subscribe('backgrounds')
     onBeforeAction: ->
