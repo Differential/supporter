@@ -18,6 +18,11 @@ Template.need.helpers
     Needs.findOne().createdAt
   isReplying: ->
     Session.get('replyId') is @_id
+  watching: ->
+    cardId = Needs.findOne()._id
+    watching = Meteor.user().profile.watching
+    if _.indexOf(watching, cardId) isnt -1
+      true
 
 Template.need.events
   'click .delete': (event)->
