@@ -1,6 +1,7 @@
 Meteor.publish "needs", (query) ->
+  query = query.toLowerCase()
   if query
-    Needs.find {completedAt: {$exists: false},  $or: [ { content: {$regex: query, $options: 'i'} }, { tags: { $in: [query] } } ] }, {sort: {score: -1}}
+    Needs.find {completedAt: {$exists: false},  $or: [ { content: {$regex: "/^#{query}$/", $options: 'i'} }, { tags: { $in: [ query ] } } ] }, {sort: {score: -1}}
   else
     Needs.find {completedAt: {$exists: false}}, {sort: {score: -1}}
 
