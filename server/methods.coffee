@@ -53,4 +53,6 @@ Meteor.startup ->
     sendSubscriptions: () ->
       _.each Meteor.users.find().fetch(), (user) ->
         console.log [ "Sending subscription", user._id ]
-        Supporter.sendSubscription(user._id, Needs.find())
+        tags = user.profile.subscriptions
+        if tags && tags.length > 0
+          Supporter.sendSubscription(user._id, Supporter.needsToSend(user, tags))

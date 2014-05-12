@@ -10,22 +10,26 @@
     score
 
   sendSubscription: (userId, needs) ->
-    user = Meteor.users.findOne(userId)
-    content = "Recent needs:\n\n"
+    console.log needs.fetch()
+    if needs.count() > 0
+      user = Meteor.users.findOne(userId)
+      content = "Recent needs:\n\n"
+      _.each needs, (need) ->
+        content += need.content + "\n"
+        content += Meteor.absoluteUrl "/need/#{need._id}"
+        content += "\n\n"
 
-    _.each needs.fetch(), (need) ->
-      content += need.content + "\n"
-      content += Meteor.absoluteUrl "/need/#{need._id}"
-      content += "\n\n"
+      if not user.profile.subscriptionEmailSentAt or not new Date().getDate() - user.profile.subscriptionEmailSentAt.getDate() >= 3
+        Email.send
+          to: user.emails[0].address
+          from: "Supporter.io <no-reply@supporter.io>"
+          text: content
+          subject: 'Recently added needs'
 
-    Email.send
-      to: user.emails[0].address
-      from: "Supporter.io <no-reply@supporter.io>"
-      text: content
-      subject: 'Recently added needs'
+        Meteor.users.update {_id : userId}, {$set: { "profile.subscriptionEmailSentAt": new Date() } }
 
-    Meteor.users.update {_id : userId}, {$set: { "profile.subscriptionEmailSentAt": new Date() } }
-
-  needsToSend: (tagList) ->
-    Needs.find ({tags: { $in: tagList }, $where: "this.subscriptionEmailSentAt.getTime() < this.createdAt.getTime()"})
-
+  needsToSend: (user, tagList) ->
+    if user.profile.subscriptionEmailSentAt
+      Needs.find ( { tags: { $in: tagList }, createdAt:  { $gt: user.profile.subscriptionEmailSentAt   } })
+    else
+      Needs.find ( { tags: { $in: tagList }} )
