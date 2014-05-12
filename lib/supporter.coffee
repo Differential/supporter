@@ -22,7 +22,7 @@
       if not user.profile.subscriptionEmailSentAt or not new Date().getDate() - user.profile.subscriptionEmailSentAt.getDate() >= 3
         Email.send
           to: user.emails[0].address
-          from: "Supporter.io <no-reply@supporter.io>"
+          from: "#{Meteor.settings.public.siteName} <no-reply@supporter.io>"
           text: content
           subject: 'Recently added needs'
 

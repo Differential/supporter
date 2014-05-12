@@ -1,4 +1,4 @@
-Accounts.emailTemplates.siteName = "Supporter.io"
+Accounts.emailTemplates.siteName = Meteor.settings.public.siteName
 Accounts.emailTemplates.from = "no-reply@supporter.mailgun.org"
 
 Accounts.onCreateUser (options, user) ->

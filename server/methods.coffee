@@ -28,7 +28,7 @@ Meteor.startup ->
         "To view the need, click the link below.\n\n" +
         url + "\n\n" +
         "Thanks!\n\n" +
-        "Supporter.io\n\n"
+        "#{Meteor.settings.public.siteName}\n\n"
 
       Email.send
         to: email

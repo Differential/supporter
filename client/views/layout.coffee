@@ -1,4 +1,5 @@
 Template.layout.rendered = ->
+  document.title = Meteor.settings.public.siteName
 
   if Router.current().path is '/profile'
     Session.set('currentSection', 'profile')
