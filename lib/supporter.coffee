@@ -10,13 +10,13 @@
     score
 
   sendSubscription: (userId, needs) ->
-    console.log needs.fetch()
     if needs.count() > 0
       user = Meteor.users.findOne(userId)
       content = "Recent needs:\n\n"
-      _.each needs, (need) ->
+      _.each needs.fetch(), (need) ->
+        console.log need
         content += need.content + "\n"
-        content += Meteor.absoluteUrl "/need/#{need._id}"
+        content += Meteor.absoluteUrl "need/#{need._id}"
         content += "\n\n"
 
       if not user.profile.subscriptionEmailSentAt or not new Date().getDate() - user.profile.subscriptionEmailSentAt.getDate() >= 3
