@@ -1,4 +1,4 @@
-<template name="need"> 
+<template name="need">
   <div class='container'>
     <div class='panel panel-primary'>
       <div class='panel-heading'>
@@ -15,6 +15,7 @@
             <a title='complete' class='complete'><i class='icon-ok'></i></a>
           {{else}}
             {{#if currentUser}}
+              <a class='btn btn-default watch'>Watch</a>
               <a class='btn btn-default respond'><i class='icon-mail-reply'></i> Respond</a>
               <a class='btn btn-default send'><i class='icon-mail-forward'></i> Share</a>
             {{/if}}

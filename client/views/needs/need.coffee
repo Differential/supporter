@@ -37,3 +37,6 @@ Template.need.events
     Session.set('sendingTo', Needs.findOne()._id)
     $(template.find('.sendNeed')).modal()
 
+  "click .watch": (event, template)->
+    cardId = Needs.findOne()._id
+    Meteor.call 'watchCard', cardId

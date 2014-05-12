@@ -42,3 +42,10 @@ Meteor.startup ->
           "profile.subscriptions": query
         }
       }
+
+    watchCard: (cardId) ->
+      Meteor.users.update _id : @userId, {
+        $push: {
+          "profile.watching": cardId
+        }
+      }
