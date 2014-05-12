@@ -25,8 +25,6 @@ Router.map ->
         return @redirect('profile')
       else
         @render 'needs'
-    onAfterAction: ->
-      Session.set 'query', null
 
   @route 'myNeeds',
     path: '/mine'
@@ -45,6 +43,9 @@ Router.map ->
         return @redirect('profile')
       else
         @render 'needs'
+    onAfterAction: ->
+      $('#query').val('')
+      Session.set 'query', null
 
   @route 'need',
     path: '/need/:id'
@@ -58,6 +59,9 @@ Router.map ->
     onBeforeAction: ->
       Session.set('sendingTo', null)
       Session.set('respondingTo', null)
+    onAfterAction: ->
+      $('#query').val('')
+      Session.set 'query', null
 
   @route 'backgrounds',
     path: '/backgrounds'
@@ -75,6 +79,9 @@ Router.map ->
         return @redirect('profile')
       else
         @render 'backgrounds'
+    onAfterAction: ->
+      $('#query').val('')
+      Session.set 'query', null
 
   @route 'background',
     path: '/background/:id'
@@ -87,6 +94,9 @@ Router.map ->
     onBeforeAction: ->
       Session.set('sendingTo', null)
       Session.set('respondingTo', null)
+    onAfterAction: ->
+      $('#query').val('')
+      Session.set 'query', null
 
   @route 'user',
     path: '/u/:username'
@@ -99,11 +109,17 @@ Router.map ->
       Meteor.subscribe('offers')
       Meteor.subscribe('backgrounds')
       Meteor.subscribe('needs')
+    onAfterAction: ->
+      $('#query').val('')
+      Session.set 'query', null
 
   @route 'profile',
     path: '/profile'
     data: ->
       Meteor.user()
+    onAfterAction: ->
+      $('#query').val('')
+      Session.set 'query', null
 
   @route 'strNeeds',
     path: '/fav'
@@ -121,6 +137,9 @@ Router.map ->
         return @redirect('profile')
       else
         @render 'needs'
+    onAfterAction: ->
+      $('#query').val('')
+      Session.set 'query', null
 
   @route 'topNeeds',
     path: '/top'
@@ -138,11 +157,14 @@ Router.map ->
         return @redirect('profile')
       else
         @render 'needs'
+    onAfterAction: ->
+      $('#query').val('')
+      Session.set 'query', null
 
   @route 'newNeed',
     path: '/new'
     template: 'newNeed'
-    
+
   @route 'tag',
     path: '/:query'
     template: 'needs'
