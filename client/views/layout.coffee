@@ -26,7 +26,7 @@ Template.layout.events
     event.preventDefault()
     Router.go('/')
     Session.set('currentSection', 'topNeeds')
-    
+
   "click .starNeedsLink": (event) ->
     event.preventDefault()
     Router.go('/fav')
@@ -40,4 +40,5 @@ Template.layout.events
   'keyup #query': (event) ->
     event.preventDefault()
     query = $(event.target).val()
+    $('.query-header a').tooltip()
     Session.set('query', query)

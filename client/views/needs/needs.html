@@ -2,6 +2,12 @@
   <div class="needs">
     <div class='row'>
       <div class="needListing">
+        {{#if query}}
+          <div class="query-header">
+            Filtered for "{{query}}"
+            <a data-toggle="tooltip" title="Get periodic emails from us of new needs that match this criteria." class="btn btn-default btn-xs">subscribe</a>
+          </div>
+        {{/if}}
         <div class='needs-list'>
           {{#masonryContainer gutter=20 transitionDuration="0.2s" id="MasonryContainer" }}
             {{#masonryElement "MasonryContainer"}}

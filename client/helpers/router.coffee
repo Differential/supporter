@@ -25,6 +25,8 @@ Router.map ->
         return @redirect('profile')
       else
         @render 'needs'
+    onAfterAction: ->
+      Session.set 'query', null
 
   @route 'myNeeds',
     path: '/mine'
@@ -149,6 +151,7 @@ Router.map ->
       Meteor.subscribe('offers')
       Meteor.subscribe('backgrounds')
     onBeforeAction: ->
+      Session.set 'query', @params.query
       if (Meteor.loggingIn())
         @render 'loading'
       if (Meteor.user() && !Meteor.user().username)
