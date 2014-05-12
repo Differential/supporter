@@ -7,13 +7,15 @@ Template.need.rendered = ->
 
 Template.need.helpers
   offers: ->
-    Offers.find(
-      {needId: @_id},
-      {sort: { createdAt: -1 }}
-    )
-
+    Offers.find()
   owner: ->
     Meteor.user() && Meteor.user().username == @username
+  content: ->
+    Needs.findOne().content
+  offerCount: ->
+    Needs.findOne().offerCount
+  createdAt: ->
+    Needs.findOne().createdAt
 
 Template.need.events
   'click .delete': (event)->

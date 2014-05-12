@@ -21,4 +21,4 @@ Meteor.publish "need", (id) ->
   Needs.find(id)
 
 Meteor.publish "offersForNeed", (offerId) ->
-  Offers.find(offerId: offerId)
+  Offers.find(needId: offerId)
