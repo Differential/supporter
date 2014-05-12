@@ -19,19 +19,19 @@ Template.need.helpers
 
 Template.need.events
   'click .delete': (event)->
-    Needs.remove(@_id)
+    Needs.remove(Needs.findOne()._id)
     Router.go('/')
 
   'click .complete': (event)->
-    Needs.update(@_id, $set: {completedAt: new Date()})
+    Needs.update(Needs.findOne()._id, $set: {completedAt: new Date()})
     Router.go('/')
 
   "click .respond": (event, template)->
-    Session.set('respondingTo', @_id)
+    Session.set('respondingTo', Needs.findOne()._id)
     Session.set('charsOffer', null)
     $(template.find('.newOffer')).modal()
 
   "click .send": (event, template)->
-    Session.set('sendingTo', @_id)
+    Session.set('sendingTo', Needs.findOne()._id)
     $(template.find('.sendNeed')).modal()
 
