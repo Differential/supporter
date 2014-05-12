@@ -26,7 +26,7 @@ Template.layout.events
     event.preventDefault()
     Router.go('/')
     Session.set('currentSection', 'topNeeds')
-    
+
   "click .starNeedsLink": (event) ->
     event.preventDefault()
     Router.go('/fav')
@@ -36,6 +36,10 @@ Template.layout.events
     event.preventDefault()
     Router.go('/backgrounds')
     Session.set('currentSection', 'backgrounds')
+
+  "click .newNeed": (event) ->
+    event.preventDefault()
+    Router.go('/new')
 
   'keyup #query': (event) ->
     event.preventDefault()

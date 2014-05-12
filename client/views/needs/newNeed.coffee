@@ -59,4 +59,3 @@ Template.newNeed.events
 
   "keyup textarea#newNeed": (e)->
     _.debounce(updateChars, 3000)()
-

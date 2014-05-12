@@ -151,3 +151,7 @@ Router.map ->
         return @redirect('profile')
       else
         @render 'needs'
+
+  @route 'newNeed',
+    path: '/new'
+    template: 'newNeed'
