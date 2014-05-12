@@ -6,4 +6,9 @@ Template.needs.events {
     e.preventDefault()
     Session.set('query', '')
     Router.go('needs')
+
+  'click #subscribe': (e) ->
+    e.preventDefault()
+    console.log 'called'
+    Meteor.call 'addSubscription', Meteor.userId(), Session.get('query')
 }

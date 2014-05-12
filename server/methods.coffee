@@ -35,3 +35,10 @@ Meteor.startup ->
         from: "Supporter.io <no-reply@supporter.io>"
         text: text
         subject: 'Response to your need'
+
+    addSubscription: (userId, query) ->
+      Meteor.users.update _id : userId, {
+        $push: {
+          "profile.subscriptions": query
+        }
+      }
