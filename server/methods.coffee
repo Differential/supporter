@@ -49,3 +49,8 @@ Meteor.startup ->
           "profile.watching": cardId
         }
       }
+
+    sendSubscriptions: () ->
+      _.each Meteor.users.find().fetch(), (user) ->
+        console.log [ "Sending subscription", user._id ]
+        Supporter.sendSubscription(user._id, Needs.find())
