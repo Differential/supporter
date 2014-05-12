@@ -23,26 +23,29 @@
       </div>
     </div>
 
-
-    {{#if owner}}
-      <div class='well'>
-        Respond to people via email, and close this need when you're all good.
+    {{#if isReplying}}
+      <div class="well">
+        {{> newOffer}}
       </div>
     {{/if}}
+    {{#unless isReplying}}
+        {{#if owner}}
+          <div class='well'>
+            Respond to people via email, and close this need when you're all good.
+          </div>
+        {{/if}}
 
-    {{#unless currentUser}}
-      <div class='well'>
-        <a href='/sign-in'>Sign in</a> or <a href='/sign-up'>sign up</a> to post or respond to needs.
-      </div>
+        {{#unless currentUser}}
+          <div class='well'>
+            <a href='/sign-in'>Sign in</a> or <a href='/sign-up'>sign up</a> to post or respond to needs.
+          </div>
+        {{/unless}}
     {{/unless}}
-
     <div class="offer offers-list">
       {{#each offers}}
         {{> offerDetail}}
       {{/each}}
     </div>
-
-    {{> newOffer}}
     {{> sendNeed}}
   </div>
 </template>

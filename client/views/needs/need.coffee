@@ -7,7 +7,7 @@ Template.need.rendered = ->
 
 Template.need.helpers
   offers: ->
-    Offers.find()
+    Offers.find({}, {sort: {createdAt: -1}})
   owner: ->
     Meteor.user() && Meteor.user().username == @username
   content: ->
@@ -16,6 +16,8 @@ Template.need.helpers
     Needs.findOne().offerCount
   createdAt: ->
     Needs.findOne().createdAt
+  isReplying: ->
+    Session.get('replyId') is @_id
 
 Template.need.events
   'click .delete': (event)->
@@ -29,7 +31,7 @@ Template.need.events
   "click .respond": (event, template)->
     Session.set('respondingTo', Needs.findOne()._id)
     Session.set('charsOffer', null)
-    $(template.find('.newOffer')).modal()
+    Session.set('replyId', @_id)
 
   "click .send": (event, template)->
     Session.set('sendingTo', Needs.findOne()._id)
