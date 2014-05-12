@@ -9,6 +9,8 @@ Template.layout.rendered = ->
 Template.layout.events
   "click .navbar-brand": (event) ->
     event.preventDefault()
+    $('#query').val('')
+    Session.set 'query', null
     Router.go('/')
     Session.set('currentSection', 'allNeeds')
 
@@ -19,6 +21,8 @@ Template.layout.events
 
   "click .allNeedsLink": (event) ->
     event.preventDefault()
+    $('#query').val('')
+    Session.set 'query', null
     Router.go('/')
     Session.set('currentSection', 'allNeeds')
 
@@ -43,6 +47,7 @@ Template.layout.events
 
   'keyup #query': (event) ->
     event.preventDefault()
+    Router.go '/'
     query = $(event.target).val()
     $('.query-header a').tooltip()
     Session.set('query', query)

@@ -9,6 +9,8 @@ Template.needListing.rendered = ->
 Template.needListing.helpers
   isEditing: ->
     Session.get('editId') is @_id
+  isReplying: ->
+    Session.get('replyId') is @_id
   owner: ->
     Meteor.user() && Meteor.user().username == @username
   showStarred: ->
@@ -38,7 +40,8 @@ Template.needListing.events
   "click .respond": (event, template)->
     Session.set('respondingTo', @_id)
     Session.set('charsOffer', null)
-    $(template.find('.newOffer')).modal()
+    Session.set('replyId', @_id)
+    ##$(template.find('.newOffer')).modal()
 
   "click .send": (event, template)->
     Session.set('sendingTo', @_id)

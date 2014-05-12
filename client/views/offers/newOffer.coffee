@@ -1,3 +1,6 @@
+Template.newOffer.rendered = ->
+  $(@firstNode).parent().parent().parent().css('z-index', '999')
+
 Template.newOffer.helpers
   chars: ->
     Session.get('charsOffer')
@@ -61,6 +64,7 @@ Template.newOffer.events
 
   "click .cancel": (event)->
     Session.set('charsOffer', null)
+    Session.set('replyId', null)
 
   "keyup textarea#newOffer": (event, template)->
     Session.set('charsOffer', $(template.find('textarea#newOffer')).val().length)
