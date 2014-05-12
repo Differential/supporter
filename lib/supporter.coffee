@@ -9,7 +9,6 @@
     console.log [stars, baseScore, ageInHours, score]
     score
 
-
   sendSubscription: (userId, needs) ->
     user = Meteor.users.findOne(userId)
     content = "Recent needs:\n\n"
@@ -26,3 +25,7 @@
       subject: 'Recently added needs'
 
     Meteor.users.update {_id : userId}, {$set: { "profile.subscriptionEmailSentAt": new Date() } }
+
+  needsToSend: (tagList) ->
+    Needs.find ({tags: { $in: tagList }, $where: "this.subscriptionEmailSentAt.getTime() < this.createdAt.getTime()"})
+
