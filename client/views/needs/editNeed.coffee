@@ -1,5 +1,5 @@
 Template.editNeed.rendered = ->
-  $('#edit-tags').select2({tags: ['Mentoring', 'Financing']})
+  $('#edit-tags').select2({tags: ['mentoring', 'financing']})
   Session.set 'editChars', $('textarea#editNeedContent').val().length
   $(@firstNode).parent().parent().parent().css('z-index', '999')
 

@@ -45,6 +45,8 @@ addNeed = ->
           offerCount: 0
           score: Supporter.computeScore({stars: 0, createdAt: new Date()})
           tags: $('#tags').val().split(",")
+        , ->
+          Router.go('needs')
       else
         alert 'Be less descriptive'
     else
@@ -54,7 +56,7 @@ updateChars = ->
   Session.set('chars', $('textarea#newNeed').val().length)
 
 Template.newNeed.events
-  "click input#newNeedButton": (e)->
+  "click input#newNeedButton": (e) ->
     addNeed()
 
   "keyup textarea#newNeed": (e)->

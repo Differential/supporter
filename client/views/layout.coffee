@@ -44,4 +44,5 @@ Template.layout.events
   'keyup #query': (event) ->
     event.preventDefault()
     query = $(event.target).val()
+    $('.query-header a').tooltip()
     Session.set('query', query)

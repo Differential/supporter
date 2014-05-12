@@ -49,7 +49,8 @@ addOffer = (el)->
       $('body').removeClass('modal-open')
 
       Meteor.defer ->
-        Router.go('need', {_id: Session.get('respondingTo')})
+        Router.go('/need/' + Session.get('respondingTo'))
+        Session.set('currentSection', 'need')
     else
       alert 'Be more descriptive'
 
