@@ -4,7 +4,11 @@
    {{/if}}
    {{> _userCard user}}
 
-   {{#each needs}}
-     {{> needListing this}}
-   {{/each}}
+   {{#masonryContainer gutter=20 transitionDuration="0.2s" id="MasonryContainer" }}
+     {{#each needs}}
+       {{#masonryElement "MasonryContainer"}}
+         {{> needListing}}
+       {{/masonryElement}}
+     {{/each}}
+   {{/masonryContainer}}
 </template>

@@ -11,13 +11,11 @@
         {{/if}}
         <div class='needs-list'>
           {{#masonryContainer gutter=20 transitionDuration="0.2s" id="MasonryContainer" }}
-              {{#if currentUser}}
-<!--                 {{> newNeed}} -->
-              {{else}}
-                {{#masonryElement "MasonryContainer"}}
-                  {{> welcomeCard}}
-                {{/masonryElement}}
-              {{/if}}
+            {{#unless currentUser}}
+              {{#masonryElement "MasonryContainer"}}
+                {{> welcomeCard}}
+              {{/masonryElement}}
+            {{/unless}}
             {{#each needs}}
               {{#masonryElement "MasonryContainer"}}
                 {{> needListing}}
