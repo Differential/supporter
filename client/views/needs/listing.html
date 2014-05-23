@@ -1,5 +1,6 @@
 <template name="needListing">
   <div class='panel'>
+
     <div class='panel-header'>
       <div class='star pull-right'>
         {{#if showStarred}}
@@ -12,19 +13,16 @@
       </div>
 			<div class='panel-background'>
         {{#unless isEditing}}
-  	      {{#if hasBackground}}
-  	        <a href="/background/{{backgroundId}}">{{backgroundTitle}}</a>
+  	      {{#if backgroundName}}
+  	        <a href="/background/{{backgroundId}}">{{backgroundName}}</a>
             <a title='posted by' href="/u/{{username}}">({{username}})</a>
   	      {{else}}
-  	        {{#if owner}}
-  	          <a href="/backgrounds">associate with a project</a>
-            {{else}}
-              <a title='posted by' href="/u/{{username}}">{{username}}</a>
-  	        {{/if}}
+            <a title='posted by' href="/u/{{username}}">{{username}}</a>
   	      {{/if}}
         {{/unless}}
 			</div>
     </div>
+
     <div class='panel-body'>
       {{#if isEditing}}
         {{> editNeed}}
@@ -41,6 +39,7 @@
         {{/if}}
       {{/if}}
     </div>
+
     {{#unless isEditing}}
       <div class='panel-footer'>
         {{date createdAt}}

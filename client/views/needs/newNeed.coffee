@@ -2,24 +2,19 @@ Template.newNeed.rendered = ->
   $('#tags').select2({tags:["mentoring", "funding"]})
 
 Template.newNeed.helpers
-  chars: ->
-    Session.get('chars')
-
-  showCharLengthMessage: ->
-    Session.get('chars') > 0
+  chars: ->                 Session.get('chars')
+  showCharLengthMessage: -> Session.get('chars') > 0
 
   charLengthClass: ->
     if Session.get('chars') < 30 || Session.get('chars') > 200
       'red'
     else
       ''
-
   saveButtonClass: ->
     if Session.get('chars') < 30 || Session.get('chars') > 200
       'hidden'
     else
       ''
-
   charLengthMessage: ->
     message = ''
     if Session.get('chars') < 30
@@ -45,6 +40,8 @@ addNeed = ->
           offerCount: 0
           score: Supporter.computeScore({stars: 0, createdAt: new Date()})
           tags: $('#tags').val().split(",")
+          backgroundId: $('#backgroundId').val()
+          backgroundName: Backgrounds.findOne($('#backgroundId').val()).name
         , ->
           Router.go('needs')
       else

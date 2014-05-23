@@ -8,8 +8,7 @@ Template.backgroundListing.helpers
 
 Template.backgroundListing.helpers
   needs: ->
-    Needs.find({userId: Meteor.userId()})
-
+    Needs.find backgroundId: @_id
 
 Template.backgroundListing.events
   'click .delete': (event)->

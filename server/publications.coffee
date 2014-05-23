@@ -14,7 +14,7 @@ Meteor.publish "user", (username) ->
   Meteor.users.find(username: username)
 
 Meteor.publish "backgrounds", ->
-  Backgrounds.find()
+  Backgrounds.find userId: @userId
 
 Meteor.publish "need", (id) ->
   Needs.find(id)

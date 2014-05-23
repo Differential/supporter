@@ -1,6 +1,6 @@
 Template.backgrounds.helpers
   backgrounds: ->
-    Backgrounds.find({})
+    Backgrounds.find userId: Meteor.userId()
 
 Template.backgrounds.helpers
   needs: ->

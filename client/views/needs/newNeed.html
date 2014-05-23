@@ -8,6 +8,16 @@
         <div class="form-group">
           <input class="form-control" id="tags" placeholder="tags">
         </div>
+        {{#if backgrounds}}
+        <div class="form-group">
+          <select id="backgroundId">
+            <option>--project--</option>
+            {{#each backgrounds}}
+              <option value="{{_id}}">{{name}}</option>
+            {{/each}}
+          </select>
+        </div>
+        {{/if}}
       </div>
       {{#if showCharLengthMessage}}
         <div class='panel-footer'>

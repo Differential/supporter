@@ -12,23 +12,13 @@ Template.needListing.helpers
   isReplying: ->
     Session.get('replyId') is @_id
   owner: ->
-    Meteor.user() && Meteor.user().username == @username
+    Meteor.user()?.username is @username
   showStarred: ->
-    Meteor.user() && Meteor.user().username != @username
+    Meteor.user()?.username isnt @username
   starred: ->
     Meteor.user() && Needs.findOne({_id: @_id}).starUsers and
       Needs.findOne({_id: @_id}).starUsers.length > 0 and
       Meteor.user()._id in Needs.findOne({_id: @_id}).starUsers
-  hasBackground: ->
-    Needs.findOne({_id: @_id}) && Needs.findOne({_id: @_id}).backgroundId
-  backgroundTitle: ->
-    if Needs.findOne({_id: @_id}).backgroundId != null
-      backgroundId = Needs.findOne({_id: @_id}).backgroundId
-      Backgrounds.findOne({_id: backgroundId}).name
-  backgroundId: ->
-    if Needs.findOne({_id: @_id}) != null
-      Needs.findOne({_id: @_id}).backgroundId
-
 
 Template.needListing.events
   'click .delete': (event)->

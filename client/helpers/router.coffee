@@ -183,6 +183,10 @@ Router.map ->
   @route 'newNeed',
     path: '/new'
     template: 'newNeed'
+    data: ->
+      backgrounds: Backgrounds.find()
+    waitOn: ->
+      Meteor.subscribe('backgrounds')
 
   @route 'about',
     path: '/about'
