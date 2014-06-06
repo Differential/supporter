@@ -131,6 +131,13 @@ Router.map ->
       $('#query').val('')
       Session.set 'query', null
 
+  @route 'admin',
+    path: '/admin'
+    onBeforeAction: ->
+      if Meteor.user()
+        unless Roles.userIsInRole(Meteor.user()._id, ['admin'])
+          Router.go 'profile'
+
   @route 'strNeeds',
     path: '/fav'
     template: 'needs'
