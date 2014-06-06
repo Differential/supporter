@@ -56,3 +56,7 @@ Meteor.startup ->
         tags = user.profile.subscriptions
         if tags && tags.length > 0
           Supporter.sendSubscription(user._id, Supporter.needsToSend(user, tags))
+
+    addAdmin: (emailAddress) ->
+      user = Meteor.users.findOne('emails.address': emailAddress)
+      Roles.addUsersToRoles(user._id, 'admin')
