@@ -5,8 +5,22 @@
         {{siteName}}
       </div>
       <div class='panel-body'>
-        <p>Connect with the community and support the efforts of entrepreneurs.</p>
-        <p><a href='/sign-in'>Sign in</a> or <a href='/sign-up'>sign up</a> to post or respond to needs.</p>
+        {{#if represent}}
+          <p>Share your thoughts about how the Cincinnati startup community could be improved. Sign up or Sign in to post!</p>
+
+          <p>We're looking for feedback for a specific organizations (i.e. It would be really helpful if Cintrifuse offered XZY) and more general (i.e. we really need more technical talent).</p>
+
+        <p>Few quick notes:</p>
+        <ol>
+          <li>The more specific your thoughts/feedback, the more helpful it will be.</li>
+          <li>If you're offering feedback, make it constructive (in other words, don't just tell us about a problem, suggest a way to fix it).</li>
+          <li>We will share your feedback with relevant organizations in town (they've agreed to listen to us as "the voice of the entrepreneurs) but we will keep your name anonymous (we will know who the feedback is coming from, we just won't pass that along unless you ask us to).</li>
+        </ol>
+        <p><a href='/sign-in'>Sign in</a> or <a href='/sign-up'>sign up</a> to post your feedback.</p>
+        {{else}}
+          <p>Connect with the community and support the efforts of entrepreneurs.</p>
+          <p><a href='/sign-in'>Sign in</a> or <a href='/sign-up'>sign up</a> to post or respond to needs.</p>
+        {{/if}}
       </div>
     </div>
   </div>
