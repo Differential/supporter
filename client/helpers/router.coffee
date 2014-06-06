@@ -15,10 +15,19 @@ Router.map ->
       needs: Needs.find({}, {sort: {score: -1}})
       backgrounds: Backgrounds.find()
     waitOn: ->
-      unless Meteor.settings.public.visibility is "private"
-        Meteor.subscribe 'needs', Session.get('query')
-        Meteor.subscribe('offers')
-        Meteor.subscribe('backgrounds')
+      if Meteor.settings["public"].visibility isnt "private"
+        Meteor.subscribe "needs", Session.get("query")
+        Meteor.subscribe "offers"
+        Meteor.subscribe "backgrounds"
+      else
+        if Meteor.user()
+          if Roles.userIsInRole(Meteor.user()._id, ['admin'])
+            Meteor.subscribe "needs", Session.get("query")
+            Meteor.subscribe "offers"
+            Meteor.subscribe "backgrounds"
+          else
+            Meteor.subscribe('userNeeds')
+
     onBeforeAction: ->
       if (Meteor.loggingIn())
         @render 'loading'
