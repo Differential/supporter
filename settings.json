@@ -6,6 +6,6 @@
     "footerUrl": "http://www.facebook.com/unpolishedcr",
     "footerText": "visit our facebook page",
     "siteName": "Unpolished",
-    "postVisibility": "private"
+    "visibility": "private"
   }
 }

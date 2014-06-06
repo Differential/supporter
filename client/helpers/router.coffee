@@ -15,9 +15,10 @@ Router.map ->
       needs: Needs.find({}, {sort: {score: -1}})
       backgrounds: Backgrounds.find()
     waitOn: ->
-      Meteor.subscribe 'needs', Session.get('query')
-      Meteor.subscribe('offers')
-      Meteor.subscribe('backgrounds')
+      unless Meteor.settings.public.visibility is "private"
+        Meteor.subscribe 'needs', Session.get('query')
+        Meteor.subscribe('offers')
+        Meteor.subscribe('backgrounds')
     onBeforeAction: ->
       if (Meteor.loggingIn())
         @render 'loading'
