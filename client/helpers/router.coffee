@@ -133,6 +133,8 @@ Router.map ->
 
   @route 'admin',
     path: '/admin'
+    waitOn: ->
+      Meteor.subscribe 'admins'
     onBeforeAction: ->
       if Meteor.user()
         unless Roles.userIsInRole(Meteor.user()._id, ['admin'])

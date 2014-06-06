@@ -21,3 +21,6 @@ Meteor.publish "need", (id) ->
 
 Meteor.publish "offersForNeed", (offerId) ->
   Offers.find(needId: offerId)
+
+Meteor.publish 'admins', ->
+  Roles.getUsersInRole 'admin'

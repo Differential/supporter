@@ -2,4 +2,11 @@
   <h3>Submit email address for user that should also be an admin</h3>
   <input type="email" id="emailaddress" class="form-control" placeholder="Email Address">
   <button class="btn btn-primary" id="addAdmin">Add as admin</button>
+
+  <h3>Existing Admins</h3>
+  <ul>
+    {{#each admins}}
+      <li>{{email}}</li>
+    {{/each}}
+  </ul>
 </template>
