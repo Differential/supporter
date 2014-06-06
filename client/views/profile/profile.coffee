@@ -27,6 +27,9 @@ Template.profile.helpers
   url: ->
     Meteor.user().profile.url
 
+  admin: ->
+    true if Roles.userIsInRole(Meteor.user()._id, ['admin'])
+
 Template.profile.events
   'change #email': (event) ->
     Meteor.call('changeEmail', Meteor.userId(), $(event.target).val())

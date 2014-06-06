@@ -1,5 +1,8 @@
 <template name='profile'>
   <div class="col col-lg-6">
+    {{#if admin}}
+      <a href="{{pathFor 'admin' }}" class="btn btn-primary">Add Admin Users</a>
+    {{/if}}
     <h2>Edit Profile</h2>
     <div class="form-group">
       <input class="form-control" type="text" id="username" placeholder="Username" value="{{username}}" />
