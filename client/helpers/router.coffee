@@ -184,6 +184,9 @@ Router.map ->
     path: '/new'
     template: 'newNeed'
 
+  @route 'about',
+    path: '/about'
+
   @route 'tag',
     path: '/:query'
     template: 'needs'

@@ -9,20 +9,24 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class='navbar-brand' href='#'><img src="{{logoUrl}}" /></a>
+          {{#if logoUrl}}
+            <a class='navbar-brand' href='/'><img src="{{logoUrl}}" /></a>
+          {{/if}}
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
-          {{#if currentUser}}
-            <ul class='nav navbar-nav'>
+          <ul class='nav navbar-nav'>
+            {{#if currentUser}}
               <li><a class="allNeedsLink">All</a></li>
               <li><a class="myNeedsLink">Mine</a></li>
               <li><a class="starNeedsLink">Favorite</a></li>
               <li><a class="backgroundsLink">My projects</a></li>
               <li><a class="newNeed"><i class='fa fa-plus'></i> Add a Need</a></li>
-            </ul>
-          {{/if}}
+            {{/if}}
+          </ul>
           <ul class='nav navbar-nav navbar-right'>
+            <li><a href="/about">About</a></li>
+
             {{> accountButtons}}
           </ul>
           <div class="navbar-form navbar-right" role="search">

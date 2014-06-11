@@ -6,7 +6,7 @@ Template.layout.rendered = ->
 
   $('.navbar-default a').parent().removeClass('active')
   $('.'+ Session.get('currentSection') + 'Link').parent().addClass('active')
-  
+
 Template.layout.logoUrl = ->
   Meteor.settings.public.logoUrl
 
