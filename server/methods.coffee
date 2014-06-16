@@ -59,4 +59,11 @@ Meteor.startup ->
 
     addAdmin: (emailAddress) ->
       user = Meteor.users.findOne('emails.address': emailAddress)
-      Roles.addUsersToRoles(user._id, 'admin')
+      if user is undefined
+        newUser = Accounts.createUser {
+          email: emailAddress
+        }
+        Accounts.sendEnrollmentEmail newUser
+        Roles.addUsersToRoles(newUser, 'admin')
+      else
+        Roles.addUsersToRoles(user._id, 'admin')
