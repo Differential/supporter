@@ -3,3 +3,4 @@ Handlebars.registerHelper "pluralize", (offerCount) ->
     return offerCount + " response"
   else
     return offerCount + " responses"
+

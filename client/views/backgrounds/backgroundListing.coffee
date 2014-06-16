@@ -1,47 +1,33 @@
 Template.backgroundListing.helpers
   owner: ->
     Meteor.userId() is @userId
-
-Template.backgroundListing.helpers
   backgrounds: ->
     Backgrounds.find({})
-
-Template.backgroundListing.helpers
   needs: ->
     Needs.find backgroundId: @_id
+  needsIOwn: ->
+    Needs.find owner: Meteor.user._id
+  isEditingProject: ->
+    Session.get('editingProject') is @_id
+
 
 Template.backgroundListing.events
   'click .delete': (event)->
     Backgrounds.remove(@_id)
 
   'click .complete': (event)->
-    Needs.update(@_id, $set: {completedAt: new Date()})
+    Backgrounds.update(@_id, $set: {completedAt: new Date()})
 
-  "click .respond": (event, template)->
-    Session.set('respondingTo', @_id)
-    Session.set('charsOffer', null)
-    $(template.find('.newOffer')).modal()
+  "click .saveBackgroundBtn": (event, template)->
+    desc = $(template.find('textarea#editProjectDescription')).val()
+    nm = $(template.find('input#editProjectName')).val()
+    Backgrounds.update(@_id, $set: {description : desc})
+    Backgrounds.update(@_id, $set: {name : nm})
+    Session.set('editingProject', null)
 
-  "click .send": (event, template)->
-    Session.set('sendingTo', @_id)
-    $(template.find('.sendNeed')).modal()
+  "click .addNeedToBackgroundBtn": (event, template)->
+    need = $(template.find('select#needsToAdd')).val()
+    Needs.update(need, $set: {backgroundId: Session.get('editingProject')})
 
-  "click .editNeedBtn": (event, template)->
-    Session.set('respondingTo', @_id)
-    Session.set('charsOffer', null)
-    $(template.find('.editNeed')).modal()
-
-  "click .star": (event, template)->
-    stars = Needs.find ({_id:@_id,  starUsers: { $in: [Meteor.user()._id] }}  )
-    alreadyStar = stars and stars.count() > 0
-    #starCount = Needs.find({_id:@_id}, { array: { $elemMatch: { starUser: Meteor.user()._id }}}).count()
-    #starCount = Needs.find( {_id:@id}, { array: { $elemMatch: { starUser: Meteor.user()._id }}}).Count
-    if alreadyStar
-      #TODO remove this need to user's list
-      Needs.update(@_id, {$pull: {starUsers: Meteor.user()._id}})
-      Needs.update(@_id,  {$inc: {starCount: -1}})
-    else
-      #TODO Add this need to user's list
-      Needs.update(@_id,  {$inc: {starCount: 1}})
-      Needs.update(@_id, {$push: {starUsers: Meteor.user()._id}})
-    Meteor.call("updateScore", @, true)
+  "click .editBackgroundBtn": (event, template)->
+    Session.set('editingProject', @_id)
