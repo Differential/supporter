@@ -6,7 +6,11 @@
           <div class="query-header">
             <a id="clear-query"><i class="pull-left fa fa-times-circle"></i></a>
             <span>Filtered for "{{query}}"</span>
-            <a id="subscribe" data-toggle="tooltip" data-placement="right" title="Get periodic emails from us of new needs that match this criteria." class="btn btn-default btn-xs">subscribe</a>
+            {{#if isSubscribed}}
+              <a id="unsubscribe" data-toggle="tooltip" data-placement="right" title="Remove this tag from your list of subscriptions." class="btn btn-primary btn-xs">unsubscribe</a>
+            {{else}}
+              <a id="subscribe" data-toggle="tooltip" data-   placement="right" title="Get periodic emails from us of new needs that match this criteria." class="btn btn-default btn-xs">subscribe</a>
+            {{/if}}
           </div>
         {{/if}}
         <div class='needs-list'>

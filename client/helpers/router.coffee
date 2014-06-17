@@ -131,6 +131,18 @@ Router.map ->
       $('#query').val('')
       Session.set 'query', null
 
+  @route 'manage',
+    path: '/manage'
+    data: ->
+      user: Meteor.users.findOne(username: @params.username)
+      needs: Needs.find({})
+    waitOn: ->
+      Meteor.subscribe('user', @params.username)
+      Meteor.subscribe('userNeeds', @params.username)
+      Meteor.subscribe('offers')
+      Meteor.subscribe('backgrounds')
+      Meteor.subscribe('needs')
+
   @route 'admin',
     path: '/admin'
     waitOn: ->

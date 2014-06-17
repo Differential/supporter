@@ -80,3 +80,9 @@ Template.profile.events
       Router.go('/')
     else
       $('.errors').text('Name is required.')
+
+  'click .manageSubscriptions': ->
+    if Meteor.user().profile.name
+      Router.go('/manage')
+    else
+      $('.errors').text('Name is required')

@@ -38,7 +38,15 @@ Meteor.startup ->
 
     addSubscription: (userId, query) ->
       Meteor.users.update _id : userId, {
-        $push: {
+        $addToSet: {
+          "profile.subscriptions": query
+        }
+      }
+
+    removeSubscription: (userId, query) ->
+      console.log query
+      Meteor.users.update _id : userId, {
+        $pull: {
           "profile.subscriptions": query
         }
       }
