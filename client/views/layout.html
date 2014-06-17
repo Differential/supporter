@@ -11,6 +11,8 @@
           </button>
           {{#if logoUrl}}
             <a class='navbar-brand' href='/'><img src="{{logoUrl}}" /></a>
+          {{else}}
+            <a class='navbar-brand text' href='/'>{{siteName}}</a>            
           {{/if}}
         </div>
 

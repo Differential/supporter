@@ -10,6 +10,9 @@ Template.layout.rendered = ->
 Template.layout.logoUrl = ->
   Meteor.settings.public.logoUrl
 
+Template.layout.siteName = ->
+  Meteor.settings.public.siteName
+
 Template.layout.events
   "click .navbar-brand": (event) ->
     event.preventDefault()
