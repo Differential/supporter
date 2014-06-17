@@ -58,6 +58,13 @@ Meteor.startup ->
         }
       }
 
+    unwatchCard: (cardId) ->
+      Meteor.users.update _id : @userId, {
+        $pull: {
+          "profile.watching": cardId
+        }
+      }
+
     sendSubscriptions: () ->
       _.each Meteor.users.find().fetch(), (user) ->
         console.log [ "Sending subscription", user._id ]

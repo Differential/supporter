@@ -15,7 +15,11 @@
             <a title='complete' class='complete'><i class='icon-ok'></i></a>
           {{else}}
             {{#if currentUser}}
-              <a class='btn btn-default watch {{#if watching}}btn-success{{/if}}'><i class='icon-eye'></i> Watch</a>
+              {{#if watching}}
+                <a class='btn btn-success unwatch'><i class='icon-eye'></i> Unwatch</a>
+              {{else}}
+                <a class='btn btn-default watch'><i class='icon-eye'></i> Watch</a>
+              {{/if}}
               <a class='btn btn-default respond'><i class='icon-mail-reply'></i> Respond</a>
               <a class='btn btn-default send'><i class='icon-mail-forward'></i> Share</a>
             {{/if}}

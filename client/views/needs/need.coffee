@@ -45,3 +45,7 @@ Template.need.events
   "click .watch": (event, template)->
     cardId = Needs.findOne()._id
     Meteor.call 'watchCard', cardId
+
+  "click .unwatch": (event, template)->
+    cardId = Needs.findOne()._id
+    Meteor.call 'unwatchCard', cardId
