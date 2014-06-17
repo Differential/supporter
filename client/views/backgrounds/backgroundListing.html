@@ -10,13 +10,13 @@
               <textarea name="description" class="form-control" rows="10" id="editProjectDescription">{{description}}</textarea>
           </div>
       {{else}}
-      <div class="container">
-          <div class="formgroup">
-          <b>{{name}}</b>
-          </div>
-      <div class="form-group">
-          {{description}}
-      </div>
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  {{name}}
+              </div>
+              <div class="panel-body">
+                  {{description}}
+              </div>
           </div>
       {{/if}}
       <b>Needs on this Project</b>
@@ -35,18 +35,19 @@
                 <option value="{{_id}}">{{content}}</option>
               {{/each}}
           </select>
-          <a title='add' class="addNeedToBackgroundBtn"><i class='fa fa-plus'></i> add</a>
+          <a title='add' class="btn btn-default addNeedToBackgroundBtn"><i class='fa fa-plus'></i> add</a>
       </div>
     {{/if}}
 
     {{#if owner}}
-      <a data-toggle='modal' title='remove' class='delete'><i class='fa fa-times'></i> delete</a>
-      <a title='complete' class='complete'><i class='fa fa-check'></i> archive</a>
       {{#if isEditingProject}}
-        <a title='done' class="saveBackgroundBtn"><i class='fa fa-check'></i> done</a>
+        <a title='done' class="btn btn-success saveBackgroundBtn"><i class='fa fa-check'></i> done</a>
       {{else}}
-        <a title='edit' class="editBackgroundBtn"><i class='fa fa-edit'></i> edit</a>
+        <a title='edit' class="btn btn-primary editBackgroundBtn"><i class='fa fa-edit'></i> edit</a>
       {{/if}}
-    {{/if}}
+      <a title='complete' class='btn btn-info complete'><i class='fa fa-check'></i> archive</a>
+      <a data-toggle='modal' title='remove' class='btn btn-danger delete pull-right'><i class='fa fa-times'></i> delete</a>
+
+      {{/if}}
   </div>
 </template>
