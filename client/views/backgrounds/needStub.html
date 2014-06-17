@@ -1,3 +1,7 @@
 <template name="needStub">
-      <li class="list-group-item">{{content}}</li>
+    {{#if editing}}
+      <li class="list-group-item"><a title='remove' class="rmNeedBtn"><i class='fa fa-times'></i> </a>{{content}}</li>
+    {{else}}
+    <li class="list-group-item">{{content}}</li>
+    {{/if}}
 </template>

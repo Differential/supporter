@@ -9,6 +9,8 @@ Template.backgroundListing.helpers
     Needs.find owner: Meteor.user._id
   isEditingProject: ->
     Session.get('editingProject') is @_id
+  editFlagForNeeds: ->
+    return _.extend({editingFlag: Session.get('editingProject') is @_id},this);
 
 
 Template.backgroundListing.events
