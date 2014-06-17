@@ -6,7 +6,7 @@ Template.backgroundListing.helpers
   needs: ->
     Needs.find backgroundId: @_id
   needsIOwn: ->
-    Needs.find owner: Meteor.user._id
+    Needs.find userId: Meteor.user._id
   isEditingProject: ->
     Session.get('editingProject') is @_id
   editFlagForNeeds: ->

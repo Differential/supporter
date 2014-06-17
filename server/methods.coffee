@@ -74,13 +74,13 @@ Meteor.startup ->
 
     sendSubscriptions: () ->
       _.each Meteor.users.find().fetch(), (user) ->
-        console.log [ "Sending subscription", user._id ]
         user = Meteor.users.findOne(user._id)
         frequency = user.profile.frequency
         #check for notification frequency
-        if frequency not 99 and not user.profile.subscriptionEmailSentAt or not new Date().getDate() - user.profile.subscriptionEmailSentAt.getDate() > frequency
+        if frequency not 99 and (not user.profile.subscriptionEmailSentAt or not new Date().getDate() - user.profile.subscriptionEmailSentAt.getDate() > frequency)
           tags = user.profile.subscriptions
           if tags && tags.length > 0
+            console.log [ "Sending subscription", user._id ]
             Supporter.sendSubscription(user._id, Supporter.needsToSend(user, tags))
 
     addAdmin: (emailAddress) ->

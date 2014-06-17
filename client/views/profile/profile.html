@@ -29,14 +29,15 @@
       <input class="form-control" type="email" id="email" placeholder="Email" value="{{email}}"/>
       <span class='errors'></span>
     </div>
-    <div class="form-group">
-        <a class="btn btn-primary manageSubscriptions"><i class="fa fa-hand-o-right"></i> Manage Subscriptions</a>
-    </div>
+
     <a class='btn btn-primary done'><i class='icon-ok'></i> done</a>
   </div>
 
   <div class="col col-lg-6">
     <h2>Preview Profile</h2>
     {{> _userCard }}
+    <div class="form-group">
+      <a class="btn btn-primary manageSubscriptions"><i class="fa fa-hand-o-right"></i> Manage Subscriptions</a>
+    </div>
   </div>
 </template>

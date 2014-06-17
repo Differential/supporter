@@ -28,3 +28,8 @@ Template.manage.events
     Meteor.call 'setFrequency', Meteor.userId(), 30
   'click .never': (event, template) ->
     Meteor.call 'setFrequency', Meteor.userId(), 99
+  'click .done': (event) ->
+    if Meteor.user().profile.name
+      Router.go('/')
+    else
+      $('.errors').text('Name is required.')
