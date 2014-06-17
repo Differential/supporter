@@ -18,15 +18,13 @@
         content += need.content + "\n"
         content += Meteor.absoluteUrl "need/#{need._id}"
         content += "\n\n"
+      Email.send
+        to: user.emails[0].address
+        from: "#{Meteor.settings.public.siteName} <no-reply@supporter.io>"
+        text: content
+        subject: 'Recently added needs'
 
-      if not user.profile.subscriptionEmailSentAt or not new Date().getDate() - user.profile.subscriptionEmailSentAt.getDate() >= 3
-        Email.send
-          to: user.emails[0].address
-          from: "#{Meteor.settings.public.siteName} <no-reply@supporter.io>"
-          text: content
-          subject: 'Recently added needs'
-
-        Meteor.users.update {_id : userId}, {$set: { "profile.subscriptionEmailSentAt": new Date() } }
+      Meteor.users.update {_id : userId}, {$set: { "profile.subscriptionEmailSentAt": new Date() } }
 
   needsToSend: (user, tagList) ->
     if user.profile.subscriptionEmailSentAt

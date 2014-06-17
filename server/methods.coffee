@@ -53,7 +53,7 @@ Meteor.startup ->
 
     watchCard: (cardId) ->
       Meteor.users.update _id : @userId, {
-        $push: {
+        $addToSet: {
           "profile.watching": cardId
         }
       }
@@ -65,12 +65,23 @@ Meteor.startup ->
         }
       }
 
+    setFrequency: (userId, freq) ->
+      Meteor.users.update _id : @userId, {
+        $set: {
+          "profile.frequency": freq
+        }
+      }
+
     sendSubscriptions: () ->
       _.each Meteor.users.find().fetch(), (user) ->
         console.log [ "Sending subscription", user._id ]
-        tags = user.profile.subscriptions
-        if tags && tags.length > 0
-          Supporter.sendSubscription(user._id, Supporter.needsToSend(user, tags))
+        user = Meteor.users.findOne(user._id)
+        frequency = user.profile.frequency
+        #check for notification frequency
+        if frequency not 99 and not user.profile.subscriptionEmailSentAt or not new Date().getDate() - user.profile.subscriptionEmailSentAt.getDate() > frequency
+          tags = user.profile.subscriptions
+          if tags && tags.length > 0
+            Supporter.sendSubscription(user._id, Supporter.needsToSend(user, tags))
 
     addAdmin: (emailAddress) ->
       user = Meteor.users.findOne('emails.address': emailAddress)

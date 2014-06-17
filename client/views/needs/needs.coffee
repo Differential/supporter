@@ -3,7 +3,8 @@ Template.needs.query = ->
 
 Template.needs.helpers
   isSubscribed: ->
-    Session.get('query') in Meteor.user().profile.subscriptions
+    if Meteor.user().profile.subscriptions
+      Session.get('query') in Meteor.user().profile.subscriptions
 
 Template.needs.events {
   'click #clear-query': (e) ->
