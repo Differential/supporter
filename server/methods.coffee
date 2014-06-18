@@ -78,15 +78,12 @@ Meteor.startup ->
         frequency = user.profile.frequency
         #check for notification frequency
         willsend = frequency is not undefined and frequency != 99 and (user.profile.subscriptionEmailSentAt is undefined or not new Date().getDate() - user.profile.subscriptionEmailSentAt.getDate() > frequency)
-        console.log '*******'
-        console.log 'user ' + user.username + '\n last sent an email at ' + user.profile.subscriptionEmailSentAt + '\nfrequency is ' + frequency + '\n and willsend is ' + willsend
-        console.log '*******'
         if willsend  || doItNow
           tags = user.profile.subscriptions
           watches = user.profile.watching
           console.log [ "Sending subscription", user._id ]
-          Supporter.sendSubscription(user._id, Supporter.needsToSend(user, tags))
-          Supporter.sendCard(user._id, Supporter.cardOffersToSend(user, watches))
+          Supporter.sendSubscription(user._id, Supporter.needsToSend(user, tags, doItNow))
+          Supporter.sendCard(user._id, Supporter.cardOffersToSend(user, watches, doItNow))
 
     addAdmin: (emailAddress) ->
       user = Meteor.users.findOne('emails.address': emailAddress)
