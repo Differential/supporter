@@ -9,8 +9,31 @@
     console.log [stars, baseScore, ageInHours, score]
     score
 
+  sendCard: (userId, cardMap) ->
+    user = Meteor.users.findOne(userId)
+    content = ""
+    for k,v of cardMap
+      need = Needs.findOne({_id: k})
+      content += "This card ->"
+      content += "\n****\n"
+      content += need.content
+      content += "\n" + Meteor.absoluteUrl "need/#{need._id}"
+      content += "\n****\n"
+      content += "has some new offers on it!"
+      _.each v.fetch(), (offer) ->
+        content += "\n    Offer (added on " + offer.createdAt + ")"
+        content += "\n    ****"
+        content += "\n    " + offer.content
+        content += "\n    ****"
+    Email.send
+      to: user.emails[0].address
+      from: "#{Meteor.settings.public.siteName} <no-reply@supporter.io>"
+      text: content
+      subject: 'Update on Cards you are watching'
+    Meteor.users.update {_id : userId}, {$set: { "profile.subscriptionEmailSentAt": new Date() } }
+
   sendSubscription: (userId, needs) ->
-    if needs.count() > 0
+    if needs and needs.count() > 0
       user = Meteor.users.findOne(userId)
       content = "Recent needs:\n\n"
       _.each needs.fetch(), (need) ->
@@ -26,8 +49,30 @@
 
       Meteor.users.update {_id : userId}, {$set: { "profile.subscriptionEmailSentAt": new Date() } }
 
-  needsToSend: (user, tagList) ->
-    if user.profile.subscriptionEmailSentAt
-      Needs.find ( { tags: { $in: tagList }, createdAt:  { $gt: user.profile.subscriptionEmailSentAt   } })
+  cardOffersToSend: (user, watchList) ->
+    map = { }
+    cards = null
+    if watchList and watchList.length > 0
+      console.log 'watchList not null, it is ' + watchList.length + '(' + watchList + ')'
+      cards = Needs.find ( { _id: { $in: watchList }} )
     else
-      Needs.find ( { tags: { $in: tagList }} )
+      console.log 'watchList is null, look! ' + watchList
+    if cards
+      console.log 'there are ' + cards.count() + ' cards'
+    else
+      console.log 'cards is null somehow :('
+    #get offers for each card
+    if cards
+      _.each cards.fetch(), (card) ->
+        console.log card
+        map[card._id] = Offers.find({needId: card._id})
+    map
+
+
+  needsToSend: (user, tagList) ->
+    if tagList and tagList.length > 0
+      if user.profile.subscriptionEmailSentAt
+        Needs.find ( { tags: { $in: tagList }, createdAt:  { $gt: user.profile.subscriptionEmailSentAt   } })
+      else
+        Needs.find ( { tags: { $in: tagList }} )
+

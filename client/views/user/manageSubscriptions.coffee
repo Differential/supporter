@@ -33,3 +33,5 @@ Template.manage.events
       Router.go('/')
     else
       $('.errors').text('Name is required.')
+  'click .kickit': (event) ->
+    Meteor.call 'sendSubscriptions', true

@@ -72,16 +72,21 @@ Meteor.startup ->
         }
       }
 
-    sendSubscriptions: () ->
+    sendSubscriptions: (doItNow) ->
       _.each Meteor.users.find().fetch(), (user) ->
         user = Meteor.users.findOne(user._id)
         frequency = user.profile.frequency
         #check for notification frequency
-        if frequency not 99 and (not user.profile.subscriptionEmailSentAt or not new Date().getDate() - user.profile.subscriptionEmailSentAt.getDate() > frequency)
+        willsend = frequency is not undefined and frequency != 99 and (user.profile.subscriptionEmailSentAt is undefined or not new Date().getDate() - user.profile.subscriptionEmailSentAt.getDate() > frequency)
+        console.log '*******'
+        console.log 'user ' + user.username + '\n last sent an email at ' + user.profile.subscriptionEmailSentAt + '\nfrequency is ' + frequency + '\n and willsend is ' + willsend
+        console.log '*******'
+        if willsend  || doItNow
           tags = user.profile.subscriptions
-          if tags && tags.length > 0
-            console.log [ "Sending subscription", user._id ]
-            Supporter.sendSubscription(user._id, Supporter.needsToSend(user, tags))
+          watches = user.profile.watching
+          console.log [ "Sending subscription", user._id ]
+          Supporter.sendSubscription(user._id, Supporter.needsToSend(user, tags))
+          Supporter.sendCard(user._id, Supporter.cardOffersToSend(user, watches))
 
     addAdmin: (emailAddress) ->
       user = Meteor.users.findOne('emails.address': emailAddress)

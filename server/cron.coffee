@@ -1,3 +1,3 @@
 Meteor.setInterval ->
-  Meteor.call 'sendSubscriptions'
-, 1000*3600 #hourly
+  Meteor.call 'sendSubscriptions', false
+, 1000*300 #5 min
