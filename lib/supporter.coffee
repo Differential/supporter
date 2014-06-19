@@ -19,17 +19,21 @@
       content += need.content
       content += "\n" + Meteor.absoluteUrl "need/#{need._id}"
       content += "\n****\n"
-      content += "has some new offers on it!"
+      content += "has some new offers on it!\n"
+      console.log v.fetch()
       _.each v.fetch(), (offer) ->
         content += "\nOffer (added on " + offer.createdAt + ")"
         content += "\n"
         content += offer.content
-    Email.send
-      to: user.emails[0].address
-      from: "#{Meteor.settings.public.siteName} <no-reply@supporter.io>"
-      text: content
-      subject: 'Update on Cards you are watching'
-    Meteor.users.update {_id : userId}, {$set: { "profile.subscriptionEmailSentAt": new Date() } }
+    if cardMap and cardMap.size > 0
+      Email.send
+        to: user.emails[0].address
+        from: "#{Meteor.settings.public.siteName} <no-reply@supporter.io>"
+        text: content
+        subject: 'Update on Cards you are watching'
+      Meteor.users.update {_id : userId}, {$set: { "profile.subscriptionEmailSentAt": new Date() } }
+    else
+      console.log 'Nevermind, there are no cards to send out'
 
   sendSubscription: (userId, needs) ->
     if needs and needs.count() > 0
@@ -45,8 +49,9 @@
         from: "#{Meteor.settings.public.siteName} <no-reply@supporter.io>"
         text: content
         subject: 'Recently added needs'
-
       Meteor.users.update {_id : userId}, {$set: { "profile.subscriptionEmailSentAt": new Date() } }
+    else
+      console.log 'Nevermind, there are no subscriptions to send out'
 
   cardOffersToSend: (user, watchList, doItNow) ->
     map = { }
@@ -57,11 +62,14 @@
     if cards
       _.each cards.fetch(), (card) ->
         if user.profile.subscriptionEmailSentAt
-          map[card._id] = Offers.find({needId: card._id, createdAt:  { $gt: user.profile.subscriptionEmailSentAt   }})
+          offers = Offers.find({needId: card._id, createdAt:  { $gt: user.profile.subscriptionEmailSentAt   }})
+          if offers and offers.count() > 0
+            map[card._id] = offers
         else
-          map[card._id] = Offers.find({needId: card._id})
+          offers = Offers.find({needId: card._id})
+          if offers and offers.count() > 0
+            map[card._id] = offers
     map
-
 
   needsToSend: (user, tagList, doItNow) ->
     if tagList and tagList.length > 0

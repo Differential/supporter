@@ -34,4 +34,4 @@ Template.manage.events
     else
       $('.errors').text('Name is required.')
   'click .kickit': (event) ->
-    Meteor.call 'sendSubscriptions', true
+    Meteor.call 'sendSubscriptions', true, Meteor.user()
