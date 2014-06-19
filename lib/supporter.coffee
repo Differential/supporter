@@ -56,7 +56,7 @@
     #get offers for each card
     if cards
       _.each cards.fetch(), (card) ->
-        if not doItNow and user.profile.subscriptionEmailSentAt
+        if user.profile.subscriptionEmailSentAt
           map[card._id] = Offers.find({needId: card._id, createdAt:  { $gt: user.profile.subscriptionEmailSentAt   }})
         else
           map[card._id] = Offers.find({needId: card._id})
@@ -65,7 +65,7 @@
 
   needsToSend: (user, tagList, doItNow) ->
     if tagList and tagList.length > 0
-      if not doItNow and user.profile.subscriptionEmailSentAt
+      if user.profile.subscriptionEmailSentAt
         Needs.find ( { tags: { $in: tagList }, createdAt:  { $gt: user.profile.subscriptionEmailSentAt   } })
       else
         Needs.find ( { tags: { $in: tagList }} )
