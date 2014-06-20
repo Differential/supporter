@@ -32,6 +32,7 @@ addNeed = ->
       if newNeed.length <= 200
         Session.set('chars', 0)
         $('#newNeed').val ''
+        bkgrnd = $('#backgroundId').val()
         Needs.insert
           content: newNeed
           createdAt: new Date()
@@ -40,8 +41,8 @@ addNeed = ->
           offerCount: 0
           score: Supporter.computeScore({stars: 0, createdAt: new Date()})
           tags: $('#tags').val().split(",")
-          backgroundId: $('#backgroundId').val()
-          backgroundName: Backgrounds.findOne($('#backgroundId').val()).name
+          backgroundId: if bkgrnd is not "No Project" then bkgrnd else null
+          backgroundName: if bkgrnd is not "No Project" then Backgrounds.findOne($('#backgroundId').val()).name else null
         , ->
           Router.go('needs')
       else
