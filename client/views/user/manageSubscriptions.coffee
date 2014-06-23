@@ -16,6 +16,8 @@ Template.manage.helpers
     Meteor.user().profile.frequency is 30
   isNever: ->
     Meteor.user().profile.frequency is 99
+  isSent: ->
+    Session.get('emailSent')
 
 Template.manage.events
   'click .now': (event, template) ->
@@ -35,3 +37,4 @@ Template.manage.events
       $('.errors').text('Name is required.')
   'click .kickit': (event) ->
     Meteor.call 'sendSubscriptions', true, Meteor.user()
+    Session.set('emailSent', true)

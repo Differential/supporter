@@ -142,6 +142,8 @@ Router.map ->
       Meteor.subscribe('offers')
       Meteor.subscribe('backgrounds')
       Meteor.subscribe('needs')
+    onAfterAction: ->
+      Session.set('emailSent', null)
 
   @route 'admin',
     path: '/admin'
