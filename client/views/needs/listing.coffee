@@ -31,7 +31,6 @@ Template.needListing.events
     Session.set('respondingTo', @_id)
     Session.set('charsOffer', null)
     Session.set('replyId', @_id)
-    ##$(template.find('.newOffer')).modal()
 
   "click .send": (event, template)->
     Session.set('sendingTo', @_id)
