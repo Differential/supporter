@@ -27,15 +27,15 @@
       {{#if isEditing}}
         {{> editNeed}}
       {{else}}
-        {{#if isReplying}}
-          {{> newOffer}}
-        {{else}}
-          <p>
+        <p>
             <a class="need-content" href="/need/{{_id}}">{{content}}</a>
-          </p>
-          {{#each tags}}
-            <a class="badge" href="/{{this}}">{{this}}</a>
-          {{/each}}
+        </p>
+        {{#each tags}}
+        <a class="badge" href="/{{this}}">{{this}}</a>
+        {{/each}}
+        {{#if isReplying}}
+        <br/> <br/>
+          {{> newOffer}}
         {{/if}}
       {{/if}}
     </div>
