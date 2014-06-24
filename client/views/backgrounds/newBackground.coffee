@@ -7,3 +7,5 @@ Template.newBackground.events
       userId: Meteor.userId()
       username: Meteor.user().username
       createdAt: new Date()
+    $('input[name="name"]').val("")
+    $('textarea[name="description"]').val("")

@@ -19,35 +19,38 @@
               </div>
           </div>
       {{/if}}
-      <b>Needs on this Project</b>
-      <ul class="list-group">
-          {{#each needs}}
-            {{> needStub}}
-          {{/each}}
-      </ul>
-
-    {{#if isEditingProject}}
-      <div class="form-group">
-          <b>Add a need</b>
-          <select class="form-control" id="needsToAdd">
-              <option>No need</option>
-              {{#each needsIOwn}}
-                <option value="{{_id}}">{{content}}</option>
-              {{/each}}
-          </select>
-          <a title='add' class="btn btn-default addNeedToBackgroundBtn"><i class='fa fa-plus'></i> add</a>
-      </div>
-    {{/if}}
-
-    {{#if owner}}
-      {{#if isEditingProject}}
-        <a title='done' class="btn btn-success saveBackgroundBtn"><i class='fa fa-check'></i> done</a>
+      {{#if isCompleted}}
+          <div class="alert alert-info">This Project has been completed!</div>
+          <a title='done' class="btn btn-info uncomplete"><i class='fa fa-undo'></i> wait, it's not really done</a>
       {{else}}
-        <a title='edit' class="btn btn-primary editBackgroundBtn"><i class='fa fa-edit'></i> edit</a>
-      {{/if}}
-      <a title='complete' class='btn btn-info complete'><i class='fa fa-check'></i> archive</a>
-      <a data-toggle='modal' title='remove' class='btn btn-danger delete pull-right'><i class='fa fa-times'></i> delete</a>
+        <b>Needs on this Project</b>
+        <ul class="list-group">
+        {{#each needs}}
+            {{> needStub}}
+        {{/each}}
+        </ul>
+        {{#if isEditingProject}}
+        <div class="form-group">
+            <b>Add a need</b>
+            <select class="form-control" id="needsToAdd">
+                <option>No need</option>
+                {{#each needsIOwn}}
+                  <option value="{{_id}}">{{content}}</option>
+                {{/each}}
+            </select>
+            <a title='add' class="btn btn-default addNeedToBackgroundBtn"><i class='fa fa-plus'></i> add</a>
+        </div>
+        {{/if}}
 
+        {{#if owner}}
+            {{#if isEditingProject}}
+              <a title='done' class="btn btn-success saveBackgroundBtn"><i class='fa fa-check'></i> done</a>
+            {{else}}
+              <a title='edit' class="btn btn-primary editBackgroundBtn"><i class='fa fa-edit'></i> edit</a>
+            {{/if}}
+            <a title='complete' class='btn btn-info complete'><i class='fa fa-check'></i> complete</a>
+            <a title='remove' class='btn btn-danger delete'><i class='fa fa-times'></i> delete</a>
+        {{/if}}
       {{/if}}
   </div>
 </template>
