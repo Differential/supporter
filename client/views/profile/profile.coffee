@@ -86,3 +86,9 @@ Template.profile.events
       Router.go('/manage')
     else
       $('.errors').text('Name is required')
+
+  'click .manageBackgrounds': ->
+    if Meteor.user().profile.name
+      Router.go('/manageBackgrounds')
+    else
+      $('.errors').text('Name is required')

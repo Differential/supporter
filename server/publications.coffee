@@ -16,6 +16,9 @@ Meteor.publish "user", (username) ->
 Meteor.publish "backgrounds", ->
   Backgrounds.find userId: @userId
 
+Meteor.publish "allBackgrounds", ->
+  Backgrounds.find(completedAt: {$exists: false})
+
 Meteor.publish "need", (id) ->
   Needs.find(id)
 

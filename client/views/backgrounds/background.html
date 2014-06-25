@@ -8,5 +8,12 @@
              {{description}}
          </div>
      </div>
+     {{#masonryContainer gutter=20 transitionDuration="0.2s" id="MasonryContainer" }}
+     {{#masonryElement "MasonryContainer"}}
+       {{#each needs}}
+         {{> needListing}}
+       {{/each}}
+     {{/masonryElement}}
+     {{/masonryContainer}}
  </div>
 </template>

@@ -76,11 +76,11 @@ Router.map ->
   @route 'backgrounds',
     path: '/backgrounds'
     data: ->
-      backgrounds: Backgrounds.find({}, {sort: {score: -1}})
-      needs: Needs.find({})
+      backgrounds: Backgrounds.find({})
+      needs: Needs.find({}, {sort: {score: -1}})
     waitOn: ->
       Meteor.subscribe('needs')
-      Meteor.subscribe('backgrounds')
+      Meteor.subscribe('allBackgrounds')
       Meteor.subscribe('offers')
     onBeforeAction: ->
       if (Meteor.loggingIn())
@@ -93,10 +93,31 @@ Router.map ->
       $('#query').val('')
       Session.set 'query', null
 
+  @route 'manageBackgrounds',
+    path: '/manageBackgrounds'
+    data: ->
+      backgrounds: Backgrounds.find({}, {sort: {score: -1}})
+      needs: Needs.find({})
+    waitOn: ->
+      Meteor.subscribe('needs')
+      Meteor.subscribe('backgrounds')
+      Meteor.subscribe('offers')
+    onBeforeAction: ->
+      if (Meteor.loggingIn())
+        @render 'loading'
+      if (Meteor.user() && !Meteor.user().username)
+        return @redirect('profile')
+      else
+        @render 'manageBackgrounds'
+    onAfterAction: ->
+      $('#query').val('')
+      Session.set 'query', null
+
   @route 'background',
     path: '/background/:id'
     data: ->
-      Backgrounds.findOne @params.id
+      backgrounds: Backgrounds.findOne @params.id
+      needs: Needs.find({backgroundId: @params.id})
     waitOn: ->
       Meteor.subscribe('needs')
       Meteor.subscribe('offers')

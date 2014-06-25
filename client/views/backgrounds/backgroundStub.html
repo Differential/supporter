@@ -1,0 +1,23 @@
+<template name="backgroundStub">
+    <div class='panel'>
+        <div class='panel-header'>
+            <div class="panel-background">
+            <a title='background detail' href="/background/{{_id}}">{{name}}</a>
+            </div>
+        </div>
+        <div class='panel-body'>
+            {{description}}
+        </div>
+        <div class='panel-footer'>
+            {{#if hasNeeds}}
+            <div class="panel-info">Needs posted under this project</div>
+
+            {{#each needs}}
+              {{> needListingStub}}
+            {{/each}}
+            {{else}}
+            <div class="label label-default pull-center">There are no needs associated with this project!</div>
+            {{/if}}
+        </div>
+    </div>
+</template>
